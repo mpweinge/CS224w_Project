@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6C2A8561BEEC2E00053AFEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6C2A8551BEEC2E00053AFEA /* main.cpp */; };
+		A6C2A94F1BEECC560053AFEA /* Snap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6C2A8F81BEECC3C0053AFEA /* Snap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,127 @@
 /* Begin PBXFileReference section */
 		A6C2A8521BEEC2E00053AFEA /* CS224w_Project */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CS224w_Project; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C2A8551BEEC2E00053AFEA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A6C2A8A91BEECC330053AFEA /* alg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = alg.cpp; path = CS224w_Project/SNAP/alg.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8AA1BEECC330053AFEA /* alg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = alg.h; path = CS224w_Project/SNAP/alg.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8AB1BEECC330053AFEA /* anf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = anf.cpp; path = CS224w_Project/SNAP/anf.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8AE1BEECC3C0053AFEA /* anf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = anf.h; path = CS224w_Project/SNAP/anf.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8AF1BEECC3C0053AFEA /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = base.cpp; path = CS224w_Project/SNAP/base.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8B01BEECC3C0053AFEA /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base.h; path = CS224w_Project/SNAP/base.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B11BEECC3C0053AFEA /* bd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bd.cpp; path = CS224w_Project/SNAP/bd.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8B21BEECC3C0053AFEA /* bd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bd.h; path = CS224w_Project/SNAP/bd.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B31BEECC3C0053AFEA /* bfsdfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bfsdfs.h; path = CS224w_Project/SNAP/bfsdfs.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B41BEECC3C0053AFEA /* bignet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bignet.h; path = CS224w_Project/SNAP/bignet.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B51BEECC3C0053AFEA /* bits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bits.cpp; path = CS224w_Project/SNAP/bits.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8B61BEECC3C0053AFEA /* bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bits.h; path = CS224w_Project/SNAP/bits.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B71BEECC3C0053AFEA /* blobbs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = blobbs.cpp; path = CS224w_Project/SNAP/blobbs.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8B81BEECC3C0053AFEA /* blobbs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blobbs.h; path = CS224w_Project/SNAP/blobbs.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8B91BEECC3C0053AFEA /* centr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = centr.cpp; path = CS224w_Project/SNAP/centr.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8BA1BEECC3C0053AFEA /* centr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = centr.h; path = CS224w_Project/SNAP/centr.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8BB1BEECC3C0053AFEA /* cmty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cmty.cpp; path = CS224w_Project/SNAP/cmty.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8BC1BEECC3C0053AFEA /* cmty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cmty.h; path = CS224w_Project/SNAP/cmty.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8BD1BEECC3C0053AFEA /* cncom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cncom.cpp; path = CS224w_Project/SNAP/cncom.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8BE1BEECC3C0053AFEA /* cncom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cncom.h; path = CS224w_Project/SNAP/cncom.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8BF1BEECC3C0053AFEA /* coreper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = coreper.cpp; path = CS224w_Project/SNAP/coreper.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8C01BEECC3C0053AFEA /* coreper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = coreper.h; path = CS224w_Project/SNAP/coreper.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8C11BEECC3C0053AFEA /* ds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ds.h; path = CS224w_Project/SNAP/ds.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8C21BEECC3C0053AFEA /* dt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dt.cpp; path = CS224w_Project/SNAP/dt.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8C31BEECC3C0053AFEA /* dt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dt.h; path = CS224w_Project/SNAP/dt.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8C41BEECC3C0053AFEA /* env.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = env.cpp; path = CS224w_Project/SNAP/env.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8C51BEECC3C0053AFEA /* env.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = env.h; path = CS224w_Project/SNAP/env.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8C61BEECC3C0053AFEA /* ff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ff.cpp; path = CS224w_Project/SNAP/ff.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8C71BEECC3C0053AFEA /* ff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ff.h; path = CS224w_Project/SNAP/ff.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8C81BEECC3C0053AFEA /* fl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fl.cpp; path = CS224w_Project/SNAP/fl.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8C91BEECC3C0053AFEA /* fl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fl.h; path = CS224w_Project/SNAP/fl.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8CA1BEECC3C0053AFEA /* flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flow.cpp; path = CS224w_Project/SNAP/flow.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8CB1BEECC3C0053AFEA /* flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flow.h; path = CS224w_Project/SNAP/flow.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8CC1BEECC3C0053AFEA /* g1.edgelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = g1.edgelist; path = CS224w_Project/SNAP/g1.edgelist; sourceTree = SOURCE_ROOT; };
+		A6C2A8CD1BEECC3C0053AFEA /* g2.edgelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = g2.edgelist; path = CS224w_Project/SNAP/g2.edgelist; sourceTree = SOURCE_ROOT; };
+		A6C2A8CE1BEECC3C0053AFEA /* gbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gbase.cpp; path = CS224w_Project/SNAP/gbase.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8CF1BEECC3C0053AFEA /* gbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gbase.h; path = CS224w_Project/SNAP/gbase.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8D01BEECC3C0053AFEA /* ggen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ggen.cpp; path = CS224w_Project/SNAP/ggen.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8D11BEECC3C0053AFEA /* ggen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ggen.h; path = CS224w_Project/SNAP/ggen.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8D21BEECC3C0053AFEA /* ghash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ghash.cpp; path = CS224w_Project/SNAP/ghash.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8D31BEECC3C0053AFEA /* ghash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ghash.h; path = CS224w_Project/SNAP/ghash.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8D41BEECC3C0053AFEA /* gio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gio.cpp; path = CS224w_Project/SNAP/gio.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8D51BEECC3C0053AFEA /* gio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gio.h; path = CS224w_Project/SNAP/gio.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8D61BEECC3C0053AFEA /* gnuplot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gnuplot.cpp; path = CS224w_Project/SNAP/gnuplot.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8D71BEECC3C0053AFEA /* gnuplot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gnuplot.h; path = CS224w_Project/SNAP/gnuplot.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8D81BEECC3C0053AFEA /* graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graph.cpp; path = CS224w_Project/SNAP/graph.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8D91BEECC3C0053AFEA /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = graph.h; path = CS224w_Project/SNAP/graph.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8DA1BEECC3C0053AFEA /* graph.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graph.txt; path = CS224w_Project/SNAP/graph.txt; sourceTree = SOURCE_ROOT; };
+		A6C2A8DB1BEECC3C0053AFEA /* gstat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gstat.cpp; path = CS224w_Project/SNAP/gstat.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8DC1BEECC3C0053AFEA /* gstat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gstat.h; path = CS224w_Project/SNAP/gstat.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8DD1BEECC3C0053AFEA /* gsvd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gsvd.cpp; path = CS224w_Project/SNAP/gsvd.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8DE1BEECC3C0053AFEA /* gsvd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gsvd.h; path = CS224w_Project/SNAP/gsvd.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8DF1BEECC3C0053AFEA /* gviz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gviz.cpp; path = CS224w_Project/SNAP/gviz.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8E01BEECC3C0053AFEA /* gviz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gviz.h; path = CS224w_Project/SNAP/gviz.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8E11BEECC3C0053AFEA /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hash.cpp; path = CS224w_Project/SNAP/hash.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8E21BEECC3C0053AFEA /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hash.h; path = CS224w_Project/SNAP/hash.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8E31BEECC3C0053AFEA /* html.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = html.cpp; path = CS224w_Project/SNAP/html.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8E41BEECC3C0053AFEA /* html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = html.h; path = CS224w_Project/SNAP/html.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8E51BEECC3C0053AFEA /* http.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = http.cpp; path = CS224w_Project/SNAP/http.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8E61BEECC3C0053AFEA /* http.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = http.h; path = CS224w_Project/SNAP/http.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8E71BEECC3C0053AFEA /* imdb_actor_edges.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = imdb_actor_edges.tsv; path = CS224w_Project/SNAP/imdb_actor_edges.tsv; sourceTree = SOURCE_ROOT; };
+		A6C2A8E81BEECC3C0053AFEA /* imdb_actors_key.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = imdb_actors_key.tsv; path = CS224w_Project/SNAP/imdb_actors_key.tsv; sourceTree = SOURCE_ROOT; };
+		A6C2A8E91BEECC3C0053AFEA /* json.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = json.cpp; path = CS224w_Project/SNAP/json.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8EA1BEECC3C0053AFEA /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = json.h; path = CS224w_Project/SNAP/json.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8EB1BEECC3C0053AFEA /* kcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kcore.h; path = CS224w_Project/SNAP/kcore.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8EC1BEECC3C0053AFEA /* linalg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = linalg.cpp; path = CS224w_Project/SNAP/linalg.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8ED1BEECC3C0053AFEA /* linalg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = linalg.h; path = CS224w_Project/SNAP/linalg.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8EE1BEECC3C0053AFEA /* lx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lx.cpp; path = CS224w_Project/SNAP/lx.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8EF1BEECC3C0053AFEA /* lx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lx.h; path = CS224w_Project/SNAP/lx.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8F01BEECC3C0053AFEA /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = md5.cpp; path = CS224w_Project/SNAP/md5.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8F11BEECC3C0053AFEA /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = md5.h; path = CS224w_Project/SNAP/md5.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8F21BEECC3C0053AFEA /* network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network.cpp; path = CS224w_Project/SNAP/network.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8F31BEECC3C0053AFEA /* network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network.h; path = CS224w_Project/SNAP/network.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8F41BEECC3C0053AFEA /* os.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = os.cpp; path = CS224w_Project/SNAP/os.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8F51BEECC3C0053AFEA /* os.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = os.h; path = CS224w_Project/SNAP/os.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8F61BEECC3C0053AFEA /* p2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = p2.txt; path = CS224w_Project/SNAP/p2.txt; sourceTree = SOURCE_ROOT; };
+		A6C2A8F71BEECC3C0053AFEA /* shash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shash.h; path = CS224w_Project/SNAP/shash.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8F81BEECC3C0053AFEA /* Snap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Snap.cpp; path = CS224w_Project/SNAP/Snap.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8F91BEECC3C0053AFEA /* Snap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Snap.h; path = CS224w_Project/SNAP/Snap.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8FA1BEECC3C0053AFEA /* Snap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = Snap.o; path = CS224w_Project/SNAP/Snap.o; sourceTree = SOURCE_ROOT; };
+		A6C2A8FB1BEECC3C0053AFEA /* ss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ss.cpp; path = CS224w_Project/SNAP/ss.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8FC1BEECC3C0053AFEA /* ss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ss.h; path = CS224w_Project/SNAP/ss.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8FD1BEECC3C0053AFEA /* statplot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = statplot.cpp; path = CS224w_Project/SNAP/statplot.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A8FE1BEECC3C0053AFEA /* statplot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = statplot.h; path = CS224w_Project/SNAP/statplot.h; sourceTree = SOURCE_ROOT; };
+		A6C2A8FF1BEECC3C0053AFEA /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = CS224w_Project/SNAP/stdafx.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9001BEECC3C0053AFEA /* subgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = subgraph.cpp; path = CS224w_Project/SNAP/subgraph.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9011BEECC3C0053AFEA /* subgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = subgraph.h; path = CS224w_Project/SNAP/subgraph.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9021BEECC3C0053AFEA /* testSnap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testSnap.cpp; path = CS224w_Project/SNAP/testSnap.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9031BEECC3C0053AFEA /* timenet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = timenet.cpp; path = CS224w_Project/SNAP/timenet.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9041BEECC3C0053AFEA /* timenet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = timenet.h; path = CS224w_Project/SNAP/timenet.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9051BEECC3C0053AFEA /* tm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tm.cpp; path = CS224w_Project/SNAP/tm.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9061BEECC3C0053AFEA /* tm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tm.h; path = CS224w_Project/SNAP/tm.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9071BEECC3C0053AFEA /* triad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = triad.h; path = CS224w_Project/SNAP/triad.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9081BEECC3C0053AFEA /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = unicode.cpp; path = CS224w_Project/SNAP/unicode.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9091BEECC3C0053AFEA /* unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unicode.h; path = CS224w_Project/SNAP/unicode.h; sourceTree = SOURCE_ROOT; };
+		A6C2A90A1BEECC3C0053AFEA /* unicodestring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = unicodestring.cpp; path = CS224w_Project/SNAP/unicodestring.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A90B1BEECC3C0053AFEA /* unicodestring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unicodestring.h; path = CS224w_Project/SNAP/unicodestring.h; sourceTree = SOURCE_ROOT; };
+		A6C2A90C1BEECC3C0053AFEA /* Untitled.ipynb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Untitled.ipynb; path = CS224w_Project/SNAP/Untitled.ipynb; sourceTree = SOURCE_ROOT; };
+		A6C2A90D1BEECC3C0053AFEA /* url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = url.cpp; path = CS224w_Project/SNAP/url.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A90E1BEECC3C0053AFEA /* url.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = url.h; path = CS224w_Project/SNAP/url.h; sourceTree = SOURCE_ROOT; };
+		A6C2A90F1BEECC3C0053AFEA /* ut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ut.cpp; path = CS224w_Project/SNAP/ut.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9101BEECC3C0053AFEA /* ut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ut.h; path = CS224w_Project/SNAP/ut.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9111BEECC3C0053AFEA /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = CS224w_Project/SNAP/util.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9121BEECC3C0053AFEA /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util.h; path = CS224w_Project/SNAP/util.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9131BEECC3C0053AFEA /* wch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wch.cpp; path = CS224w_Project/SNAP/wch.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9141BEECC3C0053AFEA /* wch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wch.h; path = CS224w_Project/SNAP/wch.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9151BEECC3C0053AFEA /* xfl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xfl.cpp; path = CS224w_Project/SNAP/xfl.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9161BEECC3C0053AFEA /* xfl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xfl.h; path = CS224w_Project/SNAP/xfl.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9171BEECC3C0053AFEA /* xmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xmath.cpp; path = CS224w_Project/SNAP/xmath.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A9181BEECC3C0053AFEA /* xmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xmath.h; path = CS224w_Project/SNAP/xmath.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9191BEECC3C0053AFEA /* xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xml.cpp; path = CS224w_Project/SNAP/xml.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A91A1BEECC3C0053AFEA /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xml.h; path = CS224w_Project/SNAP/xml.h; sourceTree = SOURCE_ROOT; };
+		A6C2A91B1BEECC3C0053AFEA /* xmlser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xmlser.h; path = CS224w_Project/SNAP/xmlser.h; sourceTree = SOURCE_ROOT; };
+		A6C2A91C1BEECC3C0053AFEA /* zipfl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = zipfl.cpp; path = CS224w_Project/SNAP/zipfl.cpp; sourceTree = SOURCE_ROOT; };
+		A6C2A91D1BEECC3C0053AFEA /* zipfl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zipfl.h; path = CS224w_Project/SNAP/zipfl.h; sourceTree = SOURCE_ROOT; };
+		A6C2A9501BEECD6F0053AFEA /* ccl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ccl.txt; sourceTree = "<group>"; };
+		A6C2A9511BEECD6F0053AFEA /* cm.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cm.txt; sourceTree = "<group>"; };
+		A6C2A9521BEECD6F0053AFEA /* cn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cn.txt; sourceTree = "<group>"; };
+		A6C2A9531BEECD6F0053AFEA /* itoth.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = itoth.txt; sourceTree = "<group>"; };
+		A6C2A9541BEECD6F0053AFEA /* itpas2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = itpas2.txt; sourceTree = "<group>"; };
+		A6C2A9551BEECD6F0053AFEA /* itcont.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = itcont.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,8 +163,10 @@
 		A6C2A8491BEEC2E00053AFEA = {
 			isa = PBXGroup;
 			children = (
+				A6C2A85C1BEEC3CF0053AFEA /* SNAP */,
 				A6C2A8541BEEC2E00053AFEA /* CS224w_Project */,
 				A6C2A8531BEEC2E00053AFEA /* Products */,
+				A6C2A8901BEEC3EE0053AFEA /* snap-core */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +181,145 @@
 		A6C2A8541BEEC2E00053AFEA /* CS224w_Project */ = {
 			isa = PBXGroup;
 			children = (
+				A6C2A9501BEECD6F0053AFEA /* ccl.txt */,
+				A6C2A9511BEECD6F0053AFEA /* cm.txt */,
+				A6C2A9521BEECD6F0053AFEA /* cn.txt */,
+				A6C2A9531BEECD6F0053AFEA /* itoth.txt */,
+				A6C2A9541BEECD6F0053AFEA /* itpas2.txt */,
+				A6C2A9551BEECD6F0053AFEA /* itcont.txt */,
 				A6C2A8551BEEC2E00053AFEA /* main.cpp */,
 			);
 			path = CS224w_Project;
+			sourceTree = "<group>";
+		};
+		A6C2A85C1BEEC3CF0053AFEA /* SNAP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SNAP;
+			sourceTree = "<group>";
+		};
+		A6C2A8901BEEC3EE0053AFEA /* snap-core */ = {
+			isa = PBXGroup;
+			children = (
+				A6C2A8A91BEECC330053AFEA /* alg.cpp */,
+				A6C2A8AA1BEECC330053AFEA /* alg.h */,
+				A6C2A8AB1BEECC330053AFEA /* anf.cpp */,
+				A6C2A8AE1BEECC3C0053AFEA /* anf.h */,
+				A6C2A8AF1BEECC3C0053AFEA /* base.cpp */,
+				A6C2A8B01BEECC3C0053AFEA /* base.h */,
+				A6C2A8B11BEECC3C0053AFEA /* bd.cpp */,
+				A6C2A8B21BEECC3C0053AFEA /* bd.h */,
+				A6C2A8B31BEECC3C0053AFEA /* bfsdfs.h */,
+				A6C2A8B41BEECC3C0053AFEA /* bignet.h */,
+				A6C2A8B51BEECC3C0053AFEA /* bits.cpp */,
+				A6C2A8B61BEECC3C0053AFEA /* bits.h */,
+				A6C2A8B71BEECC3C0053AFEA /* blobbs.cpp */,
+				A6C2A8B81BEECC3C0053AFEA /* blobbs.h */,
+				A6C2A8B91BEECC3C0053AFEA /* centr.cpp */,
+				A6C2A8BA1BEECC3C0053AFEA /* centr.h */,
+				A6C2A8BB1BEECC3C0053AFEA /* cmty.cpp */,
+				A6C2A8BC1BEECC3C0053AFEA /* cmty.h */,
+				A6C2A8BD1BEECC3C0053AFEA /* cncom.cpp */,
+				A6C2A8BE1BEECC3C0053AFEA /* cncom.h */,
+				A6C2A8BF1BEECC3C0053AFEA /* coreper.cpp */,
+				A6C2A8C01BEECC3C0053AFEA /* coreper.h */,
+				A6C2A8C11BEECC3C0053AFEA /* ds.h */,
+				A6C2A8C21BEECC3C0053AFEA /* dt.cpp */,
+				A6C2A8C31BEECC3C0053AFEA /* dt.h */,
+				A6C2A8C41BEECC3C0053AFEA /* env.cpp */,
+				A6C2A8C51BEECC3C0053AFEA /* env.h */,
+				A6C2A8C61BEECC3C0053AFEA /* ff.cpp */,
+				A6C2A8C71BEECC3C0053AFEA /* ff.h */,
+				A6C2A8C81BEECC3C0053AFEA /* fl.cpp */,
+				A6C2A8C91BEECC3C0053AFEA /* fl.h */,
+				A6C2A8CA1BEECC3C0053AFEA /* flow.cpp */,
+				A6C2A8CB1BEECC3C0053AFEA /* flow.h */,
+				A6C2A8CC1BEECC3C0053AFEA /* g1.edgelist */,
+				A6C2A8CD1BEECC3C0053AFEA /* g2.edgelist */,
+				A6C2A8CE1BEECC3C0053AFEA /* gbase.cpp */,
+				A6C2A8CF1BEECC3C0053AFEA /* gbase.h */,
+				A6C2A8D01BEECC3C0053AFEA /* ggen.cpp */,
+				A6C2A8D11BEECC3C0053AFEA /* ggen.h */,
+				A6C2A8D21BEECC3C0053AFEA /* ghash.cpp */,
+				A6C2A8D31BEECC3C0053AFEA /* ghash.h */,
+				A6C2A8D41BEECC3C0053AFEA /* gio.cpp */,
+				A6C2A8D51BEECC3C0053AFEA /* gio.h */,
+				A6C2A8D61BEECC3C0053AFEA /* gnuplot.cpp */,
+				A6C2A8D71BEECC3C0053AFEA /* gnuplot.h */,
+				A6C2A8D81BEECC3C0053AFEA /* graph.cpp */,
+				A6C2A8D91BEECC3C0053AFEA /* graph.h */,
+				A6C2A8DA1BEECC3C0053AFEA /* graph.txt */,
+				A6C2A8DB1BEECC3C0053AFEA /* gstat.cpp */,
+				A6C2A8DC1BEECC3C0053AFEA /* gstat.h */,
+				A6C2A8DD1BEECC3C0053AFEA /* gsvd.cpp */,
+				A6C2A8DE1BEECC3C0053AFEA /* gsvd.h */,
+				A6C2A8DF1BEECC3C0053AFEA /* gviz.cpp */,
+				A6C2A8E01BEECC3C0053AFEA /* gviz.h */,
+				A6C2A8E11BEECC3C0053AFEA /* hash.cpp */,
+				A6C2A8E21BEECC3C0053AFEA /* hash.h */,
+				A6C2A8E31BEECC3C0053AFEA /* html.cpp */,
+				A6C2A8E41BEECC3C0053AFEA /* html.h */,
+				A6C2A8E51BEECC3C0053AFEA /* http.cpp */,
+				A6C2A8E61BEECC3C0053AFEA /* http.h */,
+				A6C2A8E71BEECC3C0053AFEA /* imdb_actor_edges.tsv */,
+				A6C2A8E81BEECC3C0053AFEA /* imdb_actors_key.tsv */,
+				A6C2A8E91BEECC3C0053AFEA /* json.cpp */,
+				A6C2A8EA1BEECC3C0053AFEA /* json.h */,
+				A6C2A8EB1BEECC3C0053AFEA /* kcore.h */,
+				A6C2A8EC1BEECC3C0053AFEA /* linalg.cpp */,
+				A6C2A8ED1BEECC3C0053AFEA /* linalg.h */,
+				A6C2A8EE1BEECC3C0053AFEA /* lx.cpp */,
+				A6C2A8EF1BEECC3C0053AFEA /* lx.h */,
+				A6C2A8F01BEECC3C0053AFEA /* md5.cpp */,
+				A6C2A8F11BEECC3C0053AFEA /* md5.h */,
+				A6C2A8F21BEECC3C0053AFEA /* network.cpp */,
+				A6C2A8F31BEECC3C0053AFEA /* network.h */,
+				A6C2A8F41BEECC3C0053AFEA /* os.cpp */,
+				A6C2A8F51BEECC3C0053AFEA /* os.h */,
+				A6C2A8F61BEECC3C0053AFEA /* p2.txt */,
+				A6C2A8F71BEECC3C0053AFEA /* shash.h */,
+				A6C2A8F81BEECC3C0053AFEA /* Snap.cpp */,
+				A6C2A8F91BEECC3C0053AFEA /* Snap.h */,
+				A6C2A8FA1BEECC3C0053AFEA /* Snap.o */,
+				A6C2A8FB1BEECC3C0053AFEA /* ss.cpp */,
+				A6C2A8FC1BEECC3C0053AFEA /* ss.h */,
+				A6C2A8FD1BEECC3C0053AFEA /* statplot.cpp */,
+				A6C2A8FE1BEECC3C0053AFEA /* statplot.h */,
+				A6C2A8FF1BEECC3C0053AFEA /* stdafx.h */,
+				A6C2A9001BEECC3C0053AFEA /* subgraph.cpp */,
+				A6C2A9011BEECC3C0053AFEA /* subgraph.h */,
+				A6C2A9021BEECC3C0053AFEA /* testSnap.cpp */,
+				A6C2A9031BEECC3C0053AFEA /* timenet.cpp */,
+				A6C2A9041BEECC3C0053AFEA /* timenet.h */,
+				A6C2A9051BEECC3C0053AFEA /* tm.cpp */,
+				A6C2A9061BEECC3C0053AFEA /* tm.h */,
+				A6C2A9071BEECC3C0053AFEA /* triad.h */,
+				A6C2A9081BEECC3C0053AFEA /* unicode.cpp */,
+				A6C2A9091BEECC3C0053AFEA /* unicode.h */,
+				A6C2A90A1BEECC3C0053AFEA /* unicodestring.cpp */,
+				A6C2A90B1BEECC3C0053AFEA /* unicodestring.h */,
+				A6C2A90C1BEECC3C0053AFEA /* Untitled.ipynb */,
+				A6C2A90D1BEECC3C0053AFEA /* url.cpp */,
+				A6C2A90E1BEECC3C0053AFEA /* url.h */,
+				A6C2A90F1BEECC3C0053AFEA /* ut.cpp */,
+				A6C2A9101BEECC3C0053AFEA /* ut.h */,
+				A6C2A9111BEECC3C0053AFEA /* util.cpp */,
+				A6C2A9121BEECC3C0053AFEA /* util.h */,
+				A6C2A9131BEECC3C0053AFEA /* wch.cpp */,
+				A6C2A9141BEECC3C0053AFEA /* wch.h */,
+				A6C2A9151BEECC3C0053AFEA /* xfl.cpp */,
+				A6C2A9161BEECC3C0053AFEA /* xfl.h */,
+				A6C2A9171BEECC3C0053AFEA /* xmath.cpp */,
+				A6C2A9181BEECC3C0053AFEA /* xmath.h */,
+				A6C2A9191BEECC3C0053AFEA /* xml.cpp */,
+				A6C2A91A1BEECC3C0053AFEA /* xml.h */,
+				A6C2A91B1BEECC3C0053AFEA /* xmlser.h */,
+				A6C2A91C1BEECC3C0053AFEA /* zipfl.cpp */,
+				A6C2A91D1BEECC3C0053AFEA /* zipfl.h */,
+			);
+			name = "snap-core";
+			path = ../cs224w_A3_q2_snap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C2A8561BEEC2E00053AFEA /* main.cpp in Sources */,
+				A6C2A94F1BEECC560053AFEA /* Snap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
