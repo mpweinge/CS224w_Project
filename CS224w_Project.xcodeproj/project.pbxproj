@@ -468,14 +468,18 @@
 		A6C2A85A1BEEC2E00053AFEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 			};
 			name = Debug;
 		};
 		A6C2A85B1BEEC2E00053AFEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 			};
 			name = Release;
 		};
@@ -498,6 +502,7 @@
 				A6C2A85B1BEEC2E00053AFEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
