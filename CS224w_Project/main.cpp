@@ -13,6 +13,7 @@
 #include <vector>
 #include <unordered_map>
 #include "Snap.h"
+#include "constants.h"
 
 
 using namespace std;
@@ -29,6 +30,13 @@ unordered_map<string, int> donorStringToNodeNumber;
 int nodeNum = 0;
 
 PNGraph donorGraph;
+PUNGraph undirectedDonorGraph;
+
+bool isEarlierDate(string date1, string date2) {
+  // Format of strings is MMDDYYYY
+  // All we need to do is compare the last character
+  return ( date1[date1.size() - 1] < date2[date2.size() - 1] );
+}
 
 struct candidateDonorNode {
   string filerIdentificationNumber;
@@ -172,7 +180,12 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
   ifstream candidateDonorFile;
   
   string currentLine;
-  candidateDonorFile.open("../../cs224w_Project/itcont.txt");
+  
+#ifdef TRAIN_2007
+  candidateDonorFile.open("../../cs224w_Project/2007_2008/itcont.txt");
+#else
+  candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
+#endif
   
   string filerIdentificationNumber;
   string amendmentIndicator;
@@ -234,40 +247,80 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
     
     getline(candidateDonorFile, uniqueRowID);
     
-    candidateDonorNode nextNode = candidateDonorNode(filerIdentificationNumber,amendmentIndicator,reportType,electionType,\
-                                                     imageNumber,transactionType,entityType,name,city,state, zipCode,\
-                                                     employer, occupation, transactionDate, transactionAmount, otherIdentificationNumber, transactionCode, fileNum, memoCode, memoText, uniqueRowID);
+    bool shouldAdd = true;
     
-    nodes.push_back(nextNode);
+#ifdef CAP_DONATIONS
+    shouldAdd = isEarlierDate(transactionDate, end2007Campaign);
+#endif
     
-    // If donor does not exist in our database
-    int donorNodeIndex = 0;
-    int committeeNodeIndex = 0;
-    
-    auto search = donorStringToNodeNumber.find(name);
-    if (search == donorStringToNodeNumber.end() ) {
-      donorGraph->AddNode(nodeNum);
-      donorNodeIndex = nodeNum;
-      nodeNum++;
-    } else {
-      donorNodeIndex = search->second;
+    if (shouldAdd) {
+      candidateDonorNode nextNode = candidateDonorNode(filerIdentificationNumber,amendmentIndicator,reportType,electionType,\
+                                                       imageNumber,transactionType,entityType,name,city,state, zipCode,\
+                                                       employer, occupation, transactionDate, transactionAmount, otherIdentificationNumber, transactionCode, fileNum, memoCode, memoText, uniqueRowID);
+      
+      nodes.push_back(nextNode);
+      
+      // If donor does not exist in our database
+      int donorNodeIndex = 0;
+      int committeeNodeIndex = 0;
+      
+      auto search = donorStringToNodeNumber.find(name);
+      if (search == donorStringToNodeNumber.end() ) {
+        donorGraph->AddNode(nodeNum);
+        undirectedDonorGraph->AddNode(nodeNum);
+        donorNodeIndex = nodeNum;
+        nodeNum++;
+      } else {
+        donorNodeIndex = search->second;
+      }
+      
+      // Add an edge from that node to that
+      auto committeeSearch = committeeStringToNodeNumber.find(filerIdentificationNumber);
+      if (committeeSearch == committeeStringToNodeNumber.end()) {
+        // Create a new node for that edge
+        donorGraph->AddNode(nodeNum);
+        undirectedDonorGraph->AddNode(nodeNum);
+        committeeStringToNodeNumber[filerIdentificationNumber] = nodeNum;
+        committeeNodeIndex = nodeNum;
+        nodeNum++;
+      } else {
+        committeeNodeIndex = committeeSearch->second;
+      }
+      
+      // Add an edge from our new node to that
+      donorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
+      undirectedDonorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
     }
-    
-    // Add an edge from that node to that
-    auto committeeSearch = committeeStringToNodeNumber.find(filerIdentificationNumber);
-    if (committeeSearch == committeeStringToNodeNumber.end()) {
-      // Create a new node for that edge
-      donorGraph->AddNode(nodeNum);
-      committeeStringToNodeNumber[filerIdentificationNumber] = nodeNum;
-      committeeNodeIndex = nodeNum;
-      nodeNum++;
-    } else {
-      committeeNodeIndex = committeeSearch->second;
-    }
-    
-    // Add an edge from our new node to that
-    donorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
+  }
+}
 
+void computePageRank() {
+  TIntFltH nodeToHash;
+   TSnap::GetPageRank(donorGraph, nodeToHash);
+   
+   float maxPageRank = 0;
+   int maxPageRankIndex = 0;
+   
+   for (int i = 0; i < donorGraph->GetNodes(); i++) {
+     //cout << "Page rank for user: " << nodeToName[i] << " value: " << nodeToHash[i] << endl;
+     if (nodeToHash[i] > maxPageRank) {
+     maxPageRank = nodeToHash[i];
+     maxPageRankIndex = i;
+     }
+   }
+   
+   for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+   cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
+   }
+}
+
+void computeUndirectedBetweenness() {
+  // Calculate betweenness
+  TIntFltH nodeBetweennessCentr;
+  TSnap::GetBetweennessCentr(undirectedDonorGraph, nodeBetweennessCentr);
+  
+  for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+    cout << "Betweenness score for user: " << committeeKeys->first << " value: " << nodeBetweennessCentr[committeeKeys->second] << endl;
   }
 }
 
@@ -278,6 +331,7 @@ int main(int argc, const char * argv[]) {
   vector<candidateDonorNode> nodes;
   
   donorGraph = TNGraph::New();
+  undirectedDonorGraph = TUNGraph::New();
 
   readInDonors(nodes);
   
@@ -289,7 +343,12 @@ int main(int argc, const char * argv[]) {
   ifstream committeeToCommitteeFile;
   
   string currentLine;
-  committeeToCommitteeFile.open("../../cs224w_Project/itoth.txt");
+  
+#ifdef TRAIN_2007
+  committeeToCommitteeFile.open("../../cs224w_Project/2007_2008/itoth.txt");
+#else
+  committeeToCommitteeFile.open("../../cs224w_Project/2015_2016/itoth.txt");
+#endif
   
   vector<committeeToCommitteeTransaction> commToCommTransactions;
   
@@ -341,65 +400,68 @@ int main(int argc, const char * argv[]) {
     getline(committeeToCommitteeFile, memoText, '|');
     getline(committeeToCommitteeFile, FECRecordNum);
     
-    int currNum = committeeToAmount[filerIdentificationNum];
-    currNum += transactionAmount;
-    committeeToAmount[filerIdentificationNum] = currNum;
+    bool shouldAdd = true;
     
-    // Add an edge from that node to that
-    int candidate1Index = 0, candidate2Index = 0;
-    auto search = committeeStringToNodeNumber.find(filerIdentificationNum);
-    if (search == committeeStringToNodeNumber.end()) {
-      // Create a new node for that edge
-      donorGraph->AddNode(nodeNum);
-      candidate2Index = nodeNum;
-      committeeStringToNodeNumber[filerIdentificationNum] = nodeNum;
-      nodeNum++;
-    } else {
-      candidate2Index = search->second;
+#ifdef CAP_DONATIONS
+    shouldAdd = isEarlierDate(date, end2007Campaign);
+#endif
+    
+    if (shouldAdd) {
+      int currNum = committeeToAmount[filerIdentificationNum];
+      currNum += transactionAmount;
+      committeeToAmount[filerIdentificationNum] = currNum;
+      
+      // Add an edge from that node to that
+      int candidate1Index = 0, candidate2Index = 0;
+      auto search = committeeStringToNodeNumber.find(filerIdentificationNum);
+      if (search == committeeStringToNodeNumber.end()) {
+        // Create a new node for that edge
+        donorGraph->AddNode(nodeNum);
+        undirectedDonorGraph->AddNode(nodeNum);
+        candidate2Index = nodeNum;
+        committeeStringToNodeNumber[filerIdentificationNum] = nodeNum;
+        nodeNum++;
+      } else {
+        candidate2Index = search->second;
+      }
+      
+      auto lenderSearch = committeeStringToNodeNumber.find(otherIdentification);
+      if (lenderSearch == committeeStringToNodeNumber.end()) {
+        // Create a new node for that edge
+        donorGraph->AddNode(nodeNum);
+        undirectedDonorGraph->AddNode(nodeNum);
+        candidate1Index = nodeNum;
+        committeeStringToNodeNumber[otherIdentification] = nodeNum;
+        nodeNum++;
+      } else {
+        candidate1Index = lenderSearch->second;
+      }
+      
+      donorGraph->AddEdge(candidate1Index, candidate2Index);
+      undirectedDonorGraph->AddEdge(candidate1Index, candidate2Index);
     }
-    
-    auto lenderSearch = committeeStringToNodeNumber.find(otherIdentification);
-    if (lenderSearch == committeeStringToNodeNumber.end()) {
-      // Create a new node for that edge
-      donorGraph->AddNode(nodeNum);
-      candidate1Index = nodeNum;
-      committeeStringToNodeNumber[otherIdentification] = nodeNum;
-      nodeNum++;
-    } else {
-      candidate1Index = lenderSearch->second;
-    }
-    
-    donorGraph->AddEdge(candidate1Index, candidate2Index);
-    
   }
 
-  cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
+  //cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
   
   // Count the number of in edges to clinton
-  cout << "Number of edges to clinton";
-  TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
+  //cout << "Number of edges to clinton";
+  //TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
   
-  cout << clintonIndex.GetInDeg() << endl;
+  //cout << clintonIndex.GetInDeg() << endl;
+  
+  cout << "Number of edges: " << donorGraph->GetEdges() << endl;
+  cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
   
   // Compute pagerank for all of the nodes in our graph
-  TIntFltH nodeToHash;
-  TSnap::GetPageRank(donorGraph, nodeToHash);
-  
-  float maxPageRank = 0;
-  int maxPageRankIndex = 0;
-  
-  for (int i = 0; i < donorGraph->GetNodes(); i++) {
-    //cout << "Page rank for user: " << nodeToName[i] << " value: " << nodeToHash[i] << endl;
-    if (nodeToHash[i] > maxPageRank) {
-      maxPageRank = nodeToHash[i];
-      maxPageRankIndex = i;
-    }
-  }
+  // computePageRank();
   
   for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
-      cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
+    
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeKeys->second);
+
+    cout << "Closeness for user: " << committeeKeys->first << " value: " << currCloseness << endl;
   }
-  
   
   return 0;
 }
