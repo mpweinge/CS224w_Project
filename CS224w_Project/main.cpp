@@ -22,6 +22,14 @@ using namespace std;
 
 unordered_map<string, int> committeeToAmount;
 
+unordered_map<string, int> committeeStringToNodeNumber;
+
+unordered_map<string, int> donorStringToNodeNumber;
+
+int nodeNum = 0;
+
+PNGraph donorGraph;
+
 struct candidateDonorNode {
   string filerIdentificationNumber;
   string amendmentIndicator;
@@ -164,7 +172,6 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
   ifstream candidateDonorFile;
   
   string currentLine;
-  int nodeNum = 0;
   candidateDonorFile.open("../../cs224w_Project/itcont.txt");
   
   string filerIdentificationNumber;
@@ -190,8 +197,6 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
   string uniqueRowID;
   
   while (getline(candidateDonorFile, filerIdentificationNumber, '|')) {
-    
-    nodeNum++;
     
     getline(candidateDonorFile, amendmentIndicator, '|');
     getline(candidateDonorFile, reportType, '|');
@@ -234,17 +239,47 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
                                                      employer, occupation, transactionDate, transactionAmount, otherIdentificationNumber, transactionCode, fileNum, memoCode, memoText, uniqueRowID);
     
     nodes.push_back(nextNode);
+    
+    // If donor does not exist in our database
+    int donorNodeIndex = 0;
+    int committeeNodeIndex = 0;
+    
+    auto search = donorStringToNodeNumber.find(name);
+    if (search == donorStringToNodeNumber.end() ) {
+      donorGraph->AddNode(nodeNum);
+      donorNodeIndex = nodeNum;
+      nodeNum++;
+    } else {
+      donorNodeIndex = search->second;
+    }
+    
+    // Add an edge from that node to that
+    auto committeeSearch = committeeStringToNodeNumber.find(filerIdentificationNumber);
+    if (committeeSearch == committeeStringToNodeNumber.end()) {
+      // Create a new node for that edge
+      donorGraph->AddNode(nodeNum);
+      committeeStringToNodeNumber[filerIdentificationNumber] = nodeNum;
+      committeeNodeIndex = nodeNum;
+      nodeNum++;
+    } else {
+      committeeNodeIndex = committeeSearch->second;
+    }
+    
+    // Add an edge from our new node to that
+    donorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
+
   }
 }
-
 
 int main(int argc, const char * argv[]) {
   // insert code here...
   std::cout << "Hello, World!\n";
   
   vector<candidateDonorNode> nodes;
+  
+  donorGraph = TNGraph::New();
 
-  //readInDonors(nodes);
+  readInDonors(nodes);
   
   // Filer number is who the money is going to.
   
@@ -254,7 +289,6 @@ int main(int argc, const char * argv[]) {
   ifstream committeeToCommitteeFile;
   
   string currentLine;
-  int nodeNum = 0;
   committeeToCommitteeFile.open("../../cs224w_Project/itoth.txt");
   
   vector<committeeToCommitteeTransaction> commToCommTransactions;
@@ -282,7 +316,7 @@ int main(int argc, const char * argv[]) {
   string FECRecordNum;
 
   while ( getline(committeeToCommitteeFile, filerIdentificationNum, '|')) {
-    //
+    
     nodeNum++;
     getline(committeeToCommitteeFile, AmendmentIndicator, '|');
     getline(committeeToCommitteeFile, reportType, '|');
@@ -311,10 +345,42 @@ int main(int argc, const char * argv[]) {
     int currNum = committeeToAmount[filerIdentificationNum];
     currNum += transactionAmount;
     committeeToAmount[filerIdentificationNum] = currNum;
+    
+    // Add an edge from that node to that
+    int candidate1Index = 0, candidate2Index = 0;
+    auto search = committeeStringToNodeNumber.find(filerIdentificationNum);
+    if (search == committeeStringToNodeNumber.end()) {
+      // Create a new node for that edge
+      donorGraph->AddNode(nodeNum);
+      candidate2Index = nodeNum;
+      committeeStringToNodeNumber[filerIdentificationNum] = nodeNum;
+      nodeNum++;
+    } else {
+      candidate2Index = search->second;
+    }
+    
+    auto lenderSearch = committeeStringToNodeNumber.find(lenderName);
+    if (lenderSearch == committeeStringToNodeNumber.end()) {
+      // Create a new node for that edge
+      donorGraph->AddNode(nodeNum);
+      candidate1Index = nodeNum;
+      committeeStringToNodeNumber[lenderName] = nodeNum;
+      nodeNum++;
+    } else {
+      candidate1Index = lenderSearch->second;
+    }
+    
+    donorGraph->AddEdge(candidate1Index, candidate2Index);
+    
   }
 
   cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
   
+  // Count the number of in edges to clinton
+  cout << "Number of edges to clinton";
+  TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
+  
+  cout << clintonIndex.GetInDeg() << endl;
   
   
   return 0;
