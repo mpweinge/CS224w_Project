@@ -317,7 +317,6 @@ int main(int argc, const char * argv[]) {
 
   while ( getline(committeeToCommitteeFile, filerIdentificationNum, '|')) {
     
-    nodeNum++;
     getline(committeeToCommitteeFile, AmendmentIndicator, '|');
     getline(committeeToCommitteeFile, reportType, '|');
     getline(committeeToCommitteeFile, primaryGeneralIndicator, '|');
@@ -359,12 +358,12 @@ int main(int argc, const char * argv[]) {
       candidate2Index = search->second;
     }
     
-    auto lenderSearch = committeeStringToNodeNumber.find(lenderName);
+    auto lenderSearch = committeeStringToNodeNumber.find(otherIdentification);
     if (lenderSearch == committeeStringToNodeNumber.end()) {
       // Create a new node for that edge
       donorGraph->AddNode(nodeNum);
       candidate1Index = nodeNum;
-      committeeStringToNodeNumber[lenderName] = nodeNum;
+      committeeStringToNodeNumber[otherIdentification] = nodeNum;
       nodeNum++;
     } else {
       candidate1Index = lenderSearch->second;
@@ -381,6 +380,25 @@ int main(int argc, const char * argv[]) {
   TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
   
   cout << clintonIndex.GetInDeg() << endl;
+  
+  // Compute pagerank for all of the nodes in our graph
+  TIntFltH nodeToHash;
+  TSnap::GetPageRank(donorGraph, nodeToHash);
+  
+  float maxPageRank = 0;
+  int maxPageRankIndex = 0;
+  
+  for (int i = 0; i < donorGraph->GetNodes(); i++) {
+    //cout << "Page rank for user: " << nodeToName[i] << " value: " << nodeToHash[i] << endl;
+    if (nodeToHash[i] > maxPageRank) {
+      maxPageRank = nodeToHash[i];
+      maxPageRankIndex = i;
+    }
+  }
+  
+  for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+      cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
+  }
   
   
   return 0;
