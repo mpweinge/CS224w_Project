@@ -27,6 +27,19 @@ const string end2007Campaign = "01012008";
 //If the last four digits are >= 2008, then don't include
 const string end2007Year = "2008";
 
+const string obamaTag = "C00431445";
+const string clintonTag = "C00431569";
+const string edwardsTag = "C00431205";
+const string bidenTag = "C00431916";
+const string doddTag = "C00431379";
+const string gravelTag = "C00423202";
+const string kucinichTag = "C00430975";
+const string richardsonTag = "C00431577";
+
+const string democraticCandidates2008[] = {obamaTag, clintonTag, edwardsTag, bidenTag, doddTag, gravelTag, kucinichTag, richardsonTag};
+
+const int numDemocraticCandidates2008 = 8;
+
 struct committeeToCommitteeTransaction {
   string filerIdentificationNum;
   string AmendmentIndicator;
