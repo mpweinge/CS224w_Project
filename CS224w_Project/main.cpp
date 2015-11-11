@@ -35,7 +35,26 @@ PUNGraph undirectedDonorGraph;
 bool isEarlierDate(string date1, string date2) {
   // Format of strings is MMDDYYYY
   // All we need to do is compare the last character
-  return ( date1[date1.size() - 1] < date2[date2.size() - 1] );
+  if ( date1[date1.size() - 1] < date2[date2.size() - 1] ){
+    return true;
+  } else if (date1[date1.size() - 1] == date2[date2.size() - 1]) {
+    
+    // Compare the months aka the first two years
+    string month1 = {date1[0], date1[1]};
+    string month2 = {date2[0], date2[1]};
+    
+    int iMonth1 = stoi(month1);
+    int iMonth2 = stoi(month2);
+    
+    if (iMonth1 < iMonth2) {
+      return true;
+    } else {
+      return false;
+    }
+    
+  } else {
+    return false;
+  }
 }
 
 struct candidateDonorNode {
@@ -454,14 +473,14 @@ int main(int argc, const char * argv[]) {
   cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
   
   // Compute pagerank for all of the nodes in our graph
-  // computePageRank();
+   computePageRank();
   
-  for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+  /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
     
     float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeKeys->second);
 
     cout << "Closeness for user: " << committeeKeys->first << " value: " << currCloseness << endl;
-  }
+  }*/
   
   return 0;
 }
