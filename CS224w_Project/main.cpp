@@ -12,6 +12,7 @@
 #include <sstream>
 #include <vector>
 #include <unordered_map>
+#include<set>
 #include "Snap.h"
 
 
@@ -159,15 +160,15 @@ struct committeeToCommitteeTransaction {
 };
 
 void readInDonors( vector<candidateDonorNode>& nodes ) {
+    unordered_map<string, set<string>> donorToCommittee; // donor Id -> list of committee IDs he donated to
   
   // Read in the files from our individual to candidate donations
   ifstream candidateDonorFile;
-  
   string currentLine;
   int nodeNum = 0;
-  candidateDonorFile.open("../../cs224w_Project/itcont.txt");
+  candidateDonorFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/itcont.txt");
   
-  string filerIdentificationNumber;
+  string filerIdentificationNumber; // committee ID
   string amendmentIndicator;
   string reportType;
   string electionType;
@@ -190,7 +191,6 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
   string uniqueRowID;
   
   while (getline(candidateDonorFile, filerIdentificationNumber, '|')) {
-    
     nodeNum++;
     
     getline(candidateDonorFile, amendmentIndicator, '|');
@@ -232,9 +232,41 @@ void readInDonors( vector<candidateDonorNode>& nodes ) {
     candidateDonorNode nextNode = candidateDonorNode(filerIdentificationNumber,amendmentIndicator,reportType,electionType,\
                                                      imageNumber,transactionType,entityType,name,city,state, zipCode,\
                                                      employer, occupation, transactionDate, transactionAmount, otherIdentificationNumber, transactionCode, fileNum, memoCode, memoText, uniqueRowID);
-    
-    nodes.push_back(nextNode);
+      string lastName, firstName;
+      nodes.push_back(nextNode);
+      if (name.length() == 0) continue;
+      if(name.find(",") == string::npos) {
+          lastName = "";
+          firstName = name;
+      } else {
+        lastName = name.substr(0, name.find(","));
+        firstName = name.substr(lastName.length() + 2, name.find(" "));
+        firstName = firstName.substr(0, firstName.find(" "));
+      }
+      string donorID = firstName + " " + lastName + " " + city + " " + state;
+      if (donorToCommittee.find(donorID) == donorToCommittee.end()) {
+          set<string> committeesForDonor;
+          committeesForDonor.insert(filerIdentificationNumber);
+          donorToCommittee[donorID] = committeesForDonor;
+      } else {
+          set<string> curSet = donorToCommittee[donorID];
+          curSet.insert(filerIdentificationNumber);
+          donorToCommittee[donorID] = curSet;
+      }
   }
+    ofstream outfile ("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/donation_frequency.txt");
+
+    int sum = 0;
+    for(auto iterator = donorToCommittee.begin(); iterator != donorToCommittee.end(); iterator++) {
+        string donor = iterator->first;
+        set<string> committees = iterator->second;
+        sum += committees.size();
+
+        outfile << committees.size() << endl;
+    }
+    outfile.close();
+    float avg = sum / float(donorToCommittee.size());
+    cout << "avg. committees donated to: " << avg << endl;
 }
 
 
@@ -244,7 +276,7 @@ int main(int argc, const char * argv[]) {
   
   vector<candidateDonorNode> nodes;
 
-  //readInDonors(nodes);
+  readInDonors(nodes);
   
   // Filer number is who the money is going to.
   
@@ -255,7 +287,7 @@ int main(int argc, const char * argv[]) {
   
   string currentLine;
   int nodeNum = 0;
-  committeeToCommitteeFile.open("../../cs224w_Project/itoth.txt");
+  committeeToCommitteeFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/itoth.txt");
   
   vector<committeeToCommitteeTransaction> commToCommTransactions;
   
@@ -280,9 +312,7 @@ int main(int argc, const char * argv[]) {
   string memoCode;
   string memoText;
   string FECRecordNum;
-
   while ( getline(committeeToCommitteeFile, filerIdentificationNum, '|')) {
-    //
     nodeNum++;
     getline(committeeToCommitteeFile, AmendmentIndicator, '|');
     getline(committeeToCommitteeFile, reportType, '|');
@@ -314,8 +344,10 @@ int main(int argc, const char * argv[]) {
   }
 
   cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
-  
+  cout << "size:" << committeeToAmount.size() << endl;
   
   
   return 0;
 }
+
+
