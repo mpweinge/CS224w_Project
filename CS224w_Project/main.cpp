@@ -47,6 +47,12 @@ void computePageRank() {
     for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
         cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
     }
+    for (auto candidate = democraticCandidates2008Names.begin(); candidate != democraticCandidates2008Names.end(); candidate++) {
+        TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
+        float pagerank = nodeToHash[node.GetId()];
+        cout << candidate->second << " pagerank: " << pagerank << endl;
+    }
+
 }
 
 void computeUndirectedBetweenness() {
@@ -152,26 +158,27 @@ int main(int argc, const char * argv[]) {
     undirectedDonorGraph = TUNGraph::New();
     
     readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
+    readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
+
     cout << "Number of edges: " << donorGraph->GetEdges() << endl;
     cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
+    cout << "donorStringToNodeNumber " << donorStringToNodeNumber.size() << endl;
+    cout << "committeeStringToNodeNumber " << committeeStringToNodeNumber.size() << endl;
 
-    readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
-    
-    //performAverageDistHeirarchicalClustering();
-    
     //cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
     
     // Count the number of in edges to clinton
-    //cout << "Number of edges to clinton";
-    //TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
+    TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00431569"]);
+
+    cout << "Number of edges to clinton" << clintonIndex.GetInDeg() << endl;
+
+    cout << "cstnn  " << committeeStringToNodeNumber["C00431569"] << endl;
     
-    //cout << clintonIndex.GetInDeg() << endl;
+    performAverageDistHeirarchicalClustering();
     
-    //cout << "Number of edges: " << donorGraph->GetEdges() << endl;
-    //cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
     
     // Compute pagerank for all of the nodes in our graph
-    //computePageRank();
+    computePageRank();
     
     /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
      

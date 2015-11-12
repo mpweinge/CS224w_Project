@@ -11,7 +11,7 @@
 
 #include <string> 
 #include <unordered_map>
-
+#include <map>
 #include "Snap.h"
 
 #define TRAIN_2007
@@ -37,6 +37,10 @@ const string kucinichTag = "C00430975";
 const string richardsonTag = "C00431577";
 
 const string democraticCandidates2008[] = {obamaTag, clintonTag, edwardsTag, bidenTag, doddTag, gravelTag, kucinichTag, richardsonTag};
+const map<string, string> democraticCandidates2008Names =
+    {{obamaTag, "Barack Obama"}, {clintonTag, "Hilary Clinton"}, {edwardsTag, "John Edwards"},
+    {bidenTag, "Joe Biden"}, {doddTag, "Chris Dodd"}, {gravelTag, "Mike Gravel"},
+    {kucinichTag, "Dennis Kucinich"}, {richardsonTag, "Bill Richardson"}};
 
 const int numDemocraticCandidates2008 = 8;
 
