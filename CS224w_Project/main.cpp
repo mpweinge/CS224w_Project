@@ -47,10 +47,9 @@ void computePageRank() {
     for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
         cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
     }
-    for (auto candidate = democraticCandidates2008Names.begin(); candidate != democraticCandidates2008Names.end(); candidate++) {
+    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
         TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
-        float pagerank = nodeToHash[node.GetId()];
-        cout << candidate->second << " pagerank: " << pagerank << endl;
+        //cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
     }
 
 }
@@ -180,11 +179,15 @@ int main(int argc, const char * argv[]) {
     // Compute pagerank for all of the nodes in our graph
     computePageRank();
     
-    /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
-     
+    /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys) {
      float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeKeys->second);
      cout << "Closeness for user: " << committeeKeys->first << " value: " << currCloseness << endl;
-     }*/
+    }*/
+    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+        float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
+        cout << candidate->second << " closeness: " << currCloseness << endl;
+    }
+
     
     return 0;
 }
