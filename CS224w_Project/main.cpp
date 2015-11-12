@@ -12,342 +12,172 @@
 #include <sstream>
 #include <vector>
 #include <unordered_map>
-#include<set>
-#include "Snap.h"
 
+#include "constants.h"
+#include "fileReader.hpp"
 
 using namespace std;
 
+// GLOBALS
+PNGraph donorGraph;
+PUNGraph undirectedDonorGraph;
+
+unordered_map<string, int> committeeStringToNodeNumber;
+
+unordered_map<string, int> donorStringToNodeNumber;
+
+
 // Data structure taken from here: http://www.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
 
-
-unordered_map<string, int> committeeToAmount;
-
-struct candidateDonorNode {
-  string filerIdentificationNumber;
-  string amendmentIndicator;
-  string reportType;
-  string electionType;
-  string imageNumber;
-  string transactionType;
-  string entityType;
-  string name;
-  string city;
-  string state;
-  string zipCode;
-  string employer;
-  string occupation;
-  string transactionDate;
-  int transactionAmount;
-  string otherIdentificationNumber;
-  string transactionCode;
-  int fileNum;
-  string memoCode;
-  string memoText;
-  string uniqueRowID;
-  
-  candidateDonorNode(string _filerIdentificationNumber,
-                     string _amendmentIndicator,
-                     string _reportType,
-                     string _electionType,
-                     string _imageNumber,
-                     string _transactionType,
-                     string _entityType,
-                     string _name,
-                     string _city,
-                     string _state,
-                     string _zipCode,
-                     string _employer,
-                     string _occupation,
-                     string _transactionDate,
-                     int _transactionAmount,
-                     string _otherIdentificationNumber,
-                     string _transactionCode,
-                     int _fileNum,
-                     string _memoCode,
-                     string _memoText,
-                     string _uniqueRowID):
-  filerIdentificationNumber(_filerIdentificationNumber),
-  amendmentIndicator(_amendmentIndicator),
-  reportType(_reportType),
-   electionType(_electionType),
-   imageNumber(_imageNumber),
-   transactionType(_transactionType),
-   entityType(_entityType),
-   name(_name),
-   city(_city),
-   state(_state),
-   zipCode(_zipCode),
-   employer(_employer),
-   occupation(_occupation),
-   transactionDate(_transactionDate),
-   transactionAmount(_transactionAmount),
-   otherIdentificationNumber(_otherIdentificationNumber),
-   transactionCode(_transactionCode),
-   fileNum(_fileNum),
-   memoCode(_memoCode),
-   memoText(_memoText),
-  uniqueRowID(_uniqueRowID) {}
-  
-};
-
-struct committeeToCommitteeTransaction {
-  string filerIdentificationNum;
-  string AmendmentIndicator;
-  string reportType;
-  string primaryGeneralIndicator;
-  string imageNumber;
-  string transactionType;
-  string entityType;
-  string lenderName;
-  string city;
-  string state;
-  string zipcode;
-  string employer;
-  string occupation;
-  string date;
-  int transactionAmount;
-  string otherIdentification;
-  string transactionID;
-  string reportID;
-  string memoCode;
-  string memoText;
-  string FECRecordNum;
-  
-  committeeToCommitteeTransaction(string _filerIdentificationNum,
-                                  string _AmendmentIndicator,
-                                  string _reportType,
-                                  string _primaryGeneralIndicator,
-                                  string _imageNumber,
-                                  string _transactionType,
-                                  string _entityType,
-                                  string _lenderName,
-                                  string _city,
-                                  string _state,
-                                  string _zipcode,
-                                  string _employer,
-                                  string _occupation,
-                                  string _date,
-                                  int _transactionAmount,
-                                  string _otherIdentification,
-                                  string _transactionID,
-                                  string _reportID,
-                                  string _memoCode,
-                                  string _memoText,
-                                  string _FECRecordNum) :
-  filerIdentificationNum(_filerIdentificationNum),
-  AmendmentIndicator(_AmendmentIndicator),
-  reportType( _reportType),
-  primaryGeneralIndicator( _primaryGeneralIndicator),
-  imageNumber( _imageNumber),
-  transactionType( _transactionType),
-  entityType( _entityType),
-  lenderName( _lenderName),
-  city( _city),
-  state( _state),
-  zipcode( _zipcode),
-  employer( _employer),
-  occupation( _occupation),
-  date( _date),
-  transactionAmount( _transactionAmount),
-  otherIdentification( _otherIdentification),
-  transactionID( _transactionID),
-  reportID( _reportID),
-  memoCode( _memoCode),
-  memoText( _memoText),
-  FECRecordNum( _FECRecordNum) { }
-  
-};
-
-void readInDonors( vector<candidateDonorNode>& nodes ) {
-    unordered_map<string, set<string>> donorToCommittee; // donor Id -> list of committee IDs he donated to
-  
-  // Read in the files from our individual to candidate donations
-  ifstream candidateDonorFile;
-  string currentLine;
-  int nodeNum = 0;
-  candidateDonorFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/itcont.txt");
-  
-  string filerIdentificationNumber; // committee ID
-  string amendmentIndicator;
-  string reportType;
-  string electionType;
-  string imageNumber;
-  string transactionType;
-  string entityType;
-  string name;
-  string city;
-  string state;
-  string zipCode;
-  string employer;
-  string occupation;
-  string transactionDate;
-  int transactionAmount;
-  string otherIdentificationNumber;
-  string transactionCode;
-  int fileNum;
-  string memoCode;
-  string memoText;
-  string uniqueRowID;
-  
-  while (getline(candidateDonorFile, filerIdentificationNumber, '|')) {
-    nodeNum++;
+void computePageRank() {
+    TIntFltH nodeToHash;
+    TSnap::GetPageRank(donorGraph, nodeToHash);
     
-    getline(candidateDonorFile, amendmentIndicator, '|');
-    getline(candidateDonorFile, reportType, '|');
-    getline(candidateDonorFile, electionType, '|');
-    getline(candidateDonorFile, imageNumber, '|');
-    getline(candidateDonorFile, transactionType, '|');
+    float maxPageRank = 0;
+    int maxPageRankIndex = 0;
     
-    getline(candidateDonorFile, entityType, '|');
-    getline(candidateDonorFile, name, '|');
-    getline(candidateDonorFile, city, '|');
-    getline(candidateDonorFile, state, '|');
-    
-    getline(candidateDonorFile, zipCode, '|');
-    
-    getline(candidateDonorFile, employer, '|');
-    getline(candidateDonorFile, occupation, '|');
-    getline(candidateDonorFile, transactionDate, '|');
-    
-    getline(candidateDonorFile, currentLine, '|');
-    transactionAmount = stoi(currentLine);
-    
-    getline(candidateDonorFile, otherIdentificationNumber, '|');
-    
-    getline(candidateDonorFile, transactionCode, '|');
-    
-    getline(candidateDonorFile, currentLine, '|');
-    if (currentLine == "") {
-      fileNum = 0;
-    } else {
-      fileNum = stoi(currentLine);
+    for (int i = 0; i < donorGraph->GetNodes(); i++) {
+        //cout << "Page rank for user: " << nodeToName[i] << " value: " << nodeToHash[i] << endl;
+        if (nodeToHash[i] > maxPageRank) {
+            maxPageRank = nodeToHash[i];
+            maxPageRankIndex = i;
+        }
     }
     
-    getline(candidateDonorFile, memoCode, '|');
-    getline(candidateDonorFile, memoText, '|');
-    
-    getline(candidateDonorFile, uniqueRowID);
-    
-    candidateDonorNode nextNode = candidateDonorNode(filerIdentificationNumber,amendmentIndicator,reportType,electionType,\
-                                                     imageNumber,transactionType,entityType,name,city,state, zipCode,\
-                                                     employer, occupation, transactionDate, transactionAmount, otherIdentificationNumber, transactionCode, fileNum, memoCode, memoText, uniqueRowID);
-      string lastName, firstName;
-      nodes.push_back(nextNode);
-      if (name.length() == 0) continue;
-      if(name.find(",") == string::npos) {
-          lastName = "";
-          firstName = name;
-      } else {
-        lastName = name.substr(0, name.find(","));
-        firstName = name.substr(lastName.length() + 2, name.find(" "));
-        firstName = firstName.substr(0, firstName.find(" "));
-      }
-      string donorID = firstName + " " + lastName + " " + city + " " + state;
-      if (donorToCommittee.find(donorID) == donorToCommittee.end()) {
-          set<string> committeesForDonor;
-          committeesForDonor.insert(filerIdentificationNumber);
-          donorToCommittee[donorID] = committeesForDonor;
-      } else {
-          set<string> curSet = donorToCommittee[donorID];
-          curSet.insert(filerIdentificationNumber);
-          donorToCommittee[donorID] = curSet;
-      }
-  }
-    ofstream outfile ("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/donation_frequency.txt");
-
-    int sum = 0;
-    for(auto iterator = donorToCommittee.begin(); iterator != donorToCommittee.end(); iterator++) {
-        string donor = iterator->first;
-        set<string> committees = iterator->second;
-        sum += committees.size();
-
-        outfile << committees.size() << endl;
+    for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+        cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
     }
-    outfile.close();
-    float avg = sum / float(donorToCommittee.size());
-    cout << "avg. committees donated to: " << avg << endl;
+}
+
+void computeUndirectedBetweenness() {
+    // Calculate betweenness
+    TIntFltH nodeBetweennessCentr;
+    TSnap::GetBetweennessCentr(undirectedDonorGraph, nodeBetweennessCentr);
+    
+    for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+        cout << "Betweenness score for user: " << committeeKeys->first << " value: " << nodeBetweennessCentr[committeeKeys->second] << endl;
+    }
+}
+
+void performHeirarchicalClustering() {
+    // Perform heirarchical clustering based on distance in undirected graph
+    cout << "Distances for heirarchical clustering. Candidates are in the order: 1. Obama 2. Clinton"
+    << "3. Edwards 4. Biden 5. Dodd 6. Gravel 7. Kucinich 8. Richardson"
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[clintonTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[edwardsTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[bidenTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[doddTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[gravelTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[obamaTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[edwardsTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[bidenTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[doddTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[gravelTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[clintonTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[edwardsTag], committeeStringToNodeNumber[bidenTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[edwardsTag], committeeStringToNodeNumber[doddTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[edwardsTag], committeeStringToNodeNumber[gravelTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[edwardsTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[edwardsTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[bidenTag], committeeStringToNodeNumber[doddTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[bidenTag], committeeStringToNodeNumber[gravelTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[bidenTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[bidenTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[doddTag], committeeStringToNodeNumber[gravelTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[doddTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[doddTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[gravelTag], committeeStringToNodeNumber[kucinichTag]) << ","
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[gravelTag], committeeStringToNodeNumber[richardsonTag]) << ","
+    
+    << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[kucinichTag], committeeStringToNodeNumber[richardsonTag]) << "," << endl;
+}
+
+int numberOfPathsOfLengthTwo(int node1, int node2) {
+    // Look for times that node2 is a neighbour of a neighbour
+    
+    int neighbourCount = 0;
+    
+    TUNGraph::TNodeI itNode1 = undirectedDonorGraph->GetNI(node1);
+    int numEdges = itNode1.GetOutDeg();
+    
+    for (int i = 0; i < numEdges; i++) {
+        int nbrID = itNode1.GetNbrNId(i);
+        
+        TUNGraph::TNodeI nbr = undirectedDonorGraph->GetNI(nbrID);
+        int numNbrEdges = nbr.GetOutDeg();
+        for (int j = 0; j < numNbrEdges; j++) {
+            int nbrnbrID = nbr.GetNbrNId(j);
+            
+            if (nbrnbrID == node2) {
+                neighbourCount++;
+            }
+        }
+    }
+    
+    return neighbourCount;
+}
+
+void performAverageDistHeirarchicalClustering() {
+    
+    // Running the clustering to get 'minimum' distance gives the same value for all candidates. This is because there is often one pac in common between all candidates
+    // The code above gives the output 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+    
+    // Attempt 2: Count the *instances* of pacs in common (ie. the number of different paths we get to with a distance of two
+    
+    // As we know that we are looking for distance '2', we can avoid doing a full BFS tree and just looking for different paths of distance '2'
+    
+    for (int i = 0; i < numDemocraticCandidates2008; i++)
+    {
+        for (int j = i+1; j < numDemocraticCandidates2008; j++) {
+            cout << numberOfPathsOfLengthTwo( committeeStringToNodeNumber[democraticCandidates2008[i]], committeeStringToNodeNumber[democraticCandidates2008[j]]) << ",";
+        }
+    }
 }
 
 
 int main(int argc, const char * argv[]) {
-  // insert code here...
-  std::cout << "Hello, World!\n";
-  
-  vector<candidateDonorNode> nodes;
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    
+    vector<candidateDonorNode> nodes;
+    
+    donorGraph = TNGraph::New();
+    undirectedDonorGraph = TUNGraph::New();
+    
+    readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
+    cout << "Number of edges: " << donorGraph->GetEdges() << endl;
+    cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
 
-  readInDonors(nodes);
-  
-  // Filer number is who the money is going to.
-  
-  // Take that and see who they donate it to?
-  // OTH has information for this
-  
-  ifstream committeeToCommitteeFile;
-  
-  string currentLine;
-  int nodeNum = 0;
-  committeeToCommitteeFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/itoth.txt");
-  
-  vector<committeeToCommitteeTransaction> commToCommTransactions;
-  
-  string filerIdentificationNum;
-  string AmendmentIndicator;
-  string reportType;
-  string primaryGeneralIndicator;
-  string imageNumber;
-  string transactionType;
-  string entityType;
-  string lenderName;
-  string city;
-  string state;
-  string zipcode;
-  string employer;
-  string occupation;
-  string date;
-  int transactionAmount;
-  string otherIdentification;
-  string transactionID;
-  string reportID;
-  string memoCode;
-  string memoText;
-  string FECRecordNum;
-  while ( getline(committeeToCommitteeFile, filerIdentificationNum, '|')) {
-    nodeNum++;
-    getline(committeeToCommitteeFile, AmendmentIndicator, '|');
-    getline(committeeToCommitteeFile, reportType, '|');
-    getline(committeeToCommitteeFile, primaryGeneralIndicator, '|');
-    getline(committeeToCommitteeFile, imageNumber, '|');
-    getline(committeeToCommitteeFile, transactionType, '|');
-    getline(committeeToCommitteeFile, entityType, '|');
-    getline(committeeToCommitteeFile, lenderName, '|');
-    getline(committeeToCommitteeFile, city, '|');
-    getline(committeeToCommitteeFile, state, '|');
-    getline(committeeToCommitteeFile, zipcode, '|');
-    getline(committeeToCommitteeFile, employer, '|');
-    getline(committeeToCommitteeFile, occupation, '|');
-    getline(committeeToCommitteeFile, date, '|');
+    readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
     
-    getline(committeeToCommitteeFile, currentLine, '|');
-    transactionAmount = stoi(currentLine);
+    //performAverageDistHeirarchicalClustering();
     
-    getline(committeeToCommitteeFile, otherIdentification, '|');
-    getline(committeeToCommitteeFile, transactionID, '|');
-    getline(committeeToCommitteeFile, reportID, '|');
-    getline(committeeToCommitteeFile, memoCode, '|');
-    getline(committeeToCommitteeFile, memoText, '|');
-    getline(committeeToCommitteeFile, FECRecordNum);
+    //cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
     
-    int currNum = committeeToAmount[filerIdentificationNum];
-    currNum += transactionAmount;
-    committeeToAmount[filerIdentificationNum] = currNum;
-  }
-
-  cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
-  cout << "size:" << committeeToAmount.size() << endl;
-  
-  
-  return 0;
+    // Count the number of in edges to clinton
+    //cout << "Number of edges to clinton";
+    //TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00575795"]);
+    
+    //cout << clintonIndex.GetInDeg() << endl;
+    
+    //cout << "Number of edges: " << donorGraph->GetEdges() << endl;
+    //cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
+    
+    // Compute pagerank for all of the nodes in our graph
+    //computePageRank();
+    
+    /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+     
+     float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeKeys->second);
+     cout << "Closeness for user: " << committeeKeys->first << " value: " << currCloseness << endl;
+     }*/
+    
+    return 0;
 }
-
-
