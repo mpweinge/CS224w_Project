@@ -52,9 +52,9 @@ void readInDonors( vector<candidateDonorNode>& nodes,
   string currentLine;
   
 #ifdef TRAIN_2007
-  candidateDonorFile.open("../../cs224w_Project/2007_2008/itcont.txt");
+    candidateDonorFile.open("../../cs224w_Project/2007_2008/itcont.txt");
 #else
-  candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
+    candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
 #endif
   
   string filerIdentificationNumber;
@@ -80,7 +80,6 @@ void readInDonors( vector<candidateDonorNode>& nodes,
   string uniqueRowID;
   
   while (getline(candidateDonorFile, filerIdentificationNumber, '|')) {
-    
     getline(candidateDonorFile, amendmentIndicator, '|');
     getline(candidateDonorFile, reportType, '|');
     getline(candidateDonorFile, electionType, '|');
@@ -139,6 +138,7 @@ void readInDonors( vector<candidateDonorNode>& nodes,
         donorGraph->AddNode(nodeNum);
         undirectedDonorGraph->AddNode(nodeNum);
         donorNodeIndex = nodeNum;
+        donorStringToNodeNumber[name] = nodeNum;
         nodeNum++;
       } else {
         donorNodeIndex = search->second;
