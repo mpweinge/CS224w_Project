@@ -22,10 +22,6 @@ using namespace std;
 PNGraph donorGraph;
 PUNGraph undirectedDonorGraph;
 
-unordered_map<string, int> committeeStringToNodeNumber;
-
-unordered_map<string, int> donorStringToNodeNumber;
-
 
 // Data structure taken from here: http://www.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
 
@@ -51,7 +47,6 @@ void computePageRank() {
         TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
         //cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
     }
-
 }
 
 void computeUndirectedBetweenness() {
