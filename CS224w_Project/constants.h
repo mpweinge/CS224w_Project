@@ -44,12 +44,12 @@ const map<string, string> dem2008Names =
 
 const int numDemocraticCandidates2008 = 8;
 
-unordered_map<string, int> committeeStringToNodeNumber;
+extern unordered_map<string, int> committeeStringToNodeNumber;
 
 struct donorNameKey;
 
 //TODO: FIX THIS TO USE A CUSTOM STRUCT KEY PROPERLY
-unordered_map<string, int> donorStringToNodeNumber;
+extern unordered_map<string, int> donorStringToNodeNumber;
 
 struct donorNameKey {
   string lastName;

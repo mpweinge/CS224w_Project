@@ -12,6 +12,7 @@
 float getAverageNumberOfDonationsPerIndividual()
 {
   // TODO: Fix this once I fix the map with the key
+  return 0.0;
 }
 
 

@@ -22,6 +22,10 @@ using namespace std;
 PNGraph donorGraph;
 PUNGraph undirectedDonorGraph;
 
+unordered_map<string, int> committeeStringToNodeNumber;
+
+unordered_map<string, int> donorStringToNodeNumber;
+
 
 // Data structure taken from here: http://www.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
 
