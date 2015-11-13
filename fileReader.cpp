@@ -52,7 +52,7 @@ void readInDonors( vector<candidateDonorNode>& nodes,
   string currentLine;
   
 #ifdef TRAIN_2007
-    candidateDonorFile.open("../../cs224w_Project/2007_2008/itcont.txt");
+    candidateDonorFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/2007_2008/itcont.txt");
 #else
     candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
 #endif
@@ -172,7 +172,7 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
   string currentLine;
   
 #ifdef TRAIN_2007
-  committeeToCommitteeFile.open("../../cs224w_Project/2007_2008/itoth.txt");
+  committeeToCommitteeFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/2007_2008/itoth.txt");
 #else
   committeeToCommitteeFile.open("../../cs224w_Project/2015_2016/itoth.txt");
 #endif

@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		469C53011BF6667500D4646B /* signnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52E51BF6667500D4646B /* signnet.cpp */; };
+		469C53021BF6667500D4646B /* sir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52E71BF6667500D4646B /* sir.cpp */; };
+		469C53031BF6667500D4646B /* spinn3r.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52E91BF6667500D4646B /* spinn3r.cpp */; };
+		469C53041BF6667500D4646B /* trawling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52EB1BF6667500D4646B /* trawling.cpp */; };
+		469C53051BF6667500D4646B /* wgtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52ED1BF6667500D4646B /* wgtnet.cpp */; };
+		469C53061BF6667500D4646B /* wikinet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52EF1BF6667500D4646B /* wikinet.cpp */; };
+		469C53071BF6667500D4646B /* arxiv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52F11BF6667500D4646B /* arxiv.cpp */; };
+		469C53081BF6667500D4646B /* dblp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52F31BF6667500D4646B /* dblp.cpp */; };
+		469C53091BF6667500D4646B /* imdbnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52F51BF6667500D4646B /* imdbnet.cpp */; };
+		469C530A1BF6667500D4646B /* linkpred.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52F71BF6667500D4646B /* linkpred.cpp */; };
+		469C530B1BF6667500D4646B /* lsh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52F91BF6667500D4646B /* lsh.cpp */; };
+		469C530C1BF6667500D4646B /* memenet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52FB1BF6667500D4646B /* memenet.cpp */; };
+		469C530D1BF6667500D4646B /* memes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52FD1BF6667500D4646B /* memes.cpp */; };
+		469C530E1BF6667500D4646B /* mxdag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469C52FF1BF6667500D4646B /* mxdag.cpp */; };
 		A68BF6861BF33E420047A0D7 /* fileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A68BF6841BF33E420047A0D7 /* fileReader.cpp */; };
 		A68BF6891BF571900047A0D7 /* DatabaseStatistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A68BF6871BF571900047A0D7 /* DatabaseStatistics.cpp */; };
 		A6C2A8561BEEC2E00053AFEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A6C2A8551BEEC2E00053AFEA /* main.cpp */; };
@@ -26,6 +40,34 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		469C52E51BF6667500D4646B /* signnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = signnet.cpp; path = CS224w_Project/SNAP/signnet.cpp; sourceTree = SOURCE_ROOT; };
+		469C52E61BF6667500D4646B /* signnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = signnet.h; path = CS224w_Project/SNAP/signnet.h; sourceTree = SOURCE_ROOT; };
+		469C52E71BF6667500D4646B /* sir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sir.cpp; path = CS224w_Project/SNAP/sir.cpp; sourceTree = SOURCE_ROOT; };
+		469C52E81BF6667500D4646B /* sir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sir.h; path = CS224w_Project/SNAP/sir.h; sourceTree = SOURCE_ROOT; };
+		469C52E91BF6667500D4646B /* spinn3r.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spinn3r.cpp; path = CS224w_Project/SNAP/spinn3r.cpp; sourceTree = SOURCE_ROOT; };
+		469C52EA1BF6667500D4646B /* spinn3r.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spinn3r.h; path = CS224w_Project/SNAP/spinn3r.h; sourceTree = SOURCE_ROOT; };
+		469C52EB1BF6667500D4646B /* trawling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trawling.cpp; path = CS224w_Project/SNAP/trawling.cpp; sourceTree = SOURCE_ROOT; };
+		469C52EC1BF6667500D4646B /* trawling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trawling.h; path = CS224w_Project/SNAP/trawling.h; sourceTree = SOURCE_ROOT; };
+		469C52ED1BF6667500D4646B /* wgtnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wgtnet.cpp; path = CS224w_Project/SNAP/wgtnet.cpp; sourceTree = SOURCE_ROOT; };
+		469C52EE1BF6667500D4646B /* wgtnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wgtnet.h; path = CS224w_Project/SNAP/wgtnet.h; sourceTree = SOURCE_ROOT; };
+		469C52EF1BF6667500D4646B /* wikinet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wikinet.cpp; path = CS224w_Project/SNAP/wikinet.cpp; sourceTree = SOURCE_ROOT; };
+		469C52F01BF6667500D4646B /* wikinet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wikinet.h; path = CS224w_Project/SNAP/wikinet.h; sourceTree = SOURCE_ROOT; };
+		469C52F11BF6667500D4646B /* arxiv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = arxiv.cpp; path = CS224w_Project/SNAP/arxiv.cpp; sourceTree = SOURCE_ROOT; };
+		469C52F21BF6667500D4646B /* arxiv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = arxiv.h; path = CS224w_Project/SNAP/arxiv.h; sourceTree = SOURCE_ROOT; };
+		469C52F31BF6667500D4646B /* dblp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dblp.cpp; path = CS224w_Project/SNAP/dblp.cpp; sourceTree = SOURCE_ROOT; };
+		469C52F41BF6667500D4646B /* dblp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dblp.h; path = CS224w_Project/SNAP/dblp.h; sourceTree = SOURCE_ROOT; };
+		469C52F51BF6667500D4646B /* imdbnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imdbnet.cpp; path = CS224w_Project/SNAP/imdbnet.cpp; sourceTree = SOURCE_ROOT; };
+		469C52F61BF6667500D4646B /* imdbnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imdbnet.h; path = CS224w_Project/SNAP/imdbnet.h; sourceTree = SOURCE_ROOT; };
+		469C52F71BF6667500D4646B /* linkpred.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = linkpred.cpp; path = CS224w_Project/SNAP/linkpred.cpp; sourceTree = SOURCE_ROOT; };
+		469C52F81BF6667500D4646B /* linkpred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = linkpred.h; path = CS224w_Project/SNAP/linkpred.h; sourceTree = SOURCE_ROOT; };
+		469C52F91BF6667500D4646B /* lsh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lsh.cpp; path = CS224w_Project/SNAP/lsh.cpp; sourceTree = SOURCE_ROOT; };
+		469C52FA1BF6667500D4646B /* lsh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lsh.h; path = CS224w_Project/SNAP/lsh.h; sourceTree = SOURCE_ROOT; };
+		469C52FB1BF6667500D4646B /* memenet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = memenet.cpp; path = CS224w_Project/SNAP/memenet.cpp; sourceTree = SOURCE_ROOT; };
+		469C52FC1BF6667500D4646B /* memenet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memenet.h; path = CS224w_Project/SNAP/memenet.h; sourceTree = SOURCE_ROOT; };
+		469C52FD1BF6667500D4646B /* memes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = memes.cpp; path = CS224w_Project/SNAP/memes.cpp; sourceTree = SOURCE_ROOT; };
+		469C52FE1BF6667500D4646B /* memes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memes.h; path = CS224w_Project/SNAP/memes.h; sourceTree = SOURCE_ROOT; };
+		469C52FF1BF6667500D4646B /* mxdag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mxdag.cpp; path = CS224w_Project/SNAP/mxdag.cpp; sourceTree = SOURCE_ROOT; };
+		469C53001BF6667500D4646B /* mxdag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxdag.h; path = CS224w_Project/SNAP/mxdag.h; sourceTree = SOURCE_ROOT; };
 		A68BF6831BF315DC0047A0D7 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		A68BF6841BF33E420047A0D7 /* fileReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fileReader.cpp; path = ../fileReader.cpp; sourceTree = "<group>"; };
 		A68BF6851BF33E420047A0D7 /* fileReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fileReader.hpp; path = ../fileReader.hpp; sourceTree = "<group>"; };
@@ -218,6 +260,34 @@
 		A6C2A8901BEEC3EE0053AFEA /* snap-core */ = {
 			isa = PBXGroup;
 			children = (
+				469C52E51BF6667500D4646B /* signnet.cpp */,
+				469C52E61BF6667500D4646B /* signnet.h */,
+				469C52E71BF6667500D4646B /* sir.cpp */,
+				469C52E81BF6667500D4646B /* sir.h */,
+				469C52E91BF6667500D4646B /* spinn3r.cpp */,
+				469C52EA1BF6667500D4646B /* spinn3r.h */,
+				469C52EB1BF6667500D4646B /* trawling.cpp */,
+				469C52EC1BF6667500D4646B /* trawling.h */,
+				469C52ED1BF6667500D4646B /* wgtnet.cpp */,
+				469C52EE1BF6667500D4646B /* wgtnet.h */,
+				469C52EF1BF6667500D4646B /* wikinet.cpp */,
+				469C52F01BF6667500D4646B /* wikinet.h */,
+				469C52F11BF6667500D4646B /* arxiv.cpp */,
+				469C52F21BF6667500D4646B /* arxiv.h */,
+				469C52F31BF6667500D4646B /* dblp.cpp */,
+				469C52F41BF6667500D4646B /* dblp.h */,
+				469C52F51BF6667500D4646B /* imdbnet.cpp */,
+				469C52F61BF6667500D4646B /* imdbnet.h */,
+				469C52F71BF6667500D4646B /* linkpred.cpp */,
+				469C52F81BF6667500D4646B /* linkpred.h */,
+				469C52F91BF6667500D4646B /* lsh.cpp */,
+				469C52FA1BF6667500D4646B /* lsh.h */,
+				469C52FB1BF6667500D4646B /* memenet.cpp */,
+				469C52FC1BF6667500D4646B /* memenet.h */,
+				469C52FD1BF6667500D4646B /* memes.cpp */,
+				469C52FE1BF6667500D4646B /* memes.h */,
+				469C52FF1BF6667500D4646B /* mxdag.cpp */,
+				469C53001BF6667500D4646B /* mxdag.h */,
 				A6C2A8A91BEECC330053AFEA /* alg.cpp */,
 				A6C2A8AA1BEECC330053AFEA /* alg.h */,
 				A6C2A8AB1BEECC330053AFEA /* anf.cpp */,
@@ -394,10 +464,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469C53021BF6667500D4646B /* sir.cpp in Sources */,
 				A68BF6861BF33E420047A0D7 /* fileReader.cpp in Sources */,
+				469C53031BF6667500D4646B /* spinn3r.cpp in Sources */,
 				A6C2A8561BEEC2E00053AFEA /* main.cpp in Sources */,
+				469C530A1BF6667500D4646B /* linkpred.cpp in Sources */,
+				469C53011BF6667500D4646B /* signnet.cpp in Sources */,
+				469C53041BF6667500D4646B /* trawling.cpp in Sources */,
+				469C530C1BF6667500D4646B /* memenet.cpp in Sources */,
 				A6C2A94F1BEECC560053AFEA /* Snap.cpp in Sources */,
+				469C53061BF6667500D4646B /* wikinet.cpp in Sources */,
+				469C530B1BF6667500D4646B /* lsh.cpp in Sources */,
+				469C530E1BF6667500D4646B /* mxdag.cpp in Sources */,
 				A68BF6891BF571900047A0D7 /* DatabaseStatistics.cpp in Sources */,
+				469C53051BF6667500D4646B /* wgtnet.cpp in Sources */,
+				469C530D1BF6667500D4646B /* memes.cpp in Sources */,
+				469C53091BF6667500D4646B /* imdbnet.cpp in Sources */,
+				469C53071BF6667500D4646B /* arxiv.cpp in Sources */,
+				469C53081BF6667500D4646B /* dblp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
