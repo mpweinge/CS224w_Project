@@ -18,9 +18,30 @@ dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag:
     kucinichTag: "Dennis Kucinich", richardsonTag: "Bill Richardson"};
 
 
+def checkDate(transactionDate, endDate):
+	if ( transactionDate[transactionDate.length() - 1] < endDate[endDate.size() - 1] ):
+    	return true;
+  	else if (transactionDate[transactionDate.length() - 1] == endDate[endDate.size() - 1]):
+	    // Compare the months aka the first two years
+	    month1 = transactionDate[0] + transactionDate[1]
+	    month2 = endDate[0] + endDate[1]
+	    
+	    int iMonth1 = int(month1)
+	    int iMonth2 = int(month2)
+	    
+	    if (iMonth1 < iMonth2):
+	      return true
+	    else:
+	      return false
+	    
+	else:
+	    return false
+
 # p is the probability of adding the new node to the graph.
+# Add a parameter here 'date' to determine whether the date of the transaction
+# is before or after a certain date
 # weighted is whether or not to use weights.
-def readInDonors(G, p, weighted):
+def readInDonors(G, p, weighted, endDate):
 	weights_so_far = {} # "(n1name, n2name) -> weight"
 	num_lines = 0
 	num_negative_amount = 0
@@ -30,6 +51,11 @@ def readInDonors(G, p, weighted):
 		line = line.split('|')
 		committeeId = line[0]
 		name = line[7]
+		
+		date = line[13]
+
+		if (!checkDate(date)): continue
+
 		if len(name.split(",")) < 2: continue
 		name = name.split(" ")[0] + name.split(",")[1].strip().split(" ")[0]
 		zipCode = line[10]
