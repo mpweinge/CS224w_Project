@@ -18,12 +18,14 @@ using namespace std;
 
 void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToNodeNumber,
                                   PNGraph &donorGraph,
-                                  PUNGraph &undirectedDonorGraph);
+                                  PUNGraph &undirectedDonorGraph,
+                                  string endDate);
 
 void readInDonors( vector<candidateDonorNode>& nodes,
                   unordered_map<string, int> &donorStringToNodeNumber,
                   unordered_map<string, int> &committeeStringToNodeNumber,
                   PNGraph &donorGraph,
-                  PUNGraph &undirectedDonorGraph );
+                  PUNGraph &undirectedDonorGraph,
+                  string endDate);
 
 #endif /* fileReader_hpp */

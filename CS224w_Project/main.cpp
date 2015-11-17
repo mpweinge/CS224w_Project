@@ -15,6 +15,7 @@
 
 #include "constants.h"
 #include "fileReader.hpp"
+#include "DatabaseStatistics.hpp"
 
 using namespace std;
 
@@ -26,6 +27,9 @@ unordered_map<string, int> committeeStringToNodeNumber;
 
 unordered_map<string, int> donorStringToNodeNumber;
 
+unordered_map<string, int> candidateToFunds;
+
+unordered_map<string, int> candidateToNumberDonors;
 
 // Data structure taken from here: http://www.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml
 
@@ -154,16 +158,41 @@ int main(int argc, const char * argv[]) {
     
     donorGraph = TNGraph::New();
     undirectedDonorGraph = TUNGraph::New();
+  
+  //Run this over 12 months and see how the data changes over that time
+  const string end2007Campaign = "01012008";
+  
+  const string months2007Campaign[] = {"02012007", "03012007", "04012007", "05012007", "06012007", "07012007", "08012007", "09012007", "10012007", "11012007", "12012007", "01012008" };
+  
+  for (int i = 0; i < 12; i++) {
     
-    readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
-    readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph);
+    candidateToFunds.clear();
+    candidateToNumberDonors.clear();
+    
+    readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, months2007Campaign[i]);
+    readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, months2007Campaign[i]);
+    
+    cout << " i: " << i << endl;
+    
+    // Output the number of funds for each candidate
+    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+       //float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
+      
+     // cout << '\t' << "Candidate: " << candidate->second << " funds: " << candidateToFunds[candidate->first] << endl;
+      cout << '\t' << "Candidate: " << candidate->second << " number of donations: " << candidateToNumberDonors[candidate->first] << endl;
+    }
+    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+      //float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
+      
+      cout << '\t' << "Candidate: " << candidate->second << " funds: " << candidateToFunds[candidate->first] << endl;
+     // cout << '\t' << "Candidate: " << candidate->second << " number of donations: " << candidateToNumberDonors[candidate->first] << endl;
+    }
+  }
 
     cout << "Number of edges: " << donorGraph->GetEdges() << endl;
     cout << "Number of nodes: " << donorGraph->GetNodes() << endl;
     cout << "donorStringToNodeNumber " << donorStringToNodeNumber.size() << endl;
     cout << "committeeStringToNodeNumber " << committeeStringToNodeNumber.size() << endl;
-
-    //cout << "Clinton funds: " << committeeToAmount["C00358895"] + committeeToAmount["C00575795"] << endl;
     
     // Count the number of in edges to clinton
     TNGraph::TNodeI clintonIndex = donorGraph->GetNI(committeeStringToNodeNumber["C00431569"]);
@@ -177,15 +206,21 @@ int main(int argc, const char * argv[]) {
     
     // Compute pagerank for all of the nodes in our graph
     computePageRank();
-    
+  
+    cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
+  
+    // Plot total number of donations over time
+    // Plot number of donations over time 
+  
+  
     /*for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys) {
      float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeKeys->second);
      cout << "Closeness for user: " << committeeKeys->first << " value: " << currCloseness << endl;
     }*/
-    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+    /*for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
         float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
         cout << candidate->second << " closeness: " << currCloseness << endl;
-    }
+    }*/
 
     
     return 0;

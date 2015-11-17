@@ -16,14 +16,14 @@ float getAverageNumberOfDonationsPerIndividual()
 }
 
 
-float getAverageNumberOfDonationsPerPAC(TNGraph & graph)
+float getAverageNumberOfDonationsPerPAC(PNGraph & graph)
 {
   // Go through our pacs and see how many out edges they have
   int totalEdges = 0;
   int totalPacs = 0;
   
   for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
-    TNGraph::TNodeI currNode = graph.GetNI(committeeKeys->second);
+    TNGraph::TNodeI currNode = graph->GetNI(committeeKeys->second);
     totalEdges += currNode.GetOutDeg();
     totalPacs++;
   }

@@ -22,7 +22,7 @@
 using namespace std;
 
 // Candidates started dropping out in 2008 primary on jan 1st, 2008
-const string end2007Campaign = "01012009";
+const string end2007Campaign = "01012008";
 
 //If the last four digits are >= 2008, then don't include
 const string end2007Year = "2008";
@@ -45,6 +45,10 @@ const map<string, string> dem2008Names =
 const int numDemocraticCandidates2008 = 8;
 
 extern unordered_map<string, int> committeeStringToNodeNumber;
+
+extern unordered_map<string, int> candidateToFunds;
+
+extern unordered_map<string, int> candidateToNumberDonors;
 
 struct donorNameKey;
 

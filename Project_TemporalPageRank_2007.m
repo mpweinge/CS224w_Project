@@ -1,6 +1,6 @@
 %Project _ temporal page rank
 % 2007 data set
-
+clear all
 Obama = [0.0160813	0.00679552	0.0113837	0.012276	0.0122665	0.0125426	0.0124105	0.0119414	0.0118106	0.0111756	0.0112915	0.0113357];
 Obama2 = [0.000119588	5.58087E-05	2.46691E-05	1.93973E-05	1.54412E-05	1.11291E-05	1.00116E-05	8.87231E-06	7.41558E-06	6.81899E-06	6.09148E-06	5.36059E-06];
 
@@ -28,11 +28,19 @@ x = [0 1 2 3 4 5 6 7 8 9 10 11];
 close all
 figure
 hold on
-plot( x, Obama + Obama2, 'r')
-plot( x, Clinton + Clinton2, 'g')
-plot( x, Edward + Edward2, 'b')
-plot( x, Biden + Biden2)
-plot( x, Dodd+ Dodd2)
-plot( x, Gravel)
-plot( Kucinich+ Kucinich2)
-plot(Richardson)
+
+plot (x, Gravel)
+plot (x, Kucinich + Kucinich2)
+plot (x, Edward + Edward2)
+plot (x, Dodd + Dodd2)
+plot (x, Obama + Obama2, 'k')
+plot (x, Clinton + Clinton2, 'm')
+plot (x, Richardson)
+plot (x, Biden + Biden2)
+
+h_legend = legend('Gravel', 'Kucinich', 'Edwards', 'Dodd', 'Obama', 'Clinton', 'Richardson', 'Biden');
+set(h_legend,'FontSize',16);
+title('PageRank over Time', 'FontSize', 24)
+set(gca,'fontsize',16)
+ylabel('PageRank', 'FontSize', 24);
+xlabel('Months of 2007', 'FontSize', 24);

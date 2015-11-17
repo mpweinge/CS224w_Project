@@ -13,7 +13,7 @@
 #include "Constants.h"
 
 float getAverageNumberOfDonationsPerIndividual();
-float getAverageNumberOfDonationsPerPAC();
+float getAverageNumberOfDonationsPerPAC(PNGraph & graph);
 
 int getNumberOfEdges();
 
@@ -21,6 +21,7 @@ int getNumberOfCommittees();
 
 float averageOutDegreePerCandidate();
 float averageInDegreePerCandidate();
+
 
 // Some candidates donate to other candidates
 float getAverageNumberOfDonationsFromCandidates();

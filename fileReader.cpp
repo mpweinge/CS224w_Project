@@ -44,7 +44,8 @@ void readInDonors( vector<candidateDonorNode>& nodes,
                   unordered_map<string, int> &donorStringToNodeNumber,
                   unordered_map<string, int> &committeeStringToNodeNumber,
                   PNGraph &donorGraph,
-                  PUNGraph &undirectedDonorGraph ) {
+                  PUNGraph &undirectedDonorGraph,
+                  string endDate) {
   
   // Read in the files from our individual to candidate donations
   ifstream candidateDonorFile;
@@ -52,7 +53,7 @@ void readInDonors( vector<candidateDonorNode>& nodes,
   string currentLine;
   
 #ifdef TRAIN_2007
-    candidateDonorFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/2007_2008/itcont.txt");
+    candidateDonorFile.open("../../CS224w_Project/2007_2008/itcont.txt");
 #else
     candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
 #endif
@@ -119,7 +120,7 @@ void readInDonors( vector<candidateDonorNode>& nodes,
     bool shouldAdd = true;
     
 #ifdef CAP_DONATIONS
-    shouldAdd = isEarlierDate(transactionDate, end2007Campaign);
+    shouldAdd = isEarlierDate(transactionDate, endDate);
 #endif
     
     if (shouldAdd) {
@@ -151,6 +152,8 @@ void readInDonors( vector<candidateDonorNode>& nodes,
         donorGraph->AddNode(nodeNum);
         undirectedDonorGraph->AddNode(nodeNum);
         committeeStringToNodeNumber[filerIdentificationNumber] = nodeNum;
+        candidateToFunds[filerIdentificationNumber] = 0;
+        candidateToNumberDonors[filerIdentificationNumber] = 0;
         committeeNodeIndex = nodeNum;
         nodeNum++;
       } else {
@@ -160,19 +163,22 @@ void readInDonors( vector<candidateDonorNode>& nodes,
       // Add an edge from our new node to that
       donorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
       undirectedDonorGraph->AddEdge(donorNodeIndex, committeeNodeIndex);
+      candidateToFunds[filerIdentificationNumber] += transactionAmount;
+      candidateToNumberDonors[filerIdentificationNumber] += 1;
     }
   }
 }
 
 void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToNodeNumber,
                                   PNGraph &donorGraph,
-                                  PUNGraph &undirectedDonorGraph) {
+                                  PUNGraph &undirectedDonorGraph,
+                                  string endDate) {
   ifstream committeeToCommitteeFile;
   
   string currentLine;
   
 #ifdef TRAIN_2007
-  committeeToCommitteeFile.open("/Users/ES/Desktop/cs224w/CS224w_Project/CS224w_Project/2007_2008/itoth.txt");
+  committeeToCommitteeFile.open("../../CS224w_Project/2007_2008/itoth.txt");
 #else
   committeeToCommitteeFile.open("../../cs224w_Project/2015_2016/itoth.txt");
 #endif
@@ -228,7 +234,7 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
     bool shouldAdd = true;
     
 #ifdef CAP_DONATIONS
-    shouldAdd = isEarlierDate(date, end2007Campaign);
+    shouldAdd = isEarlierDate(date, endDate);
 #endif
     
     if (shouldAdd) {
@@ -242,6 +248,8 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
         undirectedDonorGraph->AddNode(nodeNum);
         candidate2Index = nodeNum;
         committeeStringToNodeNumber[filerIdentificationNum] = nodeNum;
+        candidateToFunds[filerIdentificationNum] = 0;
+        candidateToNumberDonors[filerIdentificationNum] = 0;
         nodeNum++;
       } else {
         candidate2Index = search->second;
@@ -254,6 +262,8 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
         undirectedDonorGraph->AddNode(nodeNum);
         candidate1Index = nodeNum;
         committeeStringToNodeNumber[otherIdentification] = nodeNum;
+        candidateToFunds[otherIdentification] = 0;
+        candidateToNumberDonors[otherIdentification] = 0;
         nodeNum++;
       } else {
         candidate1Index = lenderSearch->second;
@@ -261,6 +271,8 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
       
       donorGraph->AddEdge(candidate1Index, candidate2Index);
       undirectedDonorGraph->AddEdge(candidate1Index, candidate2Index);
+      candidateToFunds[filerIdentificationNum] += transactionAmount;
+      candidateToNumberDonors[filerIdentificationNum] += 1;
     }
   }
 }
