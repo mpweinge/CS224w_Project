@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 G = nx.DiGraph() # non-directed graph: must be non-directed for com
 
-file_reader.readInDonors(G, 1.0, False)
-file_reader.readCommitteeToCommittee(G)
+file_reader.readInDonors(G, '01012008')
+file_reader.readCommitteeToCommittee(G, '01012008')
 
 
 obamaTag = "C00431445";
@@ -30,6 +30,7 @@ allPacs = set([])
 # first, find all pacs that donated to the candidates of interest. (exists edge )
 for node in G.nodes():
 	if not isPac(node): continue
+	donatedTo = set([i[1] for i in G.out_edges(node)])
 	for candidate in dems2008.keys():
 		if candidate in G[node]:
 			allPacs.add(node)
@@ -56,22 +57,21 @@ for candidate in dems2008.keys():
 	indirectDonationAmt = 0
 	directDonationAmt = 0
 	print dems2008[candidate]
-	neighbors = G[candidate].keys()
-	curDonors = set([i for i in neighbors if not isPac(i) and len(i) > 1])
+	curDonors  = [i[0] for i in G.in_edges(candidate, data=True) if not isPac(i[0])]
 	curNumDonors = float(len(curDonors))
-	directDonationAmt = sum([G[candidate][i]['weight'] for i in curDonors])
-	pacs = set([i for i in neighbors if isPac(i)])
+	directDonationAmt = sum([i[2]['weight'] for i in G.in_edges(candidate, data=True) if not isPac(i[0])])
+	pacs = [i for i in G.in_edges(candidate, data=True) if isPac(i[0])]
 	print '# of PACs: ', str(len(pacs))
 	print 'direct donation amount: ', str(directDonationAmt)
 	print '# of individual donors: ', str(len(curDonors))
 	for pac in pacs:
-		curDonors.add(pac)
-		for pacDonor in G[pac].keys():
+		curDonors.append(pac[0])
+		for pacDonor in G.in_edges(pac[0], data=True):
 			if isPac(pacDonor): continue
-			curDonors.add(pacDonor)
-			indirectDonationAmt += G[pac][pacDonor]['weight'] * pacCandidateDonationPercents[pac][candidate]
-		curNumDonors += pacCandidateDonationPercents[pac][candidate] * len(G[pac].keys())
-	print '# of individual donors counting indirect: ', str(len(curDonors))
+			curDonors.append(pacDonor[0])
+			indirectDonationAmt += pacDonor[2]['weight'] * pacCandidateDonationPercents[pac[0]][candidate]
+		curNumDonors += pacCandidateDonationPercents[pac[0]][candidate] * len(G.in_edges(pac[0]))
+	print '# of individual donors counting indirect: ', str(len(set(curDonors)))
 	print 'total donation amount: ', str(indirectDonationAmt + directDonationAmt), '\n\n'
 	candidateDonors[candidate] = curDonors
 
@@ -99,8 +99,8 @@ for di in range(len(demsList)):
 
 for i in dems2008.keys():
 	print dems2008[i]
-	print 'n-clique overlap for all donors: ', sum(NCliqueOverlapAll[i]) / len(NCliqueOverlapAll[i])
-	print 'n-clique overlap for pacs: ', sum(NCliqueOverlapPac[i]) / len(NCliqueOverlapPac[i])
+	print 'n-clique overlap for all donors: ', round(sum(NCliqueOverlapAll[i]) / len(NCliqueOverlapAll[i]),4)
+	print 'n-clique overlap for pacs: ', round(sum(NCliqueOverlapPac[i]) / len(NCliqueOverlapPac[i]),4)
 
 # find pairwise overlap between candidates' cliques (jaccard similarity)
 
