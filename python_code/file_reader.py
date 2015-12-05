@@ -17,29 +17,45 @@ dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag:
     bidenTag: "Joe Biden", doddTag: "Chris Dodd", gravelTag: "Mike Gravel",
     kucinichTag: "Dennis Kucinich", richardsonTag: "Bill Richardson"};
 
-# returns true if first date is earlier than first date.
-# e.g. dateLater("04032007", "04042007") = True.
-def dateEarlier(first, second):
-	if len(first) < 8 or len(second) < 8: return False
-	if first[-4:] < second[-4:]: return True
-	if first[-4:] > second[-4:]: return False
-	if first[0:2] < second[0:2]: return True
-	if first[0:2] > second[0:2]: return False
-	return first[2:4] < second[2:4]
+
+def checkDate(transactionDate, endDate):
+	if ( transactionDate[transactionDate.length() - 1] < endDate[endDate.size() - 1] ):
+    	return true;
+  	else if (transactionDate[transactionDate.length() - 1] == endDate[endDate.size() - 1]):
+	    // Compare the months aka the first two years
+	    month1 = transactionDate[0] + transactionDate[1]
+	    month2 = endDate[0] + endDate[1]
+	    
+	    int iMonth1 = int(month1)
+	    int iMonth2 = int(month2)
+	    
+	    if (iMonth1 < iMonth2):
+	      return true
+	    else:
+	      return false
+	    
+	else:
+	    return false
+
 # p is the probability of adding the new node to the graph.
+# Add a parameter here 'date' to determine whether the date of the transaction
+# is before or after a certain date
 # weighted is whether or not to use weights.
-def readInDonors(G, maxDate=None):
+def readInDonors(G, p, weighted, endDate):
 	weights_so_far = {} # "(n1name, n2name) -> weight"
 	num_lines = 0
 	num_negative_amount = 0
 	for line in open(donorFile):
 		num_lines += 1
+		if random.random() > p: continue
 		line = line.split('|')
-		date = line[13]
-		if maxDate is not None and not dateEarlier(date, maxDate): 
-			continue
 		committeeId = line[0]
 		name = line[7]
+		
+		date = line[13]
+
+		if (!checkDate(date)): continue
+
 		if len(name.split(",")) < 2: continue
 		name = name.split(" ")[0] + name.split(",")[1].strip().split(" ")[0]
 		zipCode = line[10]
@@ -52,8 +68,10 @@ def readInDonors(G, maxDate=None):
 			key = (donorId, committeeId)
 			weights_so_far[key] = weights_so_far[key] + amount if key in weights_so_far else amount
 			G.add_weighted_edges_from([(donorId, committeeId, weights_so_far[key])])
+	print 'num lines: ', num_lines, 'num negative amount: ', num_negative_amount
+			# find donor and committee, add edge from donor to committee.
 
-def readCommitteeToCommittee(G, maxDate=None): 
+def readCommitteeToCommittee(G): 
 	num_lines = 0
 	num_negative_amount = 0
 	weights_so_far = {}
@@ -61,9 +79,6 @@ def readCommitteeToCommittee(G, maxDate=None):
 		num_lines += 1
 		line = line.split('|')
 		id1 = line[0]
-		date = line[13]
-		if maxDate is not None and not dateEarlier(date, maxDate): 
-			continue
 		amount = int(line[14])
 		if amount < 0:
 			num_negative_amount += 1
@@ -72,3 +87,4 @@ def readCommitteeToCommittee(G, maxDate=None):
 			key = (id1, id2)
 			weights_so_far[key] = weights_so_far[key] + amount if key in weights_so_far else amount
 			G.add_weighted_edges_from([(id1, id2, weights_so_far[key])])
+	print 'num lines: ', num_lines, 'num negative amount: ', num_negative_amount

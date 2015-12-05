@@ -25,7 +25,9 @@ plot (X, Biden)
 
 h_legend = legend('Gravel', 'Kucinich', 'Edwards', 'Dodd', 'Obama', 'Clinton', 'Richardson', 'Biden');
 set(h_legend,'FontSize',16);
+set(gca,'XtickLabel',str2mat('Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ))
 title('Number of Donations over Time', 'FontSize', 24)
 set(gca,'fontsize',16)
 ylabel('Number of donations', 'FontSize', 24);
 xlabel('Months of 2007', 'FontSize', 24);
+xlim([1,12])

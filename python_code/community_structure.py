@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 
 G = nx.Graph() # non-directed graph: must be non-directed for com
 
-file_reader.readInDonors(G, '01012008')
-file_reader.readCommitteeToCommittee(G, '010120')
+file_reader.readInDonors(G, 1.0, False)
+file_reader.readCommitteeToCommittee(G)
 
 for node in G.nodes():
 	deg = float(G.degree(node, weight='weight'))
@@ -54,13 +54,12 @@ for com in set(partition.values()) :
     	if node in candidate_ids: num_candidates += 1
     	if node in dems2008:
     		print dems2008[node]
-            print "candidates in community: ", str(num_candidates)
-            print "community size: ", str(len(list_nodes))
-            print "pacs in community: ", str(num_pacs)
+    print len(list_nodes)
     candidates_per_community.append(num_candidates)
     community_size.append(len(list_nodes))
     pacs_per_community.append(num_pacs)
     nodes_so_far += len(list_nodes)
+    #print nodes_so_far, ",", G.number_of_nodes()
 
 log_community_size = [math.log(i, 10) for i in community_size]
 plt.hist(log_community_size, 50)
@@ -78,4 +77,8 @@ plt.hist(log_candidates_per_community, 50)
 plt.xlabel("log base 10 of candidates per community (excluding 0 and 1-candidate communities)")
 plt.ylabel("number of commnities")
 plt.title("histogram of candidates per community")
+plt.show()
+
+
+nx.draw_networkx_edges(G,pos, alpha=0.5)
 plt.show()

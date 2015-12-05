@@ -23,7 +23,7 @@ Kucinich2 = [0.000071993	8.79696E-05	0.000107562	0.000138509	0.000148284	0.00014
 
 Richardson = [0.000989565	0.0030776	0.0045465	0.00457643	0.00514587	0.00540594	0.00532021	0.00511288	0.00521694	0.00477023	0.00461561	0.0043978];
 
-x = [0 1 2 3 4 5 6 7 8 9 10 11];
+x = [1 2 3 4 5 6 7 8 9 10 11 12];
 
 close all
 figure
@@ -40,7 +40,9 @@ plot (x, Biden + Biden2)
 
 h_legend = legend('Gravel', 'Kucinich', 'Edwards', 'Dodd', 'Obama', 'Clinton', 'Richardson', 'Biden');
 set(h_legend,'FontSize',16);
+set(gca,'XtickLabel',str2mat('Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ))
 title('PageRank over Time', 'FontSize', 24)
 set(gca,'fontsize',16)
 ylabel('PageRank', 'FontSize', 24);
 xlabel('Months of 2007', 'FontSize', 24);
+xlim([1,12])

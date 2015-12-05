@@ -8,7 +8,9 @@ Clinton = [4058299	7853800	34392482	36715901	42210894	59587043	61541637	67328584
 Richardson = [356910	2616310	5643278	6890820	8259251	11274852	11928595	12468373	15102979	15652401	16614837	18954294];
 Biden = [1676299	3719089	5802547	5988672	6288997	8014866	8249390	8810390	9444199	9754473	10294347	11901618];
 
-X = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+XLabels = ['JFMAMJJASOND'];
+
+X = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 close all
 figure
@@ -25,7 +27,9 @@ plot (X, Biden)
 
 h_legend = legend('Gravel', 'Kucinich', 'Edwards', 'Dodd', 'Obama', 'Clinton', 'Richardson', 'Biden');
 set(h_legend,'FontSize',16);
+set(gca,'XtickLabel',str2mat('Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ))
 title('Value of Donations over Time', 'FontSize', 24)
 set(gca,'fontsize',16)
 ylabel('Total value of donations ($)', 'FontSize', 24);
 xlabel('Months of 2007', 'FontSize', 24);
+xlim([1,12])
