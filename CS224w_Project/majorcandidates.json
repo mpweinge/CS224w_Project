@@ -1,25 +1,26 @@
+// note: C00273516 is George H.W. Bush Sr, C00079350 is George W. Bush Jr
 var obj = {
 1980: {
 	'd' :{ 
 		winner: 'Jimmy Carter',
 		candidates: [
-		 	 {name: 'Jimmy Carter', id: '', dropped_out: false, incumbent: true, primary_rank: 1},
-		 	 {name: 'Ted Kennedy', id: '', dropped_out: 'TODO', primary_rank: 2},
-		 	 {name: 'Jerry Brown', id: '', dropped_out: '04011980'},
-		 	 {name: 'Cliff Finch', id: '', dropped_out: 'TODO'},
+		 	 {name: 'Jimmy Carter', id: 'C00129445', dropped_out: false, incumbent: true, primary_rank: 1},
+		 	 {name: 'Ted Kennedy', id: 'C00115022', dropped_out: 'TODO', primary_rank: 2},
+		 	 {name: 'Jerry Brown', id: 'C00253914', dropped_out: '04011980'},
+		 	 {name: 'Cliff Finch', id: 'C00120915', dropped_out: 'TODO'},
 		]
 	}, 
 	'r': {
 		winner: 'Ronald Reagan',
 		candidates: [
-		 	 {name: 'Ronald Reagan', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'George H.W. Bush', id: '', dropped_out: '05261980', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'John Anderson', id: '', dropped_out: '04241980', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'Howard Baker', id: '', dropped_out: '03051980', endorsed: 'TODO'},
-		 	 {name: 'John Connally', id: '', dropped_out: '03091980', endorsed: 'TODO'},
-		 	 {name: 'Phil Crane', id: '', dropped_out: '03201980', endorsed: 'TODO'},
-		 	 {name: 'Bob Dole', id: '', dropped_out: '03151980', endorsed: 'TODO'},
-		 	 {name: 'Harold Stassen', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Ronald Reagan', id: 'C00186312', dropped_out: false, primary_rank: 1},
+		 	 {name: 'George H.W. Bush', id: 'C00079350', dropped_out: '05261980', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'John Anderson', id: 'C00000802', dropped_out: '04241980', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Howard Baker', id: 'C00107466', dropped_out: '03051980', endorsed: 'TODO'},
+		 	 {name: 'John Connally', id: 'C00107318', dropped_out: '03091980', endorsed: 'TODO'},
+		 	 {name: 'Phil Crane', id: 'C00100834', dropped_out: '03201980', endorsed: 'TODO'},
+		 	 {name: 'Bob Dole', id: 'C00317743', dropped_out: '03151980', endorsed: 'TODO'},
+		 	 {name: 'Harold Stassen', id: 'C00108639', dropped_out: 'TODO', endorsed: 'TODO'},
 		]
 	}
 },
@@ -27,20 +28,20 @@ var obj = {
 	'd' :{
 		winner: 'Walter Mondale',
 		candidates: [
-		 	 {name: 'Walter Mondale', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Gary Hart', id: '', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Jesse Jackson', id: '', dropped_out: 'TODO', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'John Glenn', id: '', dropped_out: '03161984', endorsed: 'TODO'},
-		 	 {name: 'George McGovern', id: '', dropped_out: '03141984', endorsed: 'TODO'},
-		 	 {name: 'Reubin Askew', id: '', dropped_out: '03011984', endorsed: 'TODO'},
-		 	 {name: 'Alan Cranston', id: '', dropped_out: '02291984', endorsed: 'TODO'},
-		 	 {name: 'Ernest Hollings', id: '', dropped_out: '03011984', endorsed: 'TODO'},
+		 	 {name: 'Walter Mondale', id: 'C00186296', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Gary Hart', id: 'C00214452', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Jesse Jackson', id: 'C00217893', dropped_out: 'TODO', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'John Glenn', id: 'C00164855', dropped_out: '03161984', endorsed: 'TODO'},
+		 	 {name: 'George McGovern', id: 'C00170407', dropped_out: '03141984', endorsed: 'TODO'},
+		 	 {name: 'Reubin Askew', id: 'C00145748', dropped_out: '03011984', endorsed: 'TODO'},
+		 	 {name: 'Alan Cranston', id: 'C00159392', dropped_out: '02291984', endorsed: 'TODO'},
+		 	 {name: 'Ernest Hollings', id: 'C00164962', dropped_out: '03011984', endorsed: 'TODO'},
 		]
 	}, 
 	'r': {
 		winner: 'Ronald Reagan',
 		candidates: [
-		 	 {name: 'Ronald Reagan', id: '', dropped_out: false, incumbent: true, primary_rank: 1},
+		 	 {name: 'Ronald Reagan', id: 'C00186312', dropped_out: false, incumbent: true, primary_rank: 1},
 		]
 	}
 },
@@ -48,24 +49,33 @@ var obj = {
 	'd' :{
 		winner: 'Michael Dukakis',
 		candidates: [
-		 	 {name: 'Michael Dukakis', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Jesse Jackson', id: '', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Al Gore', id: '', dropped_out: '04211988', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'Dick Gephardt', id: '', dropped_out: '03291988', primary_rank: 4, endorsed: 'TODO'},
-		 	 {name: 'Paul Simon', id: '', dropped_out: '04071988', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Michael Dukakis', id: 'C00227629', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Jesse Jackson', id: 'C00217893', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Al Gore', id: 'C00360982C00384123', dropped_out: '04211988', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Dick Gephardt', id: 'C00384123', dropped_out: '03291988', primary_rank: 4, endorsed: 'TODO'},
+		 	 {name: 'Paul Simon', id: 'C00168807', dropped_out: '04071988', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Gary Hart', id: 'C00214452', dropped_out: '03121988', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Bruce Babbitt', id: 'C00213017', dropped_out: '02161988', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Jim Traficant', id: 'C00218941', dropped_out: 'TODO', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Douglas Applegate', id: 'C00222448', dropped_out: 'TODO', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Joe Biden', id: 'C00431916', dropped_out: '09121987', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Lyndon LaRouche', id: 'C00364091', dropped_out: 'TODO', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'David Duke', id: 'C00256735', dropped_out: 'TODO', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Andy Martin', id: 'C00213777', dropped_out: 'TODO', primary_rank: 5, endorsed: 'TODO'},
+
 		]
 	}, 
 	'r': {
 		winner: 'George H.W. Bush',
 		candidates: [
-		 	 {name: 'George H.W. Bush', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Bob Dole', id: '', dropped_out: '03291988', primary_rank: 2, endorsed: 'George H.W. Bush'},
-		 	 {name: 'Pat Robertson', id: '', dropped_out: '05161988', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'Jack Kemp', id: '', dropped_out: '03111988', endorsed: 'George H.W. Bush'},
-		 	 {name: 'Pierre du Pont', id: '', dropped_out: '02181988', endorsed: 'TODO'},
-		 	 {name: 'Alexander Haig', id: '', dropped_out: '02121988', endorsed: 'Bob Dole'},
-		 	 {name: 'Paul Laxalt', id: '', dropped_out: '08261987', endorsed: 'TODO'},
-		 	 {name: 'Harold E. Stassen', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'George H.W. Bush', id: 'C00273516', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Bob Dole', id: 'C00317743', dropped_out: '03291988', primary_rank: 2, endorsed: 'George H.W. Bush'},
+		 	 {name: 'Pat Robertson', id: 'C00218214', dropped_out: '05161988', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Jack Kemp', id: 'C00321620', dropped_out: '03111988', endorsed: 'George H.W. Bush'},
+		 	 {name: 'Pierre du Pont', id: 'C00207530', dropped_out: '02181988', endorsed: 'TODO'},
+		 	 {name: 'Alexander Haig', id: 'C00214189', dropped_out: '02121988', endorsed: 'Bob Dole'},
+		 	 {name: 'Paul Laxalt', id: 'C00214783', dropped_out: '08261987', endorsed: 'TODO'},
+		 	 {name: 'Harold E. Stassen', id: 'C00218909', dropped_out: 'TODO', endorsed: 'TODO'},
 		]
 	}
 },
@@ -73,24 +83,24 @@ var obj = {
 	'd' :{
 		winner: 'Bill Clinton',
 		candidates: [
-		 	 {name: 'Bill Clinton', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Jerry Brown', id: '', dropped_out: '07131992', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Paul Tsongas', id: '', dropped_out: '03191992', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'Bob Kerrey', id: '', dropped_out: '03051992', primary_rank: 4, endorsed: 'TODO'},
-		 	 {name: 'Tom Harkin', id: '', dropped_out: '03091992', primary_rank: 5, endorsed: 'TODO'},
-		 	 {name: 'Eugene McCarthy', id: '', dropped_out: 'TODO', primary_rank: 6, endorsed: 'TODO'},
-		 	 {name: 'Douglas Wilder', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Bill Clinton', id: 'C00321414', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Jerry Brown', id: 'C00253914', dropped_out: '07131992', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Paul Tsongas', id: 'C00250951', dropped_out: '03191992', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Bob Kerrey', id: 'C00254250', dropped_out: '03051992', primary_rank: 4, endorsed: 'TODO'},
+		 	 {name: 'Tom Harkin', id: 'C00254375', dropped_out: '03091992', primary_rank: 5, endorsed: 'TODO'},
+		 	 {name: 'Eugene McCarthy', id: 'C00254698', dropped_out: 'TODO', primary_rank: 6, endorsed: 'TODO'},
+		 	 {name: 'Douglas Wilder', id: 'C00251215', dropped_out: 'TODO', endorsed: 'TODO'},
 
 		]
 	}, 
 	'r': {
 		winner: 'George H.W. Bush',
 		candidates: [
-		 	 {name: 'George H.W. Bush', id: '', dropped_out: false, incumbent: true, primary_rank: 1},
-		 	 {name: 'Pat Buchanan', id: '', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'David Duke', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Harold Stassen', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Ron Paul', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'George H.W. Bush', id: 'C00273516', dropped_out: false, incumbent: true, primary_rank: 1},
+		 	 {name: 'Pat Buchanan', id: 'C00361352', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'David Duke', id: 'C00256735', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Harold Stassen', id: 'C00108639', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Ron Paul', id: 'C00495820', dropped_out: 'TODO', endorsed: 'TODO'},
 
 		]
 	}
@@ -99,22 +109,22 @@ var obj = {
 	'd' :{
 		winner: 'Bill Clinton',
 		candidates: [
-		 	 {name: 'Bill Clinton', id: '', dropped_out: false, incumbent:true, primary_rank: 1, endorsed: 'TODO'},
-		 	 {name: 'Lyndon LaRouche', id: '', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Bill Clinton', id: 'C00321414', dropped_out: false, incumbent:true, primary_rank: 1, endorsed: 'TODO'},
+		 	 {name: 'Lyndon LaRouche', id: 'C00364091', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
 		]
 	}, 
 	'r': {
 		winner: 'Bob Dole',
 		candidates: [
-		 	 {name: 'Bob Dole', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Pat Buchanan', id: '', dropped_out: '08121996', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Steve Forbes', id: '', dropped_out: '03141996', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'Robert K. Dornan', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Phil Graham', id: '', dropped_out: '02141996', endorsed: 'TODO'},
-		 	 {name: 'Alan Keyes', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Richard Lugar', id: '', dropped_out: '03061996', endorsed: 'TODO'},
-		 	 {name: 'Alan Specter', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Pete Wilson', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Bob Dole', id: 'C00317743', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Pat Buchanan', id: 'C00361352', dropped_out: '08121996', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Steve Forbes', id: 'C00343772', dropped_out: '03141996', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Robert K. Dornan', id: 'C00301465', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Phil Gramm', id: 'C00299917', dropped_out: '02141996', endorsed: 'TODO'},
+		 	 {name: 'Alan Keyes', id: 'C00452532', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Richard Lugar', id: 'C00301333', dropped_out: '03061996', endorsed: 'TODO'},
+		 	 {name: 'Arlen Specter', id: 'C00300772', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Pete Wilson', id: 'C00301978', dropped_out: 'TODO', endorsed: 'TODO'},
 		]
 	}
 },
@@ -122,28 +132,27 @@ var obj = {
 	'd' :{
 		winner: 'Al Gore',
 		candidates: [
-		 	 {name: 'Al Gore', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Bill Bradley', id: '', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Lyndon LaRouche', id: '', dropped_out: 'TODO', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'Al Gore', id: 'C00360982', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Bill Bradley', id: 'C00341818', dropped_out: 'TODO', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Lyndon LaRouche', id: 'C00364091', dropped_out: 'TODO', primary_rank: 3, endorsed: 'TODO'},
 		]
 	}, 
 	'r': {
 		winner: 'George W. Bush',
 		candidates: [
-		 	 {name: 'George W. Bush', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'Alan Keyes', id: '', dropped_out: '07252000', primary_rank: 3, endorsed: 'TODO'},
-		 	 {name: 'John McCain', id: '', dropped_out: '03092000', primary_rank: 2, endorsed: 'TODO'},
-		 	 {name: 'Steve Forbes', id: '', dropped_out: '02102000', primary_rank: 4, endorsed: 'TODO'},
-		 	 {name: 'Gary Bauer', id: '', dropped_out: '02042000', endorsed: 'TODO'},
-		 	 {name: 'Orrin Hatch', id: '', dropped_out: '01262000', endorsed: 'TODO'},
-		 	 {name: 'Lamar Alexander', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Orrin Hatch', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Pat Buchanan', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Elizabeth Dole', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'John Kasich', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Dan Quayle', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Bob Smith', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
-		 	 {name: 'Herman Cain', id: '', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'George W. Bush', id: 'P00003335', dropped_out: false, primary_rank: 1},
+		 	 {name: 'Alan Keyes', id: 'C00452532', dropped_out: '07252000', primary_rank: 3, endorsed: 'TODO'},
+		 	 {name: 'John McCain', id: 'C00430470', dropped_out: '03092000', primary_rank: 2, endorsed: 'TODO'},
+		 	 {name: 'Steve Forbes', id: 'C00343772', dropped_out: '02102000', primary_rank: 4, endorsed: 'TODO'},
+		 	 {name: 'Gary Bauer', id: 'C00342774', dropped_out: '02042000', endorsed: 'TODO'},
+		 	 {name: 'Orrin Hatch', id: 'C00346783', dropped_out: '01262000', endorsed: 'TODO'},
+		 	 {name: 'Lamar Alexander', id: 'C00342220', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Pat Buchanan', id: 'C00361352', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Elizabeth Dole', id: 'C00317743', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'John Kasich', id: 'C00346965', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Dan Quayle', id: 'C00342667', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Bob Smith', id: 'C00342139', dropped_out: 'TODO', endorsed: 'TODO'},
+		 	 {name: 'Herman Cain', id: 'C00496067', dropped_out: 'TODO', endorsed: 'TODO'},
 
 		]
 	}
@@ -152,21 +161,21 @@ var obj = {
 	'd' :{
 		winner: 'John Kerry',
 		candidates: [
-		 	 {name: 'John Kerry', id: '', dropped_out: false, primary_rank: 1},
-		 	 {name: 'John Edwards', id: '', dropped_out: '03022004', primary_rank: 2, endorsed: 'John Kerry'},
-		 	 {name: 'Howard Dean', id: '', dropped_out: '02182008', primary_rank: 3, endorsed: 'John Kerry'},
-		 	 {name: 'Wesley Clark', id: '', dropped_out: '02112008', primary_rank: 4, endorsed: 'John Kerry'},
-		 	 {name: 'Dick Gephardt', id: '', dropped_out: 'unknown', endorsed: 'unknown'},
-		 	 {name: 'Dennis Kucinich', id: '', dropped_out: '07222004', endorsed: 'John Kerry'},
-		 	 {name: 'Joe Lieberman', id: '', dropped_out: '02112004', endorsed: 'John Kerry'},
-		 	 {name: 'Al Sharpton', id: '', dropped_out: '03152004', endorsed: 'John Kerry'},
+		 	 {name: 'John Kerry', id: 'C00404160', dropped_out: false, primary_rank: 1},
+		 	 {name: 'John Edwards', id: 'C00384073', dropped_out: '03022004', primary_rank: 2, endorsed: 'John Kerry'},
+		 	 {name: 'Howard Dean', id: 'C00378125', dropped_out: '02182008', primary_rank: 3, endorsed: 'John Kerry'},
+		 	 {name: 'Wesley Clark', id: 'C00390898', dropped_out: '02112008', primary_rank: 4, endorsed: 'John Kerry'},
+		 	 {name: 'Dick Gephardt', id: 'C00384123', dropped_out: 'unknown', endorsed: 'unknown'},
+		 	 {name: 'Dennis Kucinich', id: 'C00430975', dropped_out: '07222004', endorsed: 'John Kerry'},
+		 	 {name: 'Joe Lieberman', id: 'C00384297', dropped_out: '02112004', endorsed: 'John Kerry'},
+		 	 {name: 'Al Sharpton', id: 'Sharpton', dropped_out: '03152004', endorsed: 'John Kerry'},
 
 		]
 	}, 
 	'r': {
 		winner: 'George W. Bush',
 		candidates: [
-		 	 {name: 'George W. Bush', id: '', dropped_out: false, primary_rank: 1, incumbent: true },
+		 	 {name: 'George W. Bush', id: 'P00003335', dropped_out: false, primary_rank: 1, incumbent: true },
 		]
 	}
 },
@@ -176,7 +185,7 @@ var obj = {
  	 	candidates: [ 
  	 		{name: 'Barack Obama', id: 'C00431445', dropped_out: false, primary_rank: 1 },
 	 		{name:'Hilary Clinton','id':'C00431569', dropped_out:false, endorsed:'Barack Obama', primary_rank: 2},
-	 		{name:'Joe Edwards','id':'C00431205', dropped_out:'01302008', endorsed:'Barack Obama'},
+	 		{name:'John Edwards','id':'C00431205', dropped_out:'01302008', endorsed:'Barack Obama'},
 	 		{name:'Joe Biden','id':'C00431916', dropped_out:'01032008', endorsed:'Barack Obama'},
 	 		{name:'Chris Dodd','id':'C00431379', dropped_out:'01032008', endorsed:'Barack Obama'},
 	 		{name:'Mike Gravel','id':'C00423202', dropped_out:'03132008', endorsed: 'Jesse Johnson (green party)'},
@@ -208,46 +217,45 @@ var obj = {
 	'r': {
 		winner: 'Mitt Romney', 
 		candidates: [
-	 		{name:'Mitt Romney','id':'', dropped_out:false, primary_rank: 1},
-	 		{name:'Rick Santorum','id':'', dropped_out:'05072012', primary_rank: 2, endorsed:'Mitt Romney'},
-	 		{name:'Newt Gingrich','id':'', dropped_out:'05022012', primary_rank: 3, endorsed:'Mitt Romney'},
-	 		{name:'Ron Paul','id':'', dropped_out:false, primary_rank: 4, endorsed:'Mitt Romney'},
-	 		{name:'Jon Hunstman','id':'', dropped_out:'01162012', endorsed: 'Mitt Romney'},
-	 		{name:'Rick Perry','id':'', dropped_out:'01192012', endorsed: 'Newt Gingrich'},
-	 		{name:'Michele Bachmann','id':'', dropped_out:'01042012', endorsed: 'Mitt Romney'},
-	 		{name:'Buddy Roemer','id':'', dropped_out:'05310212', endorsed: null},
-	 		{name:'Herman Cain','id':'', dropped_out:'12032011', endorsed: 'Newt Gingrich'},
-	 		{name:'Gary Johnson','id':'', dropped_out:'12282011', endorsed: null},
+	 		{name:'Mitt Romney','id':'C00431171', dropped_out:false, primary_rank: 1},
+	 		{name:'Rick Santorum','id':'C00578492', dropped_out:'05072012', primary_rank: 2, endorsed:'Mitt Romney'},
+	 		{name:'Newt Gingrich','id':'C00496497', dropped_out:'05022012', primary_rank: 3, endorsed:'Mitt Romney'},
+	 		{name:'Ron Paul','id':'C00495820', dropped_out:false, primary_rank: 4, endorsed:'Mitt Romney'},
+	 		{name:'Jon Hunstman','id':'C00498444', dropped_out:'01162012', endorsed: 'Mitt Romney'},
+	 		{name:'Rick Perry','id':'C00500587', dropped_out:'01192012', endorsed: 'Newt Gingrich'},
+	 		{name:'Michele Bachmann','id':'C00410118', dropped_out:'01042012', endorsed: 'Mitt Romney'},
+	 		{name:'Buddy Roemer','id':'C00493692', dropped_out:'05310212', endorsed: null},
+	 		{name:'Herman Cain','id':'C00496067', dropped_out:'12032011', endorsed: 'Newt Gingrich'},
+	 		{name:'Gary Johnson','id':'C00495622', dropped_out:'12282011', endorsed: null},
 		]
 	}
 },
 2016: {
 	'd' :{
 		candidates: [
-	 		{name:'Hilary Clinton','id':''},
-	 		{name:'Bernie Sanders','id':''},
-	 		{name:'Jim Webb','id':''},
-	 		{name:'Lincoln Chafee','id':'10232015'},
-	 		{name:'Jim Webb','id':'', dropped_out:'10202015'},
-	 		{name:'Lawrence Lessig','id':'', dropped_out:'1102015'},
+	 		{name:'Hilary Clinton','id':'C00575795'},
+	 		{name:'Bernie Sanders','id':'C00577130'},
+	 		{name:'Jim Webb','id':'C00581215'},
+	 		{name:'Lincoln Chafee','id': 'C00579706', dropped_out:'10232015'},
+	 		{name:'Lawrence Lessig','id':'C00583146', dropped_out:'1102015'},
 		]
 	}, 
 	'r': {
 		candidates: [
-	 		{name:'Jeb Bush','id':''},
-	 		{name:'Ben Carson','id':''},
-	 		{name:'Chris Christie','id':''},
-	 		{name:'Ted Cruz','id':''},
-	 		{name:'Carly Fiorina','id':''},
-	 		{name:'Jim Gilmore','id':''},
-	 		{name:'Lindsey Graham','id':''},
-	 		{name:'Mike Huckabee','id':''},
-	 		{name:'John Kasich','id':''},
-	 		{name:'George Pataki','id':''},
-	 		{name:'Rand Paul','id':''},
-	 		{name:'Marco Rubio','id':''},
-	 		{name:'Rick Santorum','id':''},
-	 		{name:'Donald Trump','id':''},
+	 		{name:'Jeb Bush','id':'C00579458'},
+	 		{name:'Ben Carson','id':'C00573519'},
+	 		{name:'Chris Christie','id':'C00580399'},
+	 		{name:'Ted Cruz','id':'C00574624'},
+	 		{name:'Carly Fiorina','id':'C00577312'},
+	 		{name:'Jim Gilmore','id':'C00582668'},
+	 		{name:'Lindsey Graham','id':'P60007697'},
+	 		{name:'Mike Huckabee','id':'C00577981'},
+	 		{name:'John Kasich','id':'C00581876'},
+	 		{name:'George Pataki','id':'C00578245'},
+	 		{name:'Rand Paul','id':'C00495820'},
+	 		{name:'Marco Rubio','id':'C00458844'},
+	 		{name:'Rick Santorum','id':'C00578492'},
+	 		{name:'Donald Trump','id':'C00580100'},
 		]
 	}
 }
