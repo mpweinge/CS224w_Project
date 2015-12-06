@@ -1,4 +1,4 @@
-var obj = {
+{
 1980: {
 	'd' :{ 
 		winner: 'Jimmy Carter',
@@ -33,7 +33,7 @@ var obj = {
 		 	 {name: 'Walter Mondale', id: 'C00186296', dropped_out: false, delegates: 2191, primary_vote_percentage: 56.41},
 		 	 {name: 'Gary Hart', id: 'C00214452', dropped_out: '07161984', delegates: 1201, primary_vote_percentage: 30.92},
 		 	 {name: 'Jesse Jackson', id: 'C00217893', dropped_out: '07161984', delegates: 466, primary_vote_percentage: 12},
-		 	 {name: 'Thomas Eagleton', id: 'C00164855', dropped_out: 'unknown', delegates: 18, primary_vote_percentage: 0.46},
+		 	 {name: 'Thomas Eagleton', id: 'C00029488', dropped_out: 'unknown', delegates: 18, primary_vote_percentage: 0.46},
 		 	 {name: 'John Glenn', id: 'C00164855', dropped_out: '03161984', delegates: 2, primary_vote_percentage: 0.05},
 		 	 {name: 'George McGovern', id: 'C00170407', dropped_out: '03141984', delegates: 2, primary_vote_percentage: 0.1},
 		 	 {name: 'Martha Kirkland', id: 'C00159392', dropped_out: 'unknown', delegates: 1,  primary_vote_percentage: 0.03},

@@ -20,32 +20,32 @@ dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag:
 
 def checkDate(transactionDate, endDate):
 	if ( transactionDate[transactionDate.length() - 1] < endDate[endDate.size() - 1] ):
-    	return true;
-  	else if (transactionDate[transactionDate.length() - 1] == endDate[endDate.size() - 1]):
-	    // Compare the months aka the first two years
+		return True
+  	elif (transactionDate[transactionDate.length() - 1] == endDate[endDate.size() - 1]):
+	    # Compare the months aka the first two years
 	    month1 = transactionDate[0] + transactionDate[1]
 	    month2 = endDate[0] + endDate[1]
 	    
-	    int iMonth1 = int(month1)
-	    int iMonth2 = int(month2)
+	    iMonth1 = int(month1)
+	    iMonth2 = int(month2)
 	    
 	    if (iMonth1 < iMonth2):
-	      return true
+	      return True
 	    else:
-	      return false
+	      return False
 	    
 	else:
-	    return false
+	    return False
 
 # p is the probability of adding the new node to the graph.
 # Add a parameter here 'date' to determine whether the date of the transaction
 # is before or after a certain date
 # weighted is whether or not to use weights.
-def readInDonors(G, p, weighted, endDate):
+def readInDonors(G, p, weighted, endDate, donorfile):
 	weights_so_far = {} # "(n1name, n2name) -> weight"
 	num_lines = 0
 	num_negative_amount = 0
-	for line in open(donorFile):
+	for line in open(donorfile):
 		num_lines += 1
 		if random.random() > p: continue
 		line = line.split('|')
@@ -54,7 +54,7 @@ def readInDonors(G, p, weighted, endDate):
 		
 		date = line[13]
 
-		if (!checkDate(date)): continue
+		if (not checkDate(date)): continue
 
 		if len(name.split(",")) < 2: continue
 		name = name.split(" ")[0] + name.split(",")[1].strip().split(" ")[0]
@@ -71,11 +71,11 @@ def readInDonors(G, p, weighted, endDate):
 	print 'num lines: ', num_lines, 'num negative amount: ', num_negative_amount
 			# find donor and committee, add edge from donor to committee.
 
-def readCommitteeToCommittee(G): 
+def readCommitteeToCommittee(G, committeefile): 
 	num_lines = 0
 	num_negative_amount = 0
 	weights_so_far = {}
-	for line in open(committeeFile):
+	for line in open(committeefile):
 		num_lines += 1
 		line = line.split('|')
 		id1 = line[0]
