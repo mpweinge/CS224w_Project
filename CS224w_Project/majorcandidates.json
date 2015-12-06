@@ -160,7 +160,7 @@ var obj = {
 		 	 {name: 'Howard Dean', id: 'C00378125', dropped_out: '02182008', delegates: 167.5, primary_vote_percentage: 5.55},
 		 	 {name: 'Wesley Clark', id: 'C00390898', dropped_out: '02112008', delegates: 60, primary_vote_percentage:3.36},
 		 	 {name: 'Dennis Kucinich', id: 'C00430975', dropped_out: '07222004', delegates: 40, primary_vote_percentage: 3.8},
-		 	 {name: 'Al Sharpton', id: 'Sharpton', dropped_out: '03152004', delegates: 26, primary_vote_percentage: 2.3},
+		 	 {name: 'Al Sharpton', id: 'C00384388', dropped_out: '03152004', delegates: 26, primary_vote_percentage: 2.3},
 		 	 {name: 'Dick Gephardt', id: 'C00384123', dropped_out: '01212004', delegates: 0},
 		 	 {name: 'Joe Lieberman', id: 'C00384297', dropped_out: '02112004', delegates: 0},
 
