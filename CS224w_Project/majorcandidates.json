@@ -141,7 +141,7 @@ var obj = {
 	'r': {
 		winner: 'George W. Bush',
 		candidates: [
-		 	 {name: 'George W. Bush', id: 'P00003335', dropped_out: false, delegates: 1496, primary_vote_percentage: 62.00},
+		 	 {name: 'George W. Bush', id: 'C00404343', dropped_out: false, delegates: 1496, primary_vote_percentage: 62.00},
 		 	 {name: 'Alan Keyes', id: 'C00452532', dropped_out: '07252000', delegates: 22, primary_vote_percentage: 5.08},
 		 	 {name: 'John McCain', id: 'C00430470', dropped_out: '03092000', delegates: 244,  primary_vote_percentage: 31.23},
 		 	 {name: 'Steve Forbes', id: 'C00343772', dropped_out: '02102000', delegates: 10, primary_vote_percentage: 0.89},
@@ -169,7 +169,7 @@ var obj = {
 	'r': {
 		winner: 'George W. Bush',
 		candidates: [
-		 	 {name: 'George W. Bush', id: 'P00003335', dropped_out: false, delegates: 2508, incumbent: true,primary_vote_percentage: 98.1},
+		 	 {name: 'George W. Bush', id: 'C00404343', dropped_out: false, delegates: 2508, incumbent: true,primary_vote_percentage: 98.1},
 		]
 	}
 },
