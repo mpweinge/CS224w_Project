@@ -190,14 +190,14 @@
 	'r':{
 		winner: 'John McCain',
 		candidates: [
-	 		{name:'John McCain','id':'', dropped_out:false, delegates: 1575, primary_vote_percentage: 46.38},
-	 		{name:'Mitt Romney','id':'', dropped_out:'02072008', delegates: 271, endorsed:'John McCain', primary_vote_percentage: 22.46},
-	 		{name:'Mike Huckabee','id':'', dropped_out:'03042008', delegates: 278, endorsed:'John McCain', primary_vote_percentage: 20.43},
-	 		{name:'Ron Paul','id':'', dropped_out:'06122008', delegates: 35, endorsed:'Chuck Baldwin (constitution party)', primary_vote_percentage: 5.55},
-	 		{name:'Fred Thompson','id':'', dropped_out:'01222008',delegates: 11,  endorsed:'John McCain', primary_vote_percentage: 1.39},
-	 		{name:'Rudy Giuliani','id':'', dropped_out:'01302008', delegates: 0, endorsed:'John McCain', primary_vote_percentage: 0.28},
-	 		{name:'Alan Keyes','id':'', dropped_out:'04152008', delegates: 2, endorsed:'unknown'},
-	 		{name:'Duncan Hunter','id':'', dropped_out:'01192008', delegates: 1, endorsed:'Mike Huckabee'},
+	 		{name:'John McCain','id':'C00430470', dropped_out:false, delegates: 1575, primary_vote_percentage: 46.38},
+	 		{name:'Mitt Romney','id':'C00431171', dropped_out:'02072008', delegates: 271, endorsed:'John McCain', primary_vote_percentage: 22.46},
+	 		{name:'Mike Huckabee','id':'C00431809', dropped_out:'03042008', delegates: 278, endorsed:'John McCain', primary_vote_percentage: 20.43},
+	 		{name:'Ron Paul','id':'C00495820', dropped_out:'06122008', delegates: 35, endorsed:'Chuck Baldwin (constitution party)', primary_vote_percentage: 5.55},
+	 		{name:'Fred Thompson','id':'C00438507', dropped_out:'01222008',delegates: 11,  endorsed:'John McCain', primary_vote_percentage: 1.39},
+	 		{name:'Rudy Giuliani','id':'C00430512', dropped_out:'01302008', delegates: 0, endorsed:'John McCain', primary_vote_percentage: 0.28},
+	 		{name:'Alan Keyes','id':'C00452532', dropped_out:'04152008', delegates: 2, endorsed:'unknown'},
+	 		{name:'Duncan Hunter','id':'C00431411', dropped_out:'01192008', delegates: 1, endorsed:'Mike Huckabee'},
 		]
 	}
 },
