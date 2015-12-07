@@ -14,8 +14,8 @@ const string othPath = "../../data/1979_1980/itoth.txt";
 const string pasPath = "../../data/1979_1980/itpas2.txt";
 const string cnPath = "../../data/1979_1980/cn.txt";
 
-const string endCampaign = "01011980";
-
+//MAR
+const string endCampaign = "03011980";
 
 //DEMOCRATS
 const string carterTag = "C00129445";

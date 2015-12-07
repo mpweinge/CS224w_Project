@@ -14,7 +14,7 @@ const string othPath = "../../data/2003_2004/itoth.txt";
 const string pasPath = "../../data/2003_2004/itpas2.txt";
 const string cnPath = "../../data/2003_2004/cn.txt";
 
-const string endCampaign = "01012004";
+const string endCampaign = "03012004";
 
 //Democrats
 const string kerryTag = "C00404160";

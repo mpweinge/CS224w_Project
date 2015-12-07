@@ -14,7 +14,7 @@ const string othPath = "../../data/1999_2000/itoth.txt";
 const string pasPath = "../../data/1999_2000/itpas2.txt";
 const string cnPath = "../../data/1999_2000/cn.txt";
 
-const string endCampaign = "01012000";
+const string endCampaign = "03012000";
 
 //Democrats
 const string goreTag = "C00360982";

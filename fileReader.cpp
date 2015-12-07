@@ -27,7 +27,7 @@ bool isEarlierDate(string date1, string date2) {
   
   if ( stoi(year1) < stoi(year2) ){
     return true;
-  } else if (date1[date1.size() - 1] == date2[date2.size() - 1]) {
+  } else {
     
     // Compare the months aka the first two years
     string month1 = {date1[0], date1[1]};
@@ -42,9 +42,8 @@ bool isEarlierDate(string date1, string date2) {
       return false;
     }
     
-  } else {
-    return false;
   }
+  return false;
 }
 
 unordered_map<string, string> candidateIdToCommittee;

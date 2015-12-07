@@ -57,7 +57,9 @@ void computePageRank() {
     
     string name = democraticCandidates[i];
     
-    cout << /*demNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " << */nodeToHash[node.GetId()] << "," << candidateToDonorFunds[democraticCandidates[i]] << "," << candidateToPACFunds[democraticCandidates[i]] << "," << candidateToDonorFunds[democraticCandidates[i]] +  candidateToPACFunds[democraticCandidates[i]] << endl;
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, node.GetId());
+    
+    cout << /*demNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " << */nodeToHash[node.GetId()] << "," << candidateToDonorFunds[democraticCandidates[i]] << "," << candidateToPACFunds[democraticCandidates[i]] << "," << candidateToDonorFunds[democraticCandidates[i]] +  candidateToPACFunds[democraticCandidates[i]] << "," << currCloseness << endl;
   }
   
   for (int i = 0; i< numRepublicanCandidates; i++) {
@@ -65,7 +67,9 @@ void computePageRank() {
     
     string name = republicanCandidates[i];
     
-    cout << /*repNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " <<*/ nodeToHash[node.GetId()] << "," << candidateToDonorFunds[republicanCandidates[i]] << "," << candidateToPACFunds[republicanCandidates[i]] << "," << candidateToDonorFunds[republicanCandidates[i]] +  candidateToPACFunds[republicanCandidates[i]] << endl;
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, node.GetId());
+    
+    cout << /*repNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " <<*/ nodeToHash[node.GetId()] << "," << candidateToDonorFunds[republicanCandidates[i]] << "," << candidateToPACFunds[republicanCandidates[i]] << "," << candidateToDonorFunds[republicanCandidates[i]] +  candidateToPACFunds[republicanCandidates[i]] << "," << currCloseness << endl;
   }
 }
 
@@ -251,9 +255,9 @@ int main(int argc, const char * argv[]) {
     
     */
     // Compute pagerank for all of the nodes in our graph
-    //computePageRank();
+    computePageRank();
     //computeDonationsPerCandidate();
-  computeClosenessCentrality();
+    //computeClosenessCentrality();
   
   
     //cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;

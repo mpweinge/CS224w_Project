@@ -14,7 +14,7 @@ const string othPath = "../../data/1991_1992/itoth.txt";
 const string pasPath = "../../data/1991_1992/itpas2.txt";
 const string cnPath = "../../data/1991_1992/cn.txt";
 
-const string endCampaign = "01011992";
+const string endCampaign = "03011992";
 
 //Democratic
 const string clintonTag = "C00321414";
