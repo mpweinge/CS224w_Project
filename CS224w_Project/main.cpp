@@ -23,11 +23,12 @@ using namespace std;
 PNGraph donorGraph;
 PUNGraph undirectedDonorGraph;
 
-unordered_map<string, int> committeeStringToNodeNumber;
+map<string, int> committeeStringToNodeNumber;
 
 unordered_map<string, int> donorStringToNodeNumber;
 
-unordered_map<string, int> candidateToFunds;
+unordered_map<string, int> candidateToDonorFunds;
+unordered_map<string, int> candidateToPACFunds;
 
 unordered_map<string, int> candidateToNumberDonors;
 
@@ -48,13 +49,39 @@ void computePageRank() {
         }
     }
     
-    for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
-        cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
-    }
-    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
-        TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
-        //cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
-    }
+    //for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+   //     cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
+    //}
+  for (int i = 0; i< numDemocraticCandidates; i++) {
+    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
+    
+    string name = democraticCandidates[i];
+    
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, node.GetId());
+    
+    cout << /*demNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " << */nodeToHash[node.GetId()] << "," << candidateToDonorFunds[democraticCandidates[i]] << "," << candidateToPACFunds[democraticCandidates[i]] << "," << candidateToDonorFunds[democraticCandidates[i]] +  candidateToPACFunds[democraticCandidates[i]] << "," << currCloseness << endl;
+  }
+  
+  for (int i = 0; i< numRepublicanCandidates; i++) {
+    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[republicanCandidates[i]]);
+    
+    string name = republicanCandidates[i];
+    
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, node.GetId());
+    
+    cout << /*repNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " <<*/ nodeToHash[node.GetId()] << "," << candidateToDonorFunds[republicanCandidates[i]] << "," << candidateToPACFunds[republicanCandidates[i]] << "," << candidateToDonorFunds[republicanCandidates[i]] +  candidateToPACFunds[republicanCandidates[i]] << "," << currCloseness << endl;
+  }
+}
+
+void computeDonationsPerCandidate()
+{
+  /*for (auto candidate = demNames.begin(); candidate != demNames.end(); candidate++) {
+    cout << candidate->second << " Donor, PAC, Total donations: " << candidateToDonorFunds[candidate->first] << "," << candidateToPACFunds[candidate->first] << "," << candidateToDonorFunds[candidate->first] +  candidateToPACFunds[candidate->first] << endl;
+  }
+  
+  for (auto candidate = repNames.begin(); candidate != repNames.end(); candidate++) {
+    cout << candidate->second << " Donor, PAC, Total donations: " << candidateToDonorFunds[candidate->first] << "," << candidateToPACFunds[candidate->first] << "," << candidateToDonorFunds[candidate->first] +  candidateToPACFunds[candidate->first] << endl;
+  }*/
 }
 
 void computeUndirectedBetweenness() {
@@ -62,12 +89,12 @@ void computeUndirectedBetweenness() {
     TIntFltH nodeBetweennessCentr;
     TSnap::GetBetweennessCentr(undirectedDonorGraph, nodeBetweennessCentr);
     
-    for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+    for (map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
         cout << "Betweenness score for user: " << committeeKeys->first << " value: " << nodeBetweennessCentr[committeeKeys->second] << endl;
     }
 }
 
-void performHeirarchicalClustering() {
+/*void performHeirarchicalClustering() {
     // Perform heirarchical clustering based on distance in undirected graph
     cout << "Distances for heirarchical clustering. Candidates are in the order: 1. Obama 2. Clinton"
     << "3. Edwards 4. Biden 5. Dodd 6. Gravel 7. Kucinich 8. Richardson"
@@ -105,7 +132,7 @@ void performHeirarchicalClustering() {
     << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[gravelTag], committeeStringToNodeNumber[richardsonTag]) << ","
     
     << TSnap::GetShortPath(undirectedDonorGraph, committeeStringToNodeNumber[kucinichTag], committeeStringToNodeNumber[richardsonTag]) << "," << endl;
-}
+}*/
 
 int numberOfPathsOfLengthTwo(int node1, int node2) {
     // Look for times that node2 is a neighbour of a neighbour
@@ -141,12 +168,28 @@ void performAverageDistHeirarchicalClustering() {
     
     // As we know that we are looking for distance '2', we can avoid doing a full BFS tree and just looking for different paths of distance '2'
     
-    for (int i = 0; i < numDemocraticCandidates2008; i++)
+    for (int i = 0; i < numDemocraticCandidates; i++)
     {
-        for (int j = i+1; j < numDemocraticCandidates2008; j++) {
-            cout << numberOfPathsOfLengthTwo( committeeStringToNodeNumber[democraticCandidates2008[i]], committeeStringToNodeNumber[democraticCandidates2008[j]]) << ",";
+        for (int j = i+1; j < numDemocraticCandidates; j++) {
+            cout << numberOfPathsOfLengthTwo( committeeStringToNodeNumber[democraticCandidates[i]], committeeStringToNodeNumber[democraticCandidates[j]]) << ",";
         }
     }
+}
+
+void computeClosenessCentrality() {
+  for (int i = 0; i < numDemocraticCandidates; i++) {
+    string currCandidate = democraticCandidates[i];
+    int nodeId = committeeStringToNodeNumber[currCandidate];
+      float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, nodeId);
+    cout << currCloseness << endl;
+   }
+  
+  for (int i = 0; i < numRepublicanCandidates; i++) {
+    string currCandidate = republicanCandidates[i];
+    int nodeId = committeeStringToNodeNumber[currCandidate];
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, nodeId);
+    cout << currCloseness << endl;
+  }
 }
 
 
@@ -159,6 +202,13 @@ int main(int argc, const char * argv[]) {
     donorGraph = TNGraph::New();
     undirectedDonorGraph = TUNGraph::New();
   
+  readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
+  readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
+  
+  readInCN();
+  readInPAS(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
+  
+ /*
   //Run this over 12 months and see how the data changes over that time
   const string end2007Campaign = "01012008";
   
@@ -175,13 +225,13 @@ int main(int argc, const char * argv[]) {
     cout << " i: " << i << endl;
     
     // Output the number of funds for each candidate
-    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+    for (auto candidate = demNames.begin(); candidate != demNames.end(); candidate++) {
        //float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
       
      // cout << '\t' << "Candidate: " << candidate->second << " funds: " << candidateToFunds[candidate->first] << endl;
       cout << '\t' << "Candidate: " << candidate->second << " number of donations: " << candidateToNumberDonors[candidate->first] << endl;
     }
-    for (auto candidate = dem2008Names.begin(); candidate != dem2008Names.end(); candidate++) {
+    for (auto candidate = demNames.begin(); candidate != demNames.end(); candidate++) {
       //float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, committeeStringToNodeNumber[candidate->first]);
       
       cout << '\t' << "Candidate: " << candidate->second << " funds: " << candidateToFunds[candidate->first] << endl;
@@ -203,11 +253,14 @@ int main(int argc, const char * argv[]) {
     
     performAverageDistHeirarchicalClustering();
     
-    
+    */
     // Compute pagerank for all of the nodes in our graph
     computePageRank();
+    //computeDonationsPerCandidate();
+    //computeClosenessCentrality();
   
-    cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
+  
+    //cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
   
     // Plot total number of donations over time
     // Plot number of donations over time 

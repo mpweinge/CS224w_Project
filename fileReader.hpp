@@ -13,19 +13,29 @@
 #include <vector>
 
 #include "constants.h"
+#include "DatabaseStatistics.hpp"
 
 using namespace std;
 
-void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToNodeNumber,
+void readCommitteeToCommitteeFile(map<string, int> &committeeStringToNodeNumber,
                                   PNGraph &donorGraph,
                                   PUNGraph &undirectedDonorGraph,
                                   string endDate);
 
 void readInDonors( vector<candidateDonorNode>& nodes,
                   unordered_map<string, int> &donorStringToNodeNumber,
-                  unordered_map<string, int> &committeeStringToNodeNumber,
+                  map<string, int> &committeeStringToNodeNumber,
                   PNGraph &donorGraph,
                   PUNGraph &undirectedDonorGraph,
                   string endDate);
+
+void readInPAS( vector<candidateDonorNode>& nodes,
+               unordered_map<string, int> &donorStringToNodeNumber,
+               map<string, int> &committeeStringToNodeNumber,
+               PNGraph &donorGraph,
+               PUNGraph &undirectedDonorGraph,
+               string endDate);
+
+void readInCN();
 
 #endif /* fileReader_hpp */

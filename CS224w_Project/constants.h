@@ -21,7 +21,7 @@
 
 using namespace std;
 
-// Candidates started dropping out in 2008 primary on jan 1st, 2008
+/*// Candidates started dropping out in 2008 primary on jan 1st, 2008
 const string end2007Campaign = "01012008";
 
 //If the last four digits are >= 2008, then don't include
@@ -42,11 +42,12 @@ const map<string, string> dem2008Names =
     {bidenTag, "Joe Biden"}, {doddTag, "Chris Dodd"}, {gravelTag, "Mike Gravel"},
     {kucinichTag, "Dennis Kucinich"}, {richardsonTag, "Bill Richardson"}};
 
-const int numDemocraticCandidates2008 = 8;
+const int numDemocraticCandidates2008 = 8;*/
 
-extern unordered_map<string, int> committeeStringToNodeNumber;
+extern map<string, int> committeeStringToNodeNumber;
 
-extern unordered_map<string, int> candidateToFunds;
+extern unordered_map<string, int> candidateToDonorFunds;
+extern unordered_map<string, int> candidateToPACFunds;
 
 extern unordered_map<string, int> candidateToNumberDonors;
 

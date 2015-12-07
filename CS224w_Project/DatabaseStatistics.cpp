@@ -22,7 +22,7 @@ float getAverageNumberOfDonationsPerPAC(PNGraph & graph)
   int totalEdges = 0;
   int totalPacs = 0;
   
-  for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+  for (map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
     TNGraph::TNodeI currNode = graph->GetNI(committeeKeys->second);
     totalEdges += currNode.GetOutDeg();
     totalPacs++;
@@ -49,13 +49,13 @@ float averageOutDegreePerCandidate(TNGraph & graph)
   //const int numDemocraticCandidates2008 = 8;
   int totalOutDegrees = 0;
   
-  for (int i = 0; i < numDemocraticCandidates2008; i++)
+  for (int i = 0; i < numDemocraticCandidates; i++)
   {
-    TNGraph::TNodeI currNode = graph.GetNI(committeeStringToNodeNumber[democraticCandidates2008[i]]);
+    TNGraph::TNodeI currNode = graph.GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
     totalOutDegrees += currNode.GetOutDeg();
   }
   
-  return ((float) totalOutDegrees) / numDemocraticCandidates2008;
+  return ((float) totalOutDegrees) / numDemocraticCandidates;
 }
 
 float averageInDegreePerCandidate(TNGraph & graph)
@@ -64,13 +64,13 @@ float averageInDegreePerCandidate(TNGraph & graph)
   //const int numDemocraticCandidates2008 = 8;
   int totalInDegrees = 0;
   
-  for (int i = 0; i < numDemocraticCandidates2008; i++)
+  for (int i = 0; i < numDemocraticCandidates; i++)
   {
-    TNGraph::TNodeI currNode = graph.GetNI(committeeStringToNodeNumber[democraticCandidates2008[i]]);
+    TNGraph::TNodeI currNode = graph.GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
     totalInDegrees += currNode.GetInDeg();
   }
   
-  return ((float) totalInDegrees) / numDemocraticCandidates2008;
+  return ((float) totalInDegrees) / numDemocraticCandidates;
 }
 
 // Some candidates donate to other candidates
