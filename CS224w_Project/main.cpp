@@ -172,6 +172,22 @@ void performAverageDistHeirarchicalClustering() {
     }
 }
 
+void computeClosenessCentrality() {
+  for (int i = 0; i < numDemocraticCandidates; i++) {
+    string currCandidate = democraticCandidates[i];
+    int nodeId = committeeStringToNodeNumber[currCandidate];
+      float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, nodeId);
+    cout << currCloseness << endl;
+   }
+  
+  for (int i = 0; i < numRepublicanCandidates; i++) {
+    string currCandidate = republicanCandidates[i];
+    int nodeId = committeeStringToNodeNumber[currCandidate];
+    float currCloseness = TSnap::GetClosenessCentr(undirectedDonorGraph, nodeId);
+    cout << currCloseness << endl;
+  }
+}
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -235,8 +251,10 @@ int main(int argc, const char * argv[]) {
     
     */
     // Compute pagerank for all of the nodes in our graph
-    computePageRank();
-    computeDonationsPerCandidate();
+    //computePageRank();
+    //computeDonationsPerCandidate();
+  computeClosenessCentrality();
+  
   
     //cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
   
