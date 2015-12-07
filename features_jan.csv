@@ -1,4 +1,4 @@
-year,party,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank,pacs_contributing,direct_individual_donors,all_individual_donors,pac_n_clique_overlap,all_n_clique_overlap,community_size,pacs_in_community
+year,party,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank_jan,pacs_contributing_jan,direct_individual_donors_jan,all_individual_donors_jan,pac_n_clique_overlap_jan,all_n_clique_overlap_jan,community_size_jan,pacs_in_community_jan
 1980,d,Jimmy Carter,C00129445,2123,0.647453491918,51.13,0.00421915777147,166,3,5158,0.0327,0.1527,15879,1183
 1980,d,Ted Kennedy,C00115022,1151,0.351021652943,37.58,0.00688848466035,36,3547,5634,0.0262,0.1818,16989,746
 1980,d,Jerry Brown,C00253914,1,0.000304971027752,2.93,0.000120790371444,6,1,414,0.0216,0.1602,15879,1183
