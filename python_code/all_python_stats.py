@@ -367,11 +367,43 @@ def nCliqueOverlap(G, candidates):
 	return toReturn
 	# find pairwise overlap between candidates' cliques (jaccard similarity)
 
-# numpacs, number of direct donors, numebr of direct+indirect donors, 
-# nclique overlap for everything, nclique overlap for pacs
+def community_structure(G, partition,candidates):
+    to_return = {}
+    candidates_found = 0
+    for candidate in candidates:
+        to_return[candidate] = {}
+    candidate_to_pacs_in_community = {}
+    candidate_to_community_size = {}
+    nodes_so_far = 0
+    candidates_per_community = []
+    pacs_per_community = [] 
+    community_size = []
+    for com in set(partition.values()) :
+        list_nodes = [nodes for nodes in partition.keys() if partition[nodes] == com]
+        num_candidates = 0
+        num_pacs = 0
+        for node in list_nodes:
+        	if node[0:2] == 'C0': num_pacs += 1
+        	if node in candidates: num_candidates += 1
+        for node in list_nodes:
+            if node in candidates:
+                to_return[node]['community_size'] = len(list_nodes)
+                to_return[node]['pacs_in_community'] = num_pacs
+                candidates_found += 1
+                print 'found ', node
+        if (candidates_found >= len(candidates)): break
+    for candidate in candidates:
+        if 'community_size' not in to_return[candidate]:
+            to_return[candidate]['community_size']  = 0
+    for candidate in candidates:
+        if 'pacs_in_community' not in to_return[candidate]:
+            to_return[candidate]['pacs_in_community']  = 0
+
+    return to_return
 
 
-def print_stats(year, party, G, candidates):
+def print_stats(year, party, G, ndG, candidates, partition):
+	cs = community_structure(ndG,partition,[i['id'] for i in candidates[year][party]['candidates']])
 	nCliqueResults = nCliqueOverlap(G, [i['id'] for i in candidates[year][party]['candidates']])
 	print nCliqueResults
 	total_delegates = 0
@@ -379,7 +411,6 @@ def print_stats(year, party, G, candidates):
 		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
 			total_delegates += candidate['delegates']
 
-	# edge (i, j) means that i donated to j.
 	for candidate in candidates[year][party]['candidates']:
 		delegates = 0
 		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
@@ -395,29 +426,45 @@ def print_stats(year, party, G, candidates):
 		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
 			delegates = candidate['delegates']
 			percDelegates = float(delegates) / total_delegates
-
+		pr = "NA"
+		if candidate['id'] in weightedPR:
+			pr = str(weightedPR[candidate['id']])
 		outstr = ','.join([str(year), party, candidate['name'], candidate['id'],
-			str(delegates), str(percDelegates), str(popular_vote),
+			str(delegates), str(percDelegates), str(popular_vote), pr,
 			nClique['npacs'], 
 			nClique['directdonors'],
 			 nClique['alldonors'], 
 			 nClique['allNclique'], 
-			 nClique['pacNclique']])
-
+			 nClique['pacNclique'],
+			 str(cs[candidate['id']]['community_size']),
+			 str(cs[candidate['id']]['pacs_in_community'])])	
 		print outstr
 
 
-print 'year,party,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank'
-for year in [2012, 2016]:
+print 'year,party,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank,pacs_contributing,direct_individual_donors,all_individual_donors,pac_n_clique_overlap,all_n_clique_overlap,community_size,pacs_in_community'
+for year in sorted(candidates.keys()):
 	G = nx.DiGraph() #directed graph
+	ndG = nx.Graph() # non-directed graph: must be non-directed for com
 
 	donorFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itcont.txt"
 	committeeFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itoth.txt"
+	cnFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/cn.txt"
+	itpasFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itpas2.txt"
+
 	minDate = "0101" + str(year)
 	file_reader.readInDonors(G, minDate, donorFile)
 	file_reader.readCommitteeToCommittee(G, committeeFile)
+	file_reader.readCommitteeToCandidate(G, itpasFile, cnFile, minDate)
 
-	nCliqueResults = nCliqueOverlap(G, [i['id'] for i in candidates[year]['d']['candidates']])
+	file_reader.readInDonors(ndG, minDate, donorFile)
+	file_reader.readCommitteeToCommittee(ndG, committeeFile)
+	file_reader.readCommitteeToCandidate(ndG, itpasFile, cnFile, minDate)
+	print 'done reading'
+	weightedPR = nx.pagerank(G)
 
-	print_stats(year, 'd', G, candidates)
-	print_stats(year, 'r', G, candidates)
+	partition = community.best_partition(ndG)
+	print 'done with partition'
+	#nCliqueResults = nCliqueOverlap(G, ndG, [i['id'] for i in candidates[year]['d']['candidates']])
+
+	print_stats(year, 'd', G, ndG, candidates, partition)
+	print_stats(year, 'r', G, ndG, candidates, partition)
