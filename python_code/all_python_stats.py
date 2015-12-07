@@ -160,7 +160,7 @@ candidates = {
 		 	 {'name': 'Howard Dean', 'id': 'C00378125', 'dropped_out': '02182008', 'delegates': 167.5, 'primary_vote_percentage': 5.55},
 		 	 {'name': 'Wesley Clark', 'id': 'C00390898', 'dropped_out': '02112008', 'delegates': 60, 'primary_vote_percentage':3.36},
 		 	 {'name': 'Dennis Kucinich', 'id': 'C00430975', 'dropped_out': '07222004', 'delegates': 40, 'primary_vote_percentage': 3.8},
-		 	 {'name': 'Al Sharpton', 'id': 'Sharpton', 'dropped_out': '03152004', 'delegates': 26, 'primary_vote_percentage': 2.3},
+		 	 {'name': 'Al Sharpton', 'id': 'C00384388', 'dropped_out': '03152004', 'delegates': 26, 'primary_vote_percentage': 2.3},
 		 	 {'name': 'Dick Gephardt', 'id': 'C00384123', 'dropped_out': '01212004', 'delegates': 0},
 		 	 {'name': 'Joe Lieberman', 'id': 'C00384297', 'dropped_out': '02112004', 'delegates': 0},
 
@@ -390,10 +390,10 @@ def community_structure(G, partition,candidates):
                 to_return[node]['community_size'] = len(list_nodes)
                 to_return[node]['pacs_in_community'] = num_pacs
                 candidates_found += 1
-                print 'found ', node
         if (candidates_found >= len(candidates)): break
     for candidate in candidates:
         if 'community_size' not in to_return[candidate]:
+            print 'did not find', candidate
             to_return[candidate]['community_size']  = 0
     for candidate in candidates:
         if 'pacs_in_community' not in to_return[candidate]:
@@ -442,7 +442,7 @@ def print_stats(year, party, G, ndG, candidates, partition):
 
 
 print 'year,party,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank,pacs_contributing,direct_individual_donors,all_individual_donors,pac_n_clique_overlap,all_n_clique_overlap,community_size,pacs_in_community'
-for year in sorted(candidates.keys()):
+for year in [2004]:
 	G = nx.DiGraph() #directed graph
 	ndG = nx.Graph() # non-directed graph: must be non-directed for com
 
@@ -453,18 +453,15 @@ for year in sorted(candidates.keys()):
 
 	minDate = "0101" + str(year)
 	file_reader.readInDonors(G, minDate, donorFile)
-	file_reader.readCommitteeToCommittee(G, committeeFile)
+	file_reader.readCommitteeToCommittee(G, committeeFile, minDate)
 	file_reader.readCommitteeToCandidate(G, itpasFile, cnFile, minDate)
 
 	file_reader.readInDonors(ndG, minDate, donorFile)
-	file_reader.readCommitteeToCommittee(ndG, committeeFile)
+	file_reader.readCommitteeToCommittee(ndG, committeeFile, minDate)
 	file_reader.readCommitteeToCandidate(ndG, itpasFile, cnFile, minDate)
-	print 'done reading'
 	weightedPR = nx.pagerank(G)
 
 	partition = community.best_partition(ndG)
-	print 'done with partition'
-	#nCliqueResults = nCliqueOverlap(G, ndG, [i['id'] for i in candidates[year]['d']['candidates']])
 
 	print_stats(year, 'd', G, ndG, candidates, partition)
 	print_stats(year, 'r', G, ndG, candidates, partition)

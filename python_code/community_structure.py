@@ -5,80 +5,55 @@ import matplotlib.pyplot as plt
 
 
 G = nx.Graph() # non-directed graph: must be non-directed for com
+donorFile = "../CS224w_Project/1995_1996/itcont.txt"
+committeeFile = "../CS224w_Project/1995_1996/itoth.txt"
+cnFile = "../CS224w_Project/1995_1996/cn.txt"
+itpasFile = "../CS224w_Project/1995_1996/itpas2.txt"
 
-file_reader.readInDonors(G, 1.0, False)
-file_reader.readCommitteeToCommittee(G)
-
-for node in G.nodes():
-	deg = float(G.degree(node, weight='weight'))
-	if deg < 0:
-		break
-
+file_reader.readInDonors(G, "01011996", donorFile)
+print 'read donors'
+file_reader.readCommitteeToCommittee(G, committeeFile)
+file_reader.readCommitteeToCandidate(G, itpasFile, cnFile, '01011996')
+print 'read committees'
 #first compute the best partition
-partition = community.best_partition(G)
+print 'made partition'
 
-#drawing
-size = float(len(set(partition.values())))
-# there are 756 communities
+candidates = set(['C00317743','C00361352','C00343772',  'C00452532', 'C00301333',  'C00299917', 
+'C00301465','C00302216'])
 
-candidate_ids = {} 
-for line in open('../CS224w_Project/2007_2008/cn.txt'):
-	line = line.split('|')
-	candidate_ids[line[9]] = line[1]
+def community_structure(G, candidates):
+    partition = community.best_partition(G)
+    to_return = {}
+    candidates_found = 0
+    for candidate in candidates:
+        to_return[candidate] = {}
+    candidate_to_pacs_in_community = {}
+    candidate_to_community_size = {}
+    nodes_so_far = 0
+    candidates_per_community = []
+    pacs_per_community = [] 
+    community_size = []
+    for com in set(partition.values()) :
+        list_nodes = [nodes for nodes in partition.keys() if partition[nodes] == com]
+        num_candidates = 0
+        num_pacs = 0
+        for node in list_nodes:
+        	if node[0:2] == 'C0': num_pacs += 1
+        	if node in candidates: num_candidates += 1
+        for node in list_nodes:
+            if node in candidates:
+                to_return[node]['community_size'] = len(list_nodes)
+                to_return[node]['pacs_in_community'] = num_pacs
+                candidates_found += 1
+                print 'found ', node
+        if (candidates_found >= len(candidates)): break
+    for candidate in candidates:
+        if 'community_size' not in to_return[candidate]:
+            to_return[candidate]['community_size']  = 0
+            print 'didnt find ',candidate
+    for candidate in candidates:
+        if 'pacs_in_community' not in to_return[candidate]:
+            to_return[candidate]['pacs_in_community']  = 0
+    return to_return
 
-
-obamaTag = "C00431445";
-clintonTag = "C00431569";
-edwardsTag = "C00431205";
-bidenTag = "C00431916";
-doddTag = "C00431379";
-gravelTag = "C00423202";
-kucinichTag = "C00430975";
-richardsonTag = "C00431577";
-
-dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag: "John Edwards",
-    bidenTag: "Joe Biden", doddTag: "Chris Dodd", gravelTag: "Mike Gravel",
-    kucinichTag: "Dennis Kucinich", richardsonTag: "Bill Richardson"};
-
-
-nodes_so_far = 0
-candidates_per_community = []
-pacs_per_community = [] 
-community_size = []
-for com in set(partition.values()) :
-    list_nodes = [nodes for nodes in partition.keys() if partition[nodes] == com]
-    num_candidates = 0
-    num_pacs = 0
-    for node in list_nodes:
-    	if node[0:2] == 'C0': num_pacs += 1
-    	if node in candidate_ids: num_candidates += 1
-    	if node in dems2008:
-    		print dems2008[node]
-    print len(list_nodes)
-    candidates_per_community.append(num_candidates)
-    community_size.append(len(list_nodes))
-    pacs_per_community.append(num_pacs)
-    nodes_so_far += len(list_nodes)
-    #print nodes_so_far, ",", G.number_of_nodes()
-
-log_community_size = [math.log(i, 10) for i in community_size]
-plt.hist(log_community_size, 50)
-plt.xlabel("log base 10 of community size")
-plt.ylabel("frequency")
-plt.title("histogram of community size")
-plt.show()
-
-log_candidates_per_community = []
-for i in candidates_per_community:
-	if i > 1:
-		log_candidates_per_community.append(math.log(i,10))
-
-plt.hist(log_candidates_per_community, 50)
-plt.xlabel("log base 10 of candidates per community (excluding 0 and 1-candidate communities)")
-plt.ylabel("number of commnities")
-plt.title("histogram of candidates per community")
-plt.show()
-
-
-nx.draw_networkx_edges(G,pos, alpha=0.5)
-plt.show()
+print community_structure(G, candidates)
