@@ -44,9 +44,10 @@ const map<string, string> dem2008Names =
 
 const int numDemocraticCandidates2008 = 8;*/
 
-extern unordered_map<string, int> committeeStringToNodeNumber;
+extern map<string, int> committeeStringToNodeNumber;
 
-extern unordered_map<string, int> candidateToFunds;
+extern unordered_map<string, int> candidateToDonorFunds;
+extern unordered_map<string, int> candidateToPACFunds;
 
 extern unordered_map<string, int> candidateToNumberDonors;
 

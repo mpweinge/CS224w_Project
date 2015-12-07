@@ -11,6 +11,10 @@
 
 const string contPath = "../../data/1995_1996/itcont.txt";
 const string othPath = "../../data/1995_1996/itoth.txt";
+const string pasPath = "../../data/1995_1996/itpas2.txt";
+const string cnPath = "../../data/1995_1996/cn.txt";
+
+const string endCampaign = "01011996";
 
 //Democrats
 const string clintonTag = "C00321414";

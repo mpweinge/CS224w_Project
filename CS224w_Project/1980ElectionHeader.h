@@ -9,8 +9,12 @@
 #ifndef _980ElectionHeader_h
 #define _980ElectionHeader_h
 
- const string contPath = "../../data/1979_1980/itcont.txt";
- const string othPath = "../../data/1979_1980/itoth.txt";
+const string contPath = "../../data/1979_1980/itcont.txt";
+const string othPath = "../../data/1979_1980/itoth.txt";
+const string pasPath = "../../data/1979_1980/itpas2.txt";
+const string cnPath = "../../data/1979_1980/cn.txt";
+
+const string endCampaign = "01011980";
 
 
 //DEMOCRATS
@@ -30,8 +34,8 @@ const map<string, string> demNames =
 
 //REPUBLICANS
 const string reaganTag = "C00186312";
-const string bushTag = "C00079350";
-const string andersonTag = "C00000802";
+const string bushTag = "C00273516";
+const string andersonTag = "C00126417";
 const string bakerTag = "C00107466";
 const string craneTag = "C00100834";
 const string connallyTag = "C00107318";

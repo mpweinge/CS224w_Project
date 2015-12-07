@@ -23,11 +23,12 @@ using namespace std;
 PNGraph donorGraph;
 PUNGraph undirectedDonorGraph;
 
-unordered_map<string, int> committeeStringToNodeNumber;
+map<string, int> committeeStringToNodeNumber;
 
 unordered_map<string, int> donorStringToNodeNumber;
 
-unordered_map<string, int> candidateToFunds;
+unordered_map<string, int> candidateToDonorFunds;
+unordered_map<string, int> candidateToPACFunds;
 
 unordered_map<string, int> candidateToNumberDonors;
 
@@ -51,15 +52,32 @@ void computePageRank() {
     //for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
    //     cout << "Page rank for user: " << committeeKeys->first << " value: " << nodeToHash[committeeKeys->second] << endl;
     //}
-    for (auto candidate = demNames.begin(); candidate != demNames.end(); candidate++) {
-        TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
-        cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
-    }
+  for (int i = 0; i< numDemocraticCandidates; i++) {
+    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
+    
+    string name = democraticCandidates[i];
+    
+    cout << /*demNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " << */nodeToHash[node.GetId()] << "," << candidateToDonorFunds[democraticCandidates[i]] << "," << candidateToPACFunds[democraticCandidates[i]] << "," << candidateToDonorFunds[democraticCandidates[i]] +  candidateToPACFunds[democraticCandidates[i]] << endl;
+  }
+  
+  for (int i = 0; i< numRepublicanCandidates; i++) {
+    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[republicanCandidates[i]]);
+    
+    string name = republicanCandidates[i];
+    
+    cout << /*repNames.find(name)->second << " pagerank, Donor, PAC, Total donations: " <<*/ nodeToHash[node.GetId()] << "," << candidateToDonorFunds[republicanCandidates[i]] << "," << candidateToPACFunds[republicanCandidates[i]] << "," << candidateToDonorFunds[republicanCandidates[i]] +  candidateToPACFunds[republicanCandidates[i]] << endl;
+  }
+}
+
+void computeDonationsPerCandidate()
+{
+  /*for (auto candidate = demNames.begin(); candidate != demNames.end(); candidate++) {
+    cout << candidate->second << " Donor, PAC, Total donations: " << candidateToDonorFunds[candidate->first] << "," << candidateToPACFunds[candidate->first] << "," << candidateToDonorFunds[candidate->first] +  candidateToPACFunds[candidate->first] << endl;
+  }
   
   for (auto candidate = repNames.begin(); candidate != repNames.end(); candidate++) {
-    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
-    cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
-  }
+    cout << candidate->second << " Donor, PAC, Total donations: " << candidateToDonorFunds[candidate->first] << "," << candidateToPACFunds[candidate->first] << "," << candidateToDonorFunds[candidate->first] +  candidateToPACFunds[candidate->first] << endl;
+  }*/
 }
 
 void computeUndirectedBetweenness() {
@@ -67,7 +85,7 @@ void computeUndirectedBetweenness() {
     TIntFltH nodeBetweennessCentr;
     TSnap::GetBetweennessCentr(undirectedDonorGraph, nodeBetweennessCentr);
     
-    for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+    for (map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
         cout << "Betweenness score for user: " << committeeKeys->first << " value: " << nodeBetweennessCentr[committeeKeys->second] << endl;
     }
 }
@@ -164,10 +182,12 @@ int main(int argc, const char * argv[]) {
     donorGraph = TNGraph::New();
     undirectedDonorGraph = TUNGraph::New();
   
-    const string end2007Campaign = "01012008";
+  readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
+  readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
   
-  readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, end2007Campaign);
-  readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, end2007Campaign);
+  readInCN();
+  readInPAS(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
+  
  /*
   //Run this over 12 months and see how the data changes over that time
   const string end2007Campaign = "01012008";
@@ -216,6 +236,7 @@ int main(int argc, const char * argv[]) {
     */
     // Compute pagerank for all of the nodes in our graph
     computePageRank();
+    computeDonationsPerCandidate();
   
     //cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
   

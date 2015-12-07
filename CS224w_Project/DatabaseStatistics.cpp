@@ -22,7 +22,7 @@ float getAverageNumberOfDonationsPerPAC(PNGraph & graph)
   int totalEdges = 0;
   int totalPacs = 0;
   
-  for (unordered_map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
+  for (map<string, int>::iterator committeeKeys = committeeStringToNodeNumber.begin(); committeeKeys != committeeStringToNodeNumber.end(); ++committeeKeys){
     TNGraph::TNodeI currNode = graph->GetNI(committeeKeys->second);
     totalEdges += currNode.GetOutDeg();
     totalPacs++;

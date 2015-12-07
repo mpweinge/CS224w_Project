@@ -11,6 +11,10 @@
 
 const string contPath = "../../data/1983_1984/itcont.txt";
 const string othPath = "../../data/1983_1984/itoth.txt";
+const string pasPath = "../../data/1983_1984/itpas2.txt";
+const string cnPath = "../../data/1983_1984/cn.txt";
+
+const string endCampaign = "01011984";
 
 //Democrats
 const string mondaleTag = "C00186296";
