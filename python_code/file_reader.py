@@ -19,7 +19,7 @@ dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag:
 
 
 def checkDate(transactionDate, endDate):
-	if (len(transactionDate) != 6 or len(endDate) != 6): return False
+	if (len(transactionDate) != 8 or len(endDate) != 8): return False
 	if ( transactionDate[len(transactionDate) - 1] < endDate[len(endDate) - 1] ):
 		return True
   	elif (transactionDate[len(transactionDate) - 1] == endDate[len(endDate) - 1]):
@@ -55,7 +55,8 @@ def readInDonors(G, p, weighted, endDate, donorfile):
 		
 		date = line[13]
 
-		if (not checkDate(date, endDate)): continue
+		if (not checkDate(date, endDate)): 
+			continue
 
 		if len(name.split(",")) < 2: continue
 		name = name.split(" ")[0] + name.split(",")[1].strip().split(" ")[0]

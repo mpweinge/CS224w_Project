@@ -9,6 +9,7 @@ candidates = {
 		 	 {'name': 'Lyndon LaRouche', 'id': 'C00364091', 'dropped_out': 'unknown', 'delegates': 0,'primary_vote_percentage': 0.91},
 		 	 {'name': 'Richard B Kay', 'id': 'C00111492', 'dropped_out': 'unknown', 'delegates': 0,'primary_vote_percentage': 0.25},
 		 	 {'name': 'Cliff Finch', 'id': 'C00120915', 'dropped_out': 'unknown', 'delegates': 4,'primary_vote_percentage': 0.25},
+
 		]
 	}, 
 	'r': {
@@ -32,7 +33,7 @@ candidates = {
 		 	 {'name': 'Walter Mondale', 'id': 'C00186296', 'dropped_out': False, 'delegates': 2191, 'primary_vote_percentage': 56.41},
 		 	 {'name': 'Gary Hart', 'id': 'C00214452', 'dropped_out': '07161984', 'delegates': 1201, 'primary_vote_percentage': 30.92},
 		 	 {'name': 'Jesse Jackson', 'id': 'C00217893', 'dropped_out': '07161984', 'delegates': 466, 'primary_vote_percentage': 12},
-		 	 {'name': 'Thomas Eagleton', 'id': 'C00029488', 'dropped_out': 'unknown', 'delegates': 18, 'primary_vote_percentage': 0.46},
+		 	 {'name': 'Thomas Eagleton', 'id': 'C00164855', 'dropped_out': 'unknown', 'delegates': 18, 'primary_vote_percentage': 0.46},
 		 	 {'name': 'John Glenn', 'id': 'C00164855', 'dropped_out': '03161984', 'delegates': 2, 'primary_vote_percentage': 0.05},
 		 	 {'name': 'George McGovern', 'id': 'C00170407', 'dropped_out': '03141984', 'delegates': 2, 'primary_vote_percentage': 0.1},
 		 	 {'name': 'Martha Kirkland', 'id': 'C00159392', 'dropped_out': 'unknown', 'delegates': 1,  'primary_vote_percentage': 0.03},
@@ -58,9 +59,9 @@ candidates = {
 		 	 {'name': 'Gary Hart', 'id': 'C00214452', 'dropped_out': '03121988', 'delegates': 1,  'primary_vote_percentage': 1.65},
 		 	 {'name': 'Bruce Babbitt', 'id': 'C00213017', 'dropped_out': '02161988', 'delegates': 0, 'primary_vote_percentage': 0.36},
 		 	 {'name': 'Jim Traficant', 'id': 'C00218941', 'dropped_out': 'unknown', 'delegates': 0,  'primary_vote_percentage': 0.13},
-		 	 {'name': 'Joe Biden', 'id': 'C00431916', 'dropped_out': '09121987', 'delegates': 2},
+		 	 {'name': 'Joe Biden', id: 'C00431916', 'dropped_out': '09121987', 'delegates': 2},
 		 	 {'name': 'Lyndon LaRouche', 'id': 'C00364091', 'dropped_out': 'unknown',  'delegates': 0, 'primary_vote_percentage': 0.32},
-		 	 {'name': 'David Duke', 'id': 'C00256735', 'dropped_out': 'unknown', 'delegates': 0,  'primary_vote_percentage': 0.19},
+		 	 {'name': 'David Duke', id: 'C00256735', 'dropped_out': 'unknown', 'delegates': 0,  'primary_vote_percentage': 0.19},
 
 		]
 	}, 
@@ -99,7 +100,7 @@ candidates = {
 		'candidates': [
 		 	 {'name': 'George H.W. Bush', 'id': 'C00273516', 'dropped_out': False, 'incumbent': True, 'delegates': 2163, 'primary_vote_percentage': 72.84},
 		 	 {'name': 'Pat Buchanan', 'id': 'C00361352', 'dropped_out': 'unknown', 'delegates': 18, 'primary_vote_percentage': 22.96},
-		 	 {'name': 'David Duke', 'id': 'C00256735', 'dropped_out': 'unknown',  'delegates': 0, 'primary_vote_percentage': 0.94},
+		 	 {'name': 'David Duke', id: 'C00256735', 'dropped_out': 'unknown',  'delegates': 0, 'primary_vote_percentage': 0.94},
 		 	 {'name': 'Ross Perot', 'id': 'C00321778', 'dropped_out': '07161992',  'delegates': 0, 'primary_vote_percentage': 0.44},
 		 	 {'name': 'Marice Horton', 'id': 'C00208108', 'dropped_out': 'unknown',  'delegates': 0, 'primary_vote_percentage': 0.08},
 		 	 {'name': 'Harold Stassen', 'id': 'C00108639', 'dropped_out': 'unknown',  'delegates':0,'primary_vote_percentage': 0.06},
@@ -189,14 +190,14 @@ candidates = {
 	'r':{
 		'winner': 'John McCain',
 		'candidates': [
-	 		{'name':'John McCain','id':'C00430470', 'dropped_out':False, 'delegates': 1575, 'primary_vote_percentage': 46.38},
-	 		{'name':'Mitt Romney','id':'C00431171', 'dropped_out':'02072008', 'delegates': 271, 'endorsed':'John McCain', 'primary_vote_percentage': 22.46},
-	 		{'name':'Mike Huckabee','id':'C00431809', 'dropped_out':'03042008', 'delegates': 278, 'endorsed':'John McCain', 'primary_vote_percentage': 20.43},
-	 		{'name':'Ron Paul','id':'C00495820', 'dropped_out':'06122008', 'delegates': 35, 'endorsed':'Chuck Baldwin (constitution party)', 'primary_vote_percentage': 5.55},
-	 		{'name':'Fred Thompson','id':'C00438507', 'dropped_out':'01222008','delegates': 11,  'endorsed':'John McCain', 'primary_vote_percentage': 1.39},
-	 		{'name':'Rudy Giuliani','id':'C00430512', 'dropped_out':'01302008', 'delegates': 0, 'endorsed':'John McCain', 'primary_vote_percentage': 0.28},
-	 		{'name':'Alan Keyes','id':'C00452532', 'dropped_out':'04152008', 'delegates': 2, 'endorsed':'unknown'},
-	 		{'name':'Duncan Hunter','id':'C00431411', 'dropped_out':'01192008', 'delegates': 1, 'endorsed':'Mike Huckabee'},
+	 		{'name':'John McCain','id':'', 'dropped_out':False, 'delegates': 1575, 'primary_vote_percentage': 46.38},
+	 		{'name':'Mitt Romney','id':'', 'dropped_out':'02072008', 'delegates': 271, 'endorsed':'John McCain', 'primary_vote_percentage': 22.46},
+	 		{'name':'Mike Huckabee','id':'', 'dropped_out':'03042008', 'delegates': 278, 'endorsed':'John McCain', 'primary_vote_percentage': 20.43},
+	 		{'name':'Ron Paul','id':'', 'dropped_out':'06122008', 'delegates': 35, 'endorsed':'Chuck Baldwin (constitution party)', 'primary_vote_percentage': 5.55},
+	 		{'name':'Fred Thompson','id':'', 'dropped_out':'01222008','delegates': 11,  'endorsed':'John McCain', 'primary_vote_percentage': 1.39},
+	 		{'name':'Rudy Giuliani','id':'', 'dropped_out':'01302008', 'delegates': 0, 'endorsed':'John McCain', 'primary_vote_percentage': 0.28},
+	 		{'name':'Alan Keyes','id':'', 'dropped_out':'04152008', 'delegates': 2, 'endorsed':'unknown'},
+	 		{'name':'Duncan Hunter','id':'', 'dropped_out':'01192008', 'delegates': 1, 'endorsed':'Mike Huckabee'},
 		]
 	}
 },
@@ -257,42 +258,122 @@ candidates = {
 import networkx as nx# sudo pip install networkx
 import file_reader
 
+minDate = "01012008"
 
-def print_candidate_info(party, year, G, weightedPR):
+def isPac(id):
+	return id[0:2] == 'C0'
+
+def nCliqueOverlap(G, candidates):
+candidateIds = [i['id'] for i in candidates]
+allPacs = set([])
+# first, find all pacs that donated to the candidates of interest.
+for node in G.nodes():
+	print node
+	if not isPac(node): continue
+	for candidate in candidateIds:
+		if candidate in G[node]:
+			allPacs.add(node)
+
+	pacCandidateDonationPercents = {} # pac -> candidate -> percent
+	# now figure out what % each pac donated to each candidate
+for pac in allPacs:
+	# find total amount that each pac donated to ANY candidate (including minor candidate)
+	pacDonationRecipients = G[pac].keys()
+	totalPacDonationAmount = sum([G[pac][recipient]['weight'] for recipient in pacDonationRecipients if isPac(recipient)])
+	pacCandidateDonationPercents[pac] = {} 
+	for recipient in pacDonationRecipients:
+		if recipient not in candidateIds: continue
+		pacCandidateDonationPercents[pac][recipient] = float(G[pac][recipient]['weight']) / totalPacDonationAmount
+
+
+	# for each candidate of interest
+		# calculate total # donors
+		# find all their connected PACs
+			# find all people who donate to that PACs
+			# that is their clique
+	candidateDonors = {} # candidate ID -> set of donors
+	for candidate in candidates:
+		indirectDonationAmt = 0
+		directDonationAmt = 0
+		neighbors = G[candidate['id']].keys()
+		curDonors = set([i for i in neighbors if not isPac(i) and len(i) > 1])
+		curNumDonors = float(len(curDonors))
+		directDonationAmt = sum([G[candidate]['id'][i]['weight'] for i in curDonors])
+		pacs = set([i for i in neighbors if isPac(i)])
+		print '# of PACs: ', str(len(pacs))
+		print 'direct donation amount: ', str(directDonationAmt)
+		print '# of individual donors: ', str(len(curDonors))
+		for pac in pacs:
+			curDonors.add(pac)
+			for pacDonor in G[pac].keys():
+				if isPac(pacDonor): continue
+				curDonors.add(pacDonor)
+				indirectDonationAmt += G[pac][pacDonor]['weight'] * pacCandidateDonationPercents[pac][candidate]
+			curNumDonors += pacCandidateDonationPercents[pac][candidate] * len(G[pac].keys())
+		print '# of individual donors counting indirect: ', str(len(curDonors))
+		print 'total donation amount: ', str(indirectDonationAmt + directDonationAmt), '\n\n'
+		candidateDonors[candidate] = curDonors
+
+	NCliqueOverlapPac = {} 
+	NCliqueOverlapAll = {} 
+	for di in range(len(candidateIds)):
+		NCliqueOverlapAll[candidateIds[di]] = []
+		NCliqueOverlapPac[candidateIds[di]] = []
+
+	for di in range(len(candidateIds)):
+		iAll = set(candidateDonors[candidateIds[di]])
+		iPacOnly = set([i for i in iAll if isPac(i)])
+		for dj in range(di + 1, len(candidateIds)):
+			jAll = set(candidateDonors[candidateIds[dj]])
+			jPacOnly = set([i for i in jAll if isPac(i)])
+			jaccardAll = float(len(iAll & jAll)) / (len(iAll | jAll))
+			jaccardPac = float(len(iPacOnly & jPacOnly)) / (len(iPacOnly | jPacOnly))
+			NCliqueOverlapAll[candidateIds[di]].append(jaccardAll)
+			NCliqueOverlapPac[candidateIds[di]].append(jaccardPac)
+			NCliqueOverlapAll[candidateIds[dj]].append(jaccardAll)
+			NCliqueOverlapPac[candidateIds[dj]].append(jaccardPac)
+			print 'all: ', jaccardAll, ' / pac: ', jaccardPac
+
+	for i in candidateIds:
+		print 'n-clique overlap for all donors: ', sum(NCliqueOverlapAll[i]) / len(NCliqueOverlapAll[i])
+		print 'n-clique overlap for pacs: ', sum(NCliqueOverlapPac[i]) / len(NCliqueOverlapPac[i])
+
+
+
+
+print 'year,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank'
+for year in candidates.keys():
+	G = nx.DiGraph() #directed graph
+
+	donorFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + year + "/itcont.txt"
+	committeeFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + year + "/itcont.txt"
+
+	file_reader.readInDonors(G, 1.0, True, minDate, donorFile)
+	file_reader.readCommitteeToCommittee(G, committeeFile)
+
+	nCliqueOverlap(G, candidates[year]['d']['candidates'])
+
 	total_delegates = 0
-
-	for candidate in candidates[year][party]['candidates']:
-		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
+	for candidate in candidates[year]['d']['candidates']:
+		if 'delegates' in candidate:
 			total_delegates += candidate['delegates']
 
-	for candidate in candidates[year][party]['candidates']:
+	# edge (i, j) means that i donated to j.
+	allPacs = findAllPacs(G)
+
+	for candidate in candidates[year]['d']['candidates']:
 		delegates = 0
-		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
+		if 'delegates' in candidate:
 			delegates += candidate['delegates']
 		popular_vote = 0
 		if 'primary_vote_percentage' in candidate:
 			popular_vote = candidate['primary_vote_percentage']
-		delegate_percent = "NA"
-		if total_delegates > 0:
-			delegate_percent = str(float(delegates) / total_delegates)
-		pr = "NA"
-		if candidate['id'] in weightedPR:
-			pr = str(weightedPR[candidate['id']])
-		outstr = ','.join([str(year), candidate['name'], party, candidate['id'], str(delegates), 
-			delegate_percent, str(popular_vote), pr])
+
+		outstr = [year, candidate['name'], candidate['id'], str(delegates), 
+			str(float(delegates) / total_delegates), popular_vote].join(',')
 
 		print outstr
 
+	print year
 
-print 'year,name,party,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank'
-for year in [2016]:#sorted(candidates.keys()):
-	minDate = "0101" + str(year)
-	G = nx.DiGraph() #directed graph
-	donorFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itcont.txt"
-	committeeFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itcont.txt"
 
-	file_reader.readInDonors(G, 1.0, True, minDate, donorFile)
-	file_reader.readCommitteeToCommittee(G, committeeFile)
-	weightedPR = nx.pagerank(G)
-	print_candidate_info('d', year, G, weightedPR)
-	print_candidate_info('r', year, G, weightedPR)
