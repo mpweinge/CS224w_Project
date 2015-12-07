@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "constants.h"
+#include "DatabaseStatistics.hpp"
 
 using namespace std;
 

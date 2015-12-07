@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Constants.h"
+#include "1980ElectionHeader.h"
 
 float getAverageNumberOfDonationsPerIndividual();
 float getAverageNumberOfDonationsPerPAC(PNGraph & graph);

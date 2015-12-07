@@ -9,6 +9,9 @@
 #ifndef _984ElectionHeader_h
 #define _984ElectionHeader_h
 
+const string contPath = "../../data/1983_1984/itcont.txt";
+const string othPath = "../../data/1983_1984/itoth.txt";
+
 //Democrats
 const string mondaleTag = "C00186296";
 const string hartTag = "C00214452";

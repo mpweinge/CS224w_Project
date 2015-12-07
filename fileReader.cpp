@@ -52,11 +52,13 @@ void readInDonors( vector<candidateDonorNode>& nodes,
   
   string currentLine;
   
-#ifdef TRAIN_2007
+/*#ifdef TRAIN_2007
+  const string contPath = "../../data/2007_2008/itcont.txt";
     candidateDonorFile.open("../../CS224w_Project/2007_2008/itcont.txt");
 #else
     candidateDonorFile.open("../../cs224w_Project/2015_2016/itcont.txt");
-#endif
+#endif*/
+  candidateDonorFile.open(contPath);
   
   string filerIdentificationNumber;
   string amendmentIndicator;
@@ -177,11 +179,12 @@ void readCommitteeToCommitteeFile(unordered_map<string, int> &committeeStringToN
   
   string currentLine;
   
-#ifdef TRAIN_2007
-  committeeToCommitteeFile.open("../../CS224w_Project/2007_2008/itoth.txt");
+/*#ifdef TRAIN_2007
+  committeeToCommitteeFile.open(othPath);
 #else
   committeeToCommitteeFile.open("../../cs224w_Project/2015_2016/itoth.txt");
-#endif
+#endif*/
+  committeeToCommitteeFile.open(othPath);
   
   string filerIdentificationNum;
   string AmendmentIndicator;
