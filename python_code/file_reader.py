@@ -19,9 +19,10 @@ dems2008 = {obamaTag : "Barack Obama", clintonTag: "Hilary Clinton", edwardsTag:
 
 
 def checkDate(transactionDate, endDate):
-	if ( transactionDate[transactionDate.length() - 1] < endDate[endDate.size() - 1] ):
+	if (len(transactionDate) != 6 or len(endDate) != 6): return False
+	if ( transactionDate[len(transactionDate) - 1] < endDate[len(endDate) - 1] ):
 		return True
-  	elif (transactionDate[transactionDate.length() - 1] == endDate[endDate.size() - 1]):
+  	elif (transactionDate[len(transactionDate) - 1] == endDate[len(endDate) - 1]):
 	    # Compare the months aka the first two years
 	    month1 = transactionDate[0] + transactionDate[1]
 	    month2 = endDate[0] + endDate[1]
@@ -54,7 +55,7 @@ def readInDonors(G, p, weighted, endDate, donorfile):
 		
 		date = line[13]
 
-		if (not checkDate(date)): continue
+		if (not checkDate(date, endDate)): continue
 
 		if len(name.split(",")) < 2: continue
 		name = name.split(" ")[0] + name.split(",")[1].strip().split(" ")[0]
@@ -68,7 +69,6 @@ def readInDonors(G, p, weighted, endDate, donorfile):
 			key = (donorId, committeeId)
 			weights_so_far[key] = weights_so_far[key] + amount if key in weights_so_far else amount
 			G.add_weighted_edges_from([(donorId, committeeId, weights_so_far[key])])
-	print 'num lines: ', num_lines, 'num negative amount: ', num_negative_amount
 			# find donor and committee, add edge from donor to committee.
 
 def readCommitteeToCommittee(G, committeefile): 
@@ -87,4 +87,3 @@ def readCommitteeToCommittee(G, committeefile):
 			key = (id1, id2)
 			weights_so_far[key] = weights_so_far[key] + amount if key in weights_so_far else amount
 			G.add_weighted_edges_from([(id1, id2, weights_so_far[key])])
-	print 'num lines: ', num_lines, 'num negative amount: ', num_negative_amount
