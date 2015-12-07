@@ -202,10 +202,11 @@ int main(int argc, const char * argv[]) {
     donorGraph = TNGraph::New();
     undirectedDonorGraph = TUNGraph::New();
   
+  readInCN();
+  readCCL();
+  
   readInDonors(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
   readCommitteeToCommitteeFile(committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
-  
-  readInCN();
   readInPAS(nodes, donorStringToNodeNumber, committeeStringToNodeNumber, donorGraph, undirectedDonorGraph, endCampaign);
   
  /*

@@ -13,6 +13,7 @@ const string contPath = "../../data/1983_1984/itcont.txt";
 const string othPath = "../../data/1983_1984/itoth.txt";
 const string pasPath = "../../data/1983_1984/itpas2.txt";
 const string cnPath = "../../data/1983_1984/cn.txt";
+const string cclPath = "";
 
 const string endCampaign = "03011984";
 

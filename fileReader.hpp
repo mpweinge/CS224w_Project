@@ -38,4 +38,6 @@ void readInPAS( vector<candidateDonorNode>& nodes,
 
 void readInCN();
 
+void readCCL();
+
 #endif /* fileReader_hpp */

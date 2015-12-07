@@ -48,6 +48,32 @@ bool isEarlierDate(string date1, string date2) {
 
 unordered_map<string, string> candidateIdToCommittee;
 
+unordered_map<string, string> pacToCandidate;
+
+void readCCL()
+{
+  if (cclPath == "")
+    return;
+  
+  // Ok we need to link this candidate to a bunch of different pacs
+  ifstream cclFile;
+  cclFile.open(cclPath);
+  
+  string candidateNum;
+  string pacNum;
+  string currentLine;
+  
+  while (getline(cclFile, candidateNum, '|')) {
+    getline(cclFile, currentLine, '|');
+    getline(cclFile, currentLine, '|');
+    getline(cclFile, pacNum, '|');
+    getline(cclFile, currentLine);
+    
+    // Ok create a map here from pacNum to candidateNum
+    pacToCandidate[pacNum] = candidateNum;
+  }
+}
+
 void readInCN() {
   ifstream candidateDonorFile;
   
@@ -161,18 +187,12 @@ void readInPAS( vector<candidateDonorNode>& nodes,
     
     
     // Turn that candidateID into a candidate committee through array
-    
-    if (candidateID == "P60000452") {
-      int k;
-      k = 0;
+    if (pacToCandidate[filerIdentificationNumber] != "") {
+      filerIdentificationNumber = candidateIdToCommittee[ pacToCandidate[filerIdentificationNumber]];
     }
+    
     if (candidateIdToCommittee[candidateID] != "") {
       candidateID = candidateIdToCommittee[candidateID];
-    }
-    
-    if (candidateID == "C00186312") {
-      int k = 0;
-      k++;
     }
     
     if (shouldAdd) {
@@ -309,6 +329,11 @@ void readInDonors( vector<candidateDonorNode>& nodes,
     shouldAdd = isEarlierDate(transactionDate, endDate);
 #endif
     
+    // Turn that candidateID into a candidate committee through array
+    if (pacToCandidate[filerIdentificationNumber] != "") {
+      filerIdentificationNumber = candidateIdToCommittee[ pacToCandidate[filerIdentificationNumber]];
+    }
+    
     if (shouldAdd) {
       candidateDonorNode nextNode = candidateDonorNode(filerIdentificationNumber,amendmentIndicator,reportType,electionType,\
                                                        imageNumber,transactionType,entityType,name,city,state, zipCode,\
@@ -423,6 +448,11 @@ void readCommitteeToCommitteeFile(map<string, int> &committeeStringToNodeNumber,
 #ifdef CAP_DONATIONS
     shouldAdd = isEarlierDate(date, endDate);
 #endif
+    
+    // Turn that candidateID into a candidate committee through array
+    if (pacToCandidate[filerIdentificationNum] != "") {
+      filerIdentificationNum = candidateIdToCommittee[ pacToCandidate[filerIdentificationNum]];
+    }
     
     if (shouldAdd) {
       

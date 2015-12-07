@@ -13,11 +13,12 @@ const string contPath = "../../data/2003_2004/itcont.txt";
 const string othPath = "../../data/2003_2004/itoth.txt";
 const string pasPath = "../../data/2003_2004/itpas2.txt";
 const string cnPath = "../../data/2003_2004/cn.txt";
+const string cclPath = "../../data/2003_2004/ccl.txt";
 
 const string endCampaign = "03012004";
 
 //Democrats
-const string kerryTag = "C00404160";
+const string kerryTag = "C00404160"/*"C00383653"*/;
 const string edwardsTag = "C00384073";
 const string deanTag = "C00378125";
 const string clarkTag = "C00390898";
