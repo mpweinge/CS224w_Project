@@ -55,6 +55,11 @@ void computePageRank() {
         TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
         cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
     }
+  
+  for (auto candidate = repNames.begin(); candidate != repNames.end(); candidate++) {
+    TNGraph::TNodeI node = donorGraph->GetNI(committeeStringToNodeNumber[candidate->first]);
+    cout << candidate->second << " pagerank: " << nodeToHash[node.GetId()] << endl;
+  }
 }
 
 void computeUndirectedBetweenness() {

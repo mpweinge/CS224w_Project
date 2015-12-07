@@ -37,7 +37,6 @@ const map<string, string> demNames =
 const string bushTag = "C00273516";
 const string buchananTag = "C00361352";
 const string dukeTag = "C00256735";
-const string perotTag = "C00321778";
 const string hortonTag = "C00208108";
 const string stassenTag = "C00108639";
 

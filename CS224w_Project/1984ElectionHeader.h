@@ -21,9 +21,22 @@ const string glennTag = "C00164855";
 const string mcgovernTag = "C00170407";
 const string kirklandTag = "C00159392";
 
+const string democraticCandidates[] = {mondaleTag, hartTag, jacksonTag, eagletonTag, glennTag, mcgovernTag, kirklandTag};
+const int numDemocraticCandidates = 7;
+
+const map<string, string> demNames =
+{{mondaleTag, "Walter Mondale"}, {hartTag, "Gary Hart"}, {jacksonTag, "Jesse Jackson"},
+  {eagletonTag, "Thomas Eagleton"}, {glennTag, "John Glenn"}, {mcgovernTag, "George McGovern"}, {kirklandTag, "Martha Kirkland"}};
+
 //Republican
 const string reaganTag = "C00186312";
 const string stassenTag = "C00218909";
+
+const string republicanCandidates[] = {reaganTag, stassenTag};
+const int numRepublicanCandidates = 2;
+
+const map<string, string> repNames =
+{{reaganTag, "Ronald Reagan"}, {stassenTag, "Harold Stassen"} };
 
 
 #endif /* _984ElectionHeader_h */
