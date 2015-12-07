@@ -9,7 +9,6 @@ candidates = {
 		 	 {'name': 'Lyndon LaRouche', 'id': 'C00364091', 'dropped_out': 'unknown', 'delegates': 0,'primary_vote_percentage': 0.91},
 		 	 {'name': 'Richard B Kay', 'id': 'C00111492', 'dropped_out': 'unknown', 'delegates': 0,'primary_vote_percentage': 0.25},
 		 	 {'name': 'Cliff Finch', 'id': 'C00120915', 'dropped_out': 'unknown', 'delegates': 4,'primary_vote_percentage': 0.25},
-
 		]
 	}, 
 	'r': {
@@ -190,14 +189,14 @@ candidates = {
 	'r':{
 		'winner': 'John McCain',
 		'candidates': [
-	 		{'name':'John McCain','id':'', 'dropped_out':False, 'delegates': 1575, 'primary_vote_percentage': 46.38},
-	 		{'name':'Mitt Romney','id':'', 'dropped_out':'02072008', 'delegates': 271, 'endorsed':'John McCain', 'primary_vote_percentage': 22.46},
-	 		{'name':'Mike Huckabee','id':'', 'dropped_out':'03042008', 'delegates': 278, 'endorsed':'John McCain', 'primary_vote_percentage': 20.43},
-	 		{'name':'Ron Paul','id':'', 'dropped_out':'06122008', 'delegates': 35, 'endorsed':'Chuck Baldwin (constitution party)', 'primary_vote_percentage': 5.55},
-	 		{'name':'Fred Thompson','id':'', 'dropped_out':'01222008','delegates': 11,  'endorsed':'John McCain', 'primary_vote_percentage': 1.39},
-	 		{'name':'Rudy Giuliani','id':'', 'dropped_out':'01302008', 'delegates': 0, 'endorsed':'John McCain', 'primary_vote_percentage': 0.28},
-	 		{'name':'Alan Keyes','id':'', 'dropped_out':'04152008', 'delegates': 2, 'endorsed':'unknown'},
-	 		{'name':'Duncan Hunter','id':'', 'dropped_out':'01192008', 'delegates': 1, 'endorsed':'Mike Huckabee'},
+	 		{'name':'John McCain','id':'C00430470', 'dropped_out':False, 'delegates': 1575, 'primary_vote_percentage': 46.38},
+	 		{'name':'Mitt Romney','id':'C00431171', 'dropped_out':'02072008', 'delegates': 271, 'endorsed':'John McCain', 'primary_vote_percentage': 22.46},
+	 		{'name':'Mike Huckabee','id':'C00431809', 'dropped_out':'03042008', 'delegates': 278, 'endorsed':'John McCain', 'primary_vote_percentage': 20.43},
+	 		{'name':'Ron Paul','id':'C00495820', 'dropped_out':'06122008', 'delegates': 35, 'endorsed':'Chuck Baldwin (constitution party)', 'primary_vote_percentage': 5.55},
+	 		{'name':'Fred Thompson','id':'C00438507', 'dropped_out':'01222008','delegates': 11,  'endorsed':'John McCain', 'primary_vote_percentage': 1.39},
+	 		{'name':'Rudy Giuliani','id':'C00430512', 'dropped_out':'01302008', 'delegates': 0, 'endorsed':'John McCain', 'primary_vote_percentage': 0.28},
+	 		{'name':'Alan Keyes','id':'C00452532', 'dropped_out':'04152008', 'delegates': 2, 'endorsed':'unknown'},
+	 		{'name':'Duncan Hunter','id':'C00431411', 'dropped_out':'01192008', 'delegates': 1, 'endorsed':'Mike Huckabee'},
 		]
 	}
 },
@@ -258,11 +257,10 @@ candidates = {
 import networkx as nx# sudo pip install networkx
 import file_reader
 
-minDate = "01012008"
 
-
-def print_candidate_info(party, year, G):
+def print_candidate_info(party, year, G, weightedPR):
 	total_delegates = 0
+
 	for candidate in candidates[year][party]['candidates']:
 		if 'delegates' in candidate and candidate['delegates'] != 'unknown':
 			total_delegates += candidate['delegates']
@@ -277,20 +275,24 @@ def print_candidate_info(party, year, G):
 		delegate_percent = "NA"
 		if total_delegates > 0:
 			delegate_percent = str(float(delegates) / total_delegates)
-		outstr = ','.join([str(year), candidate['name'], candidate['id'], str(delegates), 
-			delegate_percent, str(popular_vote)])
+		pr = "NA"
+		if candidate['id'] in weightedPR:
+			pr = str(weightedPR[candidate['id']])
+		outstr = ','.join([str(year), candidate['name'], party, candidate['id'], str(delegates), 
+			delegate_percent, str(popular_vote), pr])
 
 		print outstr
 
 
-print 'year,name,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank'
-for year in sorted(candidates.keys()):
+print 'year,name,party,id,delegates,percent_of_delegates,popular_vote,weighted_page_rank'
+for year in [2016]:#sorted(candidates.keys()):
+	minDate = "0101" + str(year)
 	G = nx.DiGraph() #directed graph
 	donorFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itcont.txt"
 	committeeFile = "../CS224w_Project/" + str(int(year) - 1) + "_" + str(year) + "/itcont.txt"
 
-	#file_reader.readInDonors(G, 1.0, true, minDate, donorFile)
-	#file_reader.readCommitteeToCommittee(G, committeeFile)
-	#weightedPR = nx.pagerank(G)
-	print_candidate_info('d', year, G)
-	print_candidate_info('r', year, G)
+	file_reader.readInDonors(G, 1.0, True, minDate, donorFile)
+	file_reader.readCommitteeToCommittee(G, committeeFile)
+	weightedPR = nx.pagerank(G)
+	print_candidate_info('d', year, G, weightedPR)
+	print_candidate_info('r', year, G, weightedPR)
