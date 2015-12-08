@@ -14,6 +14,6 @@ perm=str2num(get(hAxis,'XtickLabel'));
 labels = {'Obama', 'Clinton', 'Edwards', 'Biden', 'Dodd', 'Gravel', 'Kucinich', 'Richardson'};
 % Create the XTickLabels
 set(hAxis,'XTickLabel',labels(perm))
-set(gca,'fontsize',16)
+set(gca,'fontsize',22)
 ylabel(' Inverse of PAC/donors in common')
 title('Dendrogram from PACs/Donors in Common')

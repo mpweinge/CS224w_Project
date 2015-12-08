@@ -58,7 +58,7 @@ float averageOutDegreePerCandidate(TNGraph & graph)
   return ((float) totalOutDegrees) / numDemocraticCandidates;
 }
 
-float averageInDegreePerCandidate(TNGraph & graph)
+float averageInDegreePerCandidate(PNGraph & graph)
 {
   //const string democraticCandidates2008[] = {obamaTag, clintonTag, edwardsTag, bidenTag, doddTag, gravelTag, kucinichTag, richardsonTag};
   //const int numDemocraticCandidates2008 = 8;
@@ -66,7 +66,7 @@ float averageInDegreePerCandidate(TNGraph & graph)
   
   for (int i = 0; i < numDemocraticCandidates; i++)
   {
-    TNGraph::TNodeI currNode = graph.GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
+    TNGraph::TNodeI currNode = graph->GetNI(committeeStringToNodeNumber[democraticCandidates[i]]);
     totalInDegrees += currNode.GetInDeg();
   }
   

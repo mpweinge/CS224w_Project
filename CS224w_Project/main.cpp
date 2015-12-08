@@ -167,13 +167,24 @@ void performAverageDistHeirarchicalClustering() {
     // Attempt 2: Count the *instances* of pacs in common (ie. the number of different paths we get to with a distance of two
     
     // As we know that we are looking for distance '2', we can avoid doing a full BFS tree and just looking for different paths of distance '2'
-    
+  
+  cout << "Democratic candidates: " << endl;
+  
     for (int i = 0; i < numDemocraticCandidates; i++)
     {
         for (int j = i+1; j < numDemocraticCandidates; j++) {
             cout << numberOfPathsOfLengthTwo( committeeStringToNodeNumber[democraticCandidates[i]], committeeStringToNodeNumber[democraticCandidates[j]]) << ",";
         }
     }
+  
+  cout << "Republican candidates: " << endl;
+  
+  for (int i = 0; i < numRepublicanCandidates; i++)
+  {
+    for (int j = i+1; j < numRepublicanCandidates; j++) {
+      cout << numberOfPathsOfLengthTwo( committeeStringToNodeNumber[republicanCandidates[i]], committeeStringToNodeNumber[republicanCandidates[j]]) << ",";
+    }
+  }
 }
 
 void computeClosenessCentrality() {
@@ -261,7 +272,12 @@ int main(int argc, const char * argv[]) {
     //computeClosenessCentrality();
   
   
-    //cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
+    cout << "Average number of donations per PAC " << getAverageNumberOfDonationsPerPAC(donorGraph) << endl;
+  
+    cout << "Average number of donations to candidate" << averageInDegreePerCandidate(donorGraph) << endl;
+    // cout << "Average donations per individual" << getAverageNumberOfDonationsPerIndividual(donorGraph) << endl;
+  
+    performAverageDistHeirarchicalClustering();
   
     // Plot total number of donations over time
     // Plot number of donations over time 

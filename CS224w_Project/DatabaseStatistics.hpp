@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "Constants.h"
-#include "2000ElectionHeader.h"
+#include "2012ElectionHeader.h"
 
 float getAverageNumberOfDonationsPerIndividual();
 float getAverageNumberOfDonationsPerPAC(PNGraph & graph);
@@ -21,7 +21,7 @@ int getNumberOfEdges();
 int getNumberOfCommittees();
 
 float averageOutDegreePerCandidate();
-float averageInDegreePerCandidate();
+float averageInDegreePerCandidate(PNGraph & graph);
 
 
 // Some candidates donate to other candidates
