@@ -26,6 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A6192B321C14DDB8007DCA58 /* 1980ElectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 1980ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B331C14F57A007DCA58 /* 1984ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 1984ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B341C14F742007DCA58 /* 1988ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 1988ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B351C14F843007DCA58 /* 1992ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 1992ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B361C14F932007DCA58 /* 1996ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 1996ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B371C14F9D6007DCA58 /* 2000ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 2000ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B381C14FADF007DCA58 /* 2004ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 2004ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B391C14FC3E007DCA58 /* 2008ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 2008ElectionHeader.h; sourceTree = "<group>"; };
+		A6192B3B1C156D59007DCA58 /* 2012ElectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 2012ElectionHeader.h; sourceTree = "<group>"; };
 		A68BF6831BF315DC0047A0D7 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		A68BF6841BF33E420047A0D7 /* fileReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fileReader.cpp; path = ../fileReader.cpp; sourceTree = "<group>"; };
 		A68BF6851BF33E420047A0D7 /* fileReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fileReader.hpp; path = ../fileReader.hpp; sourceTree = "<group>"; };
@@ -202,6 +211,15 @@
 				A68BF6811BF312390047A0D7 /* 2015_2016 */,
 				A6C2A8551BEEC2E00053AFEA /* main.cpp */,
 				A68BF6831BF315DC0047A0D7 /* constants.h */,
+				A6192B321C14DDB8007DCA58 /* 1980ElectionHeader.h */,
+				A6192B331C14F57A007DCA58 /* 1984ElectionHeader.h */,
+				A6192B341C14F742007DCA58 /* 1988ElectionHeader.h */,
+				A6192B351C14F843007DCA58 /* 1992ElectionHeader.h */,
+				A6192B361C14F932007DCA58 /* 1996ElectionHeader.h */,
+				A6192B371C14F9D6007DCA58 /* 2000ElectionHeader.h */,
+				A6192B381C14FADF007DCA58 /* 2004ElectionHeader.h */,
+				A6192B391C14FC3E007DCA58 /* 2008ElectionHeader.h */,
+				A6192B3B1C156D59007DCA58 /* 2012ElectionHeader.h */,
 				A68BF6871BF571900047A0D7 /* DatabaseStatistics.cpp */,
 				A68BF6881BF571900047A0D7 /* DatabaseStatistics.hpp */,
 			);
